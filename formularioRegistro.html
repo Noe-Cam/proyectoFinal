@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro usuarios</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="contenedor-grid">
+        <header class="logo">LOGO</header>
+        <nav class="navegador">
+            <a>BUSCAR TRAYECTO</a>
+            <a>SUBIR TRAYECTO</a>
+            <a>CHAT</a>
+            <a>MI ZONA</a>
+            <a href="login.php">INICIAR SESIÓN</a>
+        </nav>
+        <div class='img'></div>
+        <main class="contenido">
+            <form class="container" id="formulario">
+              <h1 class="titulo">Formulario de Registro</h1>
+          
+              <div class="column">
+                <div class="input-box formulario__grupo" id="grupo__nombre">
+                  <label for="nombre" class="formulario__label">Nombre</label>
+                  <div class="formulario__grupo-input">
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre Completo" class="formulario__input" />
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                  </div>
+                  <p class="formulario__input-error">El nombre tiene que ser de 3 a 16 dígitos y solo puede conetener letras y guiones.</p>
+                </div>
+          
+                <div class="input-box formulario__grupo" id="grupo__apellidos">
+                  <label for="apellidos" class="formulario__label">Apellidos</label>
+                  <div class="formulario__grupo-input">
+                    <input type="text" id="apellidos" name="apellidos" placeholder="Ej. García Torres" class="formulario__input" />
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                  </div>
+                  <p class="formulario__input-error">El apellido tiene que ser de 3 a 20  dígitos y solo puede conetener letras y guiones.</p>
+                </div>
+          
+                <div class="input-box formulario__grupo" id="grupo__fecha">
+                  <label for="fecha" class="formulario__label">Fecha de nacimiento</label>
+                  <input type="date" id="fecha" name="fecha" class="formulario__input" />
+                </div>
+          
+                <div class="input-box formulario__grupo" id="grupo__telefono">
+                  <label for="telefono" class="formulario__label">Teléfono</label>
+                  <div class="formulario__grupo-input">
+                     <input type="tel" id="telefono" name="telefono" placeholder="Ej. 2281234567" class="formulario__input" />
+                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                  </div>
+                  <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>
+                </div>
+          
+                <div class="input-box formulario__grupo" id="grupo__correo">
+                  <label for="correo" class="formulario__label">Correo electrónico</label>
+                  <div>
+                    <input type="email" id="correo" name="correo" placeholder="Ej. ejemplo@correo.com" class="formulario__input" />
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                  </div>
+                  <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
+                </div>
+                <!-- Grupo: Contraseña -->
+                <div class="formulario__grupo" id="grupo__password">
+                    <label for="password" class="formulario__label">Contraseña</label>
+                    <div class="formulario__grupo-input">
+                        <input type="password" class="formulario__input" name="password" id="password">
+                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                    </div>
+                    <p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 dígitos.</p>
+                </div>
+
+                <!-- Grupo: Contraseña 2 -->
+                <div class="formulario__grupo" id="grupo__password2">
+                    <label for="password2" class="formulario__label">Repetir Contraseña</label>
+                    <div class="formulario__grupo-input">
+                        <input type="password" class="formulario__input" name="password2" id="password2">
+                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                    </div>
+                    <p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
+                </div>
+          
+                <div class="formulario__mensaje" id="formulario__mensaje">
+                    <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+                </div>
+
+          
+                <div class="formulario__grupo formulario__grupo-btn-enviar">
+                  <button type="submit" class="formulario__btn">Enviar</button>
+                  <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
+                </div>
+              </div>
+            </form>
+          </main>  
+        <footer class="pie">AQUI EL PIE DE PAGINA</footer>
+    </div>
+</body>
+<script src="js/formulario.js"></script>
+</html>

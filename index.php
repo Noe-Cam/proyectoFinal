@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autenticación</title>
     <link rel="stylesheet" href="css/style.css">
+    <title>Buscar trayectos</title>
 </head>
 <body>
-    <header class='logo'>LOGO</header>
-    <nav class='navegador'></nav>
-    <main class='contenido'>
-        <!-- From Uiverse.io by Praashoo7 --> 
-        <form class="form">
-            <p class="heading">LOGIN</p>
-            <input placeholder="Username" class="input" type="text">
-            <input placeholder="Password" class="input" type="password">
-            <button class="btn">Submit</button>
-        </form>
-    </main>
-    <footer class='pie'></footer>
+    <div class="contenedor-grid">
+        <header class="logo">LOGO</header>
+        <nav class="navegador">
+            <a>BUSCAR TRAYECTO</a>
+            <a>SUBIR TRAYECTO</a>
+            <a>CHAT</a>
+            <a>MI ZONA</a>
+            <a href="login.php">INICIAR SESIÓN</a>
+        </nav>
+        <div class="img"></div>
+        <main class="contenido">
+            <!-- From Uiverse.io by andrew-demchenk0 --> 
+            <section class="section_form">
+            <form id="consultation-form" class="feed-form" action="#">
+                <div class="titulo-buscador"><h2>BUSCAR VIAJE</h2></div>
+                <input required="" placeholder="Origen" type="text">
+                <input name="phone" required="" placeholder="Destino">
+                <input name="email" required="" placeholder="Fecha" type="date">
+                <button class="button_submit">BUSCAR</button>
+            </form>
+            </section>
+        </main>
+        <footer class="pie">AQUI EL PIE</footer>
+    </div>
 </body>
 </html>

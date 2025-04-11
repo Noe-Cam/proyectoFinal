@@ -1,21 +1,57 @@
 .logo{grid-area: logo;}
 .navegador{grid-area: nav;}
+.img{grid-area: img;}
 .contenido{grid-area: main;}
 .pie{grid-area: footer;}
 
 .contenedor-grid{
     display: grid;
     grid-template-areas: 
-        'logo logo nav nav nav nav nav nav '
+        'logo logo logo nav nav nav nav nav '
+        'img img img img img img img img '
         'main main main main main main main main'
-        'footer footer footer footer footer footer';
-        grid-gap:5px;
+        'footer footer footer footer footer footer footer footer';
+        /* grid-gap:5px; */
+        background-color:#287271;
+        overflow: auto;
+}
+.img{
+  background-image: url('../img/aereaCabeceraFreepik.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 300px;
+}
+.navegador{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  background-color: #264653;
+  height: 75px;
+  color:white;
+  justify-content: flex-end;
+} 
+.navegador a{
+  padding: 20px;
+  text-decoration:none ;
+  color: inherit;
+}
+.navegador a:hover{
+  background-color: #F4A261;
+  transition: background-color 0.3s;
 }
 .contenido{
+  display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
+ 
 }
-
+.form .enlace{
+ /* text-decoration:none ; */
+ color: inherit;
+ color: #DAA06D; 
+}
    /* From Uiverse.io by Praashoo7 */ 
 .form {
     width: 30%;
@@ -49,6 +85,8 @@
     padding-top: 1em;
     padding-bottom: 3em;
     text-shadow: inset -1px -1px 1px #DAA06D;
+    font-weight:bold;
+    font-size: 1.5em;
   }
   
   .form .input {
@@ -61,6 +99,7 @@
     border-radius: 10px;
     background-color: #EADDCA;
     text-align: center;
+    font-size: 1em;
   }
   
   .form .btn {
@@ -77,7 +116,7 @@
     padding: 1em;
     box-shadow: 0.5px 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.5);
   }
-  
+
   .form .btn:hover {
     opacity: 0.8;
   }
@@ -86,3 +125,251 @@
     transform: translateX(0.1em) translateY(0.1em);
     box-shadow: none;
   }
+  /* Contenedor general */
+.contenido {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Formulario */
+form.container {
+  background-color: #EADDCA;
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Título */
+.titulo {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* Columnas */
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Etiquetas */
+.formulario__label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+/* Campos de entrada */
+.formulario__input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fdfdfd;
+  transition: border 0.3s ease;
+}
+
+.formulario__input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+/* Botón */
+.formulario__btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #2b8a3e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formulario__btn:hover {
+  background-color: #237033;
+}
+  /* Index.php */
+  /* From Uiverse.io by andrew-demchenk0 */ 
+.feed-form {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  align-items: center;
+}
+
+.feed-form input {
+  height: 54px;
+  width: 100%;
+  border-radius: 5px;
+  background: white;
+  margin-bottom: 15px;
+  border: none;
+  padding: 0 20px;
+  font-weight: 300;
+  font-size: 14px;
+  color: #4B4B4B;
+}
+
+.button_submit:hover, .feed-form input:hover {
+  transform: scale(1.009);
+  box-shadow: 0px 0px 3px 0px #212529;
+}
+
+.button_submit {
+  width: 100%;
+  height: 54px;
+  font-size: 14px;
+  color: white;
+  background: #8AB17D;
+  border-radius: 5px;
+  border: none;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.titulo-buscador{
+  color:#F4A261;
+  align-items: center;
+  font-size: larger;
+  font-weight: bolder;
+}
+/*FORMULARIO REGISTRO*/
+.formulario__label {
+	display: block;
+	font-weight: 700;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.formulario__grupo-input {
+	position: relative;
+}
+
+.formulario__input {
+	width: 80%;
+	background: #fff;
+	border: 3px solid transparent;
+	border-radius: 3px;
+	height: 45px;
+	line-height: 45px;
+	padding: 0 40px 0 10px;
+	transition: .3s ease all;
+}
+
+.formulario__input:focus {
+	border: 3px solid #0075FF;
+	outline: none;
+	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+}
+
+.formulario__input-error {
+	font-size: 12px;
+	margin-bottom: 0;
+	display: none;
+}
+
+.formulario__input-error-activo {
+	display: block;
+}
+
+.formulario__validacion-estado {
+	position: absolute;
+	right: 10px;
+	bottom: 15px;
+	z-index: 100;
+	font-size: 16px;
+	opacity: 0;
+}
+
+.formulario__checkbox {
+	margin-right: 10px;
+}
+
+.formulario__grupo-terminos, 
+.formulario__mensaje,
+.formulario__grupo-btn-enviar {
+	grid-column: span 2;
+}
+
+.formulario__mensaje {
+	height: 45px;
+	line-height: 45px;
+	background: #F66060;
+	padding: 0 15px;
+	border-radius: 3px;
+	display: none;
+}
+
+.formulario__mensaje-activo {
+	display: block;
+}
+
+.formulario__mensaje p {
+	margin: 0;
+}
+
+.formulario__grupo-btn-enviar {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.formulario__btn {
+	height: 45px;
+	line-height: 45px;
+	width: 30%;
+	background: #000;
+	color: #fff;
+	font-weight: bold;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: .1s ease all;
+}
+
+.formulario__btn:hover {
+	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+}
+
+.formulario__mensaje-exito {
+	font-size: 14px;
+	color: #119200;
+	display: none;
+}
+
+.formulario__mensaje-exito-activo {
+	display: block;
+}
+
+/* ----- -----  Estilos para Validacion ----- ----- */
+.formulario__grupo-correcto .formulario__validacion-estado {
+	color: #1ed12d;
+	opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__label {
+	color: #bb2929;
+}
+
+.formulario__grupo-incorrecto .formulario__validacion-estado {
+	color: #bb2929;
+	opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__input {
+	border: 3px solid #bb2929;
+}
