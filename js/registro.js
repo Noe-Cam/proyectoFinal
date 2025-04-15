@@ -5,7 +5,6 @@ const expresiones = {
   correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
   telefono: /^\d{7,14}$/, // 7 a 14 numeros.
 };
-
 const campos = {
   nombre: false,
   apellidos:false,
@@ -13,16 +12,13 @@ const campos = {
   correo: false,
   telefono:false,
 };
-
 const formulario = document.getElementById("formulario");
 console.log(formulario);
 // query selector All te devuelve un node list (que funciona como un array) con los eventos que se cumplan, en cambio query selector solo, devuevle la primera coincidencia.
 // Recojo todos los inputs que hay dentro del formulario
 const inputs = document.querySelectorAll("#formulario input");
 
-
 const validarFormulario = (e) => {
-  
   switch (e.target.name) {
     case "nombre":
       validarCampo(expresiones.nombre, e.target, "nombre");
@@ -43,10 +39,8 @@ const validarFormulario = (e) => {
     case "telefono":
       validarCampo(expresiones.telefono, e.target, "telefono");
       break;
-      
   }
 };
-
 const validarCampo = (expresion, input, campo) => {
   if (expresion.test(input.value)) {
     document.getElementById(`grupo__${campo}`).classList.add("formulario__grupo-correcto");
@@ -61,11 +55,9 @@ const validarCampo = (expresion, input, campo) => {
     campos[campo]=false;
   }
 };
-
 const validarPassword2=()=>{
   const inputPassword=document.getElementById('password');
   const inputPassword2=document.getElementById('password2');
-
   if(inputPassword.value !== inputPassword2.value){
    document.getElementById(`grupo__password2`).classList.add("formulario__grupo-incorrecto");
     document.getElementById(`grupo__password2`).classList.remove("formulario__grupo-correcto");
@@ -79,33 +71,56 @@ const validarPassword2=()=>{
     
   }
 };
-
 // Asigno los dos eventlisteners a cada input
 inputs.forEach((input) => {
   console.warn(input);
   input.addEventListener("keyup", validarFormulario);
   input.addEventListener("blur", validarFormulario);
 });
-
+function obtenerAño(data){
+  let fechaNacimiento= data.get('fecha');
+  let fechaNac=new Date(fechaNacimiento);
+  let hoy =new Date();
+  let edad = hoy.getFullYear() - fechaNac.getFullYear();
+  if(edad<18){
+    formulario.classList.add('oculto');
+    let infoEdad=document.querySelector('.notifications-container');
+    infoEdad.classList.remove('oculto');
+    infoEdad.classList.add('visible');
+    edad=-1;
+    return edad;
+  }else{
+    return edad;
+  }
+};
 formulario.addEventListener('submit',(e)=>{
   if(campos.nombre && campos.apellidos && campos.password && campos.correo && campos.telefono){
     e.preventDefault();
-     // Recoge los datos del formulario
-     let data= new FormData(e.target);
-     // Objeto AJAX
-     let xhr = new XMLHttpRequest();
-     xhr.open('POST','registro.php',true);
-     xhr.onload=function(){
-       if(xhr.status==200){
-         console.log('AJAAAX FUNCIONANDO');
-       }else{
-         console.log('AJAAAX NOOOOOO FUNCIONANDO')
-       };
-     };
-     xhr.send(data);
-    // formulario.reset();
-    document.getElementById("formulario__mensaje-exito").classList.add("formulario__mensaje-exito-activo");
-   
+    // Recoge los datos del formulario
+    let data= new FormData(e.target);
+    let edad=obtenerAño(data);
+    if (edad!=-1){
+      data.set('edad',edad);
+      // Objeto AJAX
+      let xhr = new XMLHttpRequest();
+      xhr.open('POST','registro.php',true);
+      xhr.onload=function(){
+        if(xhr.status==200){
+          console.log('AJAAAX FUNCIONANDO');
+        }else{
+          console.log('AJAAAX NOOOOOO FUNCIONANDO')
+        };
+      };
+      xhr.send(data);
+      
+      document.getElementById("formulario__mensaje-exito").classList.add("formulario__mensaje-exito-activo");
+      formulario.reset();
+      let exito=document.querySelector('.card');
+      formulario.classList.add('oculto');
+      exito.classList.remove('oculto');
+      exito.classList.add('visible');
+      
+    };
   }else{
     // Por defecto submit borra los inputs, pero si no es correcto todo no queremos que los borre, con esta funcion se deshabilita esa funcionalidad
     document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");

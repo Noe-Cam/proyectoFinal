@@ -1,26 +1,37 @@
 .logo{grid-area: logo;}
 .navegador{grid-area: nav;}
 .img{grid-area: img;}
+.iconos{grid-area: iconos;}
 .contenido{grid-area: main;}
 .pie{grid-area: footer;}
-
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
 .contenedor-grid{
     display: grid;
     grid-template-areas: 
         'logo logo logo nav nav nav nav nav '
         'img img img img img img img img '
+        'iconos iconos iconos iconos iconos iconos iconos iconos'
         'main main main main main main main main'
         'footer footer footer footer footer footer footer footer';
-        /* grid-gap:5px; */
         background-color:#287271;
         overflow: auto;
+        width: 100%;
+        height: 100%;
 }
 .img{
   background-image: url('../img/aereaCabeceraFreepik.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 300px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .navegador{
   list-style: none;
@@ -30,7 +41,32 @@
   height: 75px;
   color:white;
   justify-content: flex-end;
+}
+.iconos{
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-image: url('../img/iconos.png'); */
+  /* background-repeat: no-repeat; */
 } 
+.imgIconos{
+  margin-top: 2%;
+  height: 70%;
+  width: 85%;
+}
+.fondoIcono{
+  margin-top: 2%;
+  background-color: rgba(138, 177, 125, 0.6);
+  backdrop-filter: blur(5px);
+  border-radius: 6%;
+  width: 30%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .navegador a{
   padding: 20px;
   text-decoration:none ;
@@ -40,13 +76,7 @@
   background-color: #F4A261;
   transition: background-color 0.3s;
 }
-.contenido{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
- 
-}
+
 .form .enlace{
  /* text-decoration:none ; */
  color: inherit;
@@ -129,9 +159,9 @@
 .contenido {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   padding: 40px 20px;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   font-family: 'Segoe UI', sans-serif;
 }
 
@@ -204,50 +234,78 @@ form.container {
 }
   /* Index.php */
   /* From Uiverse.io by andrew-demchenk0 */ 
+.section_form{
+  background-color: #E9C46A; 
+  background: linear-gradient(145deg, #E9C46A, #287271);
+  border-radius: 30px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 20%;
+  height: 100%;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .feed-form {
   margin-top: 36px;
+  margin-bottom: 36px;
   display: flex;
   flex-direction: column;
   width: 300px;
   align-items: center;
+  height: 80%;
 }
 
 .feed-form input {
   height: 54px;
   width: 100%;
-  border-radius: 5px;
   background: white;
   margin-bottom: 15px;
-  border: none;
-  padding: 0 20px;
   font-weight: 300;
-  font-size: 14px;
   color: #4B4B4B;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
 }
+.feed-form input::placeholder{
+  font-size: 130% ;
+  font-weight: bold;
 
+}
 .button_submit:hover, .feed-form input:hover {
   transform: scale(1.009);
   box-shadow: 0px 0px 3px 0px #212529;
 }
 
 .button_submit {
-  width: 100%;
-  height: 54px;
-  font-size: 14px;
-  color: white;
-  background: #8AB17D;
-  border-radius: 5px;
+  background-color: #8ab17d;
   border: none;
-  font-weight: 500;
-  text-transform: uppercase;
+  border-radius: 10px;
+  padding: 12px 30px;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
 }
 .titulo-buscador{
-  color:#F4A261;
-  align-items: center;
-  font-size: larger;
-  font-weight: bolder;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 25px;
 }
 /*FORMULARIO REGISTRO*/
+.oculto{
+  display: none !important;
+}
+.visible{
+  display: flex;
+}
 .formulario__label {
 	display: block;
 	font-weight: 700;
@@ -372,4 +430,166 @@ form.container {
 
 .formulario__grupo-incorrecto .formulario__input {
 	border: 3px solid #bb2929;
+}
+/* Menor de edad */
+/* From Uiverse.io by kennyotsu */ 
+.notifications-container {
+  width: 500px;
+  height: auto;
+  font-size:1.5rem;
+  line-height: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0 auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.error-alert {
+  border-radius: 0.375rem;
+  padding: 1rem;
+  background-color: rgb(254 242 242);
+}
+
+.error-svg {
+  color: #F87171;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.error-prompt-heading {
+  color: #991B1B;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: bold;
+}
+
+.error-prompt-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1.25rem;
+}
+
+.error-prompt-wrap {
+  margin-top: 0.5rem;
+  color: #B91C1C;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.error-prompt-list {
+  padding-left: 1.25rem;
+  margin-top: 0.25rem;
+  list-style-type: disc;
+}
+/* Registro exitoso */
+/* From Uiverse.io by Yaya12085 */ 
+.card {
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  border-radius: 0.5rem;
+  max-width: 290px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  background-color: #fff;
+  height: 20rem;
+}
+.header {
+  padding: 1.25rem 1rem 1rem 1rem;
+}
+
+.image {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #e2feee;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  animation: animate .6s linear alternate-reverse infinite;
+  transition: .6s ease;
+}
+
+.image svg {
+  color: #0afa2a;
+  width: 2rem;
+  height: 2rem;
+}
+
+.content {
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.title {
+  color: #066e29;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+}
+
+.message {
+  margin-top: 0.5rem;
+  color: #595b5f;
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.actions {
+  margin: 0.75rem 1rem;
+}
+
+.history {
+  display: inline-flex;
+  padding: 0.5rem 1rem;
+  background-color: #1aa06d;
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  justify-content: center;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: none;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.track {
+  display: inline-flex;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  color: #242525;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  justify-content: center;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid #D1D5DB;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.pie{
+  height: 100px;
+  background-color: #264653 ;
+  margin-top: 3%;
+}
+@keyframes animate {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.09);
+  }
 }
