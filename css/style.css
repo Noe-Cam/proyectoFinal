@@ -583,7 +583,18 @@ form.container {
   height: 100px;
   background-color: #264653 ;
   margin-top: 3%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
 }
+.derechos{
+  color:white;
+  margin-left: 2%;
+  letter-spacing: 0.1em;
+}
+
+
 @keyframes animate {
   from {
     transform: scale(1);

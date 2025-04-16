@@ -9,6 +9,8 @@ include 'utils/controlLogin.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subir trayecto</title>
     <link rel="stylesheet" href="css/styleCuerpo.css">
+    <!-- css para los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- Estilos de leatlet(para el mapa) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
     <!-- script de leaflet (para el mapa) -->
@@ -22,7 +24,7 @@ include 'utils/controlLogin.php';
             <a href="subirTrayecto.php">SUBIR TRAYECTO</a>
             <a>CHAT</a>
             <a>MI ZONA</a>
-            <a href="login.php">INICIAR SESIÓN</a>
+            <a href='#'><i class='fa fa-sign-out' style='font-size:28px;color:white'></i></a>
         </nav>
         <main class='contenido'>
             <!-- div con card resumen trayecto y mapa -->

@@ -22,6 +22,7 @@ if (!isset($_SESSION["usuario"])){
                                 </p><div class='error-prompt-wrap'>
                                 <ul class='error-prompt-list' role='list'>
                                     <li>Redirigiendo a página de inicio de sesión</li>
+                                    <i class='fa-li fa fa-spinner fa-spin'>
                                 </ul>
                             </div>
                         </div>

@@ -8,6 +8,11 @@ let hora;
 let plazas;
 let descripcion;
 let trayecto;
+const logout=document.querySelector('.fa');
+logout.addEventListener('click',function(e){
+    e.preventDefault();
+    window.location.href = 'utils/logout.php';
+});
 formulario.addEventListener('submit',async (e)=>{
     e.preventDefault();
     let data=new FormData(e.target);

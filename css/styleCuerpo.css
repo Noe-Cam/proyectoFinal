@@ -262,6 +262,7 @@ width: 0;
 height: 100px;
 background-color: #264653 ;
 margin-top: 3%;
+color:white;
 }
 .oculto{
     display: none;
@@ -391,6 +392,9 @@ margin-top: 3%;
     flex-direction: column;
     margin-left: 1.25rem;
   }
+.error-prompt-wrap ul{
+    list-style: none;
+}
   
   .error-prompt-wrap {
     margin-top: 0.5rem;
