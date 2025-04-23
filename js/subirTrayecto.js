@@ -1,6 +1,8 @@
 const formulario=document.querySelector('.form');
 const cardInformacion=document.querySelector('.cardInformativo');
 const contenedorInfo=document.querySelector('.contenedorInfo');
+const viajePublicado=document.querySelector('.card');
+const contenedorMapa=document.querySelector('.mapa');
 let origen;
 let destino;
 let fecha;
@@ -28,6 +30,7 @@ formulario.addEventListener('submit',async (e)=>{
     console.warn(coordOrigen);
     cambiarPantalla(coordOrigen,coorDestino);
     
+    
 });
 // Nominatim de OpenStreetMap, para obtener las coordenadas
 async function coordenadas(direccion) {
@@ -38,7 +41,7 @@ async function coordenadas(direccion) {
 };
 async function cambiarPantalla(coordOrigen,coorDestino){
     cardInformacion.innerHTML=`
-        <form class="form">
+        <form class="form publicar">
                 <div class='titulo'>
                     <h3>RESUMEN DE TU VIAJE</h3>
                 </div>
@@ -77,8 +80,32 @@ async function cambiarPantalla(coordOrigen,coorDestino){
     `
     await cambiarClases();
     let map=await iniciarMapa();
+    console.warn(`coordenadas destino: ${coorDestino}`);
+    console.warn(`coordenadas destino: ${coordOrigen}`);
     await dibujarRuta(coordOrigen,coorDestino,map);
-
+    // Guardamos el boton de publicar trayecto, en otra funcion añadiremos el escuchador y lo guardaremos en la bd
+    let publicar=document.querySelector('.publicar');
+    console.warn(publicar);
+    console.warn(coorDestino);
+    publicar.addEventListener('submit',(e)=>{
+        console.warn(e);
+        e.preventDefault();
+        let data= new FormData(e.target);
+        data.append('coordOrigen', JSON.stringify(coordOrigen));
+        data.append('coordDestino', JSON.stringify(coorDestino));
+        console.warn(data);
+        fetch('publicarTrayecto.php',{
+            method:'POST',
+            body:data,
+        })
+        .then(response=>response.json())
+        .then(data=>{
+            respuestaServidor(data,publicar);
+        })
+        .catch(error => console.error('Error al recibir datos :', error));
+        
+    });
+    // publicarTrayecto(publicar,coordOrigen,coorDestino);
 }
 async function cambiarClases() {
     formulario.classList.add('oculto');
@@ -147,6 +174,25 @@ async function dibujarRuta(coordOrigen, coorDestino,map) {
  // Enviar la solicitud con el cuerpo
     request.send(body);
 }
+
+// function publicarTrayecto(publicar,coordOrigen,coorDestino){
+   
+// }
+
+function respuestaServidor(datos,formulario){
+    console.warn(datos.publicado);
+    if(datos.publicado=='true'){
+        contenedorMapa.classList.add('oculto');
+        console.warn('trayecto publicado');
+        viajePublicado.classList.remove('oculto');
+        viajePublicado.classList.add('visible');
+        
+        
+
+    } else{
+        console.warn('trayecto no publicado');
+    }
+};
 
 
 

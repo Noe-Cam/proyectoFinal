@@ -15,7 +15,7 @@
     include "utils/conexionBD.php";
     $sql = "INSERT INTO usuarios(nombre_usuario,apellido_usuario,contrasena,edad,email) VALUES ('$nombre','$apellidos','$hashContrasena','$edad','$correo')";
     if ($conn->query($sql) === TRUE) {
-        $_SESSION["usuario"]=$usuario;
+        $_SESSION["usuario"]=$correo;
     }
     include "utils/cerrarBD.php";
     ?>

@@ -14,14 +14,14 @@ if ($result->num_rows == 0) {
     $fila = $result->fetch_assoc();
     if ((password_verify($contra,$fila["contrasena"]))){
         $autenticacionCorrecta = true;
-        $usuario=$fila['nombre_usuario'];
+        // $usuario=$fila['nombre_usuario'];
     };
 };
 // Si la autenticación es correcta creamos al variable de sesion usuario
 //y mandamos la respuesta a js para operar dependiendo de la autenticacion  
 header('Content-Type: application/json');
 if ($autenticacionCorrecta == true){
-    $_SESSION["usuario"]=$usuario;
+    $_SESSION["usuario"]=$correo;
     echo json_encode([
         'autenticacion' => 'true'
     ]);

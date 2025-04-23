@@ -58,7 +58,9 @@
                 <button class="btn">Entrar</button>
             </form>
         </main>
-        <footer class='pie'>AQUI EL PIE</footer>
+        <footer class='pie'>
+        <p class='derechos'>&copy; 2025 CarPool. Contenido propio, Todos los derechos reservados.</p>
+        </footer>
     </div>
     <script src="js/login.js"></script>
 </body>

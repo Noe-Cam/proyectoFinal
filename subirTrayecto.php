@@ -30,8 +30,25 @@ include 'utils/controlLogin.php';
             <!-- div con card resumen trayecto y mapa -->
              <div class="oculto contenedorInfo">
                 <div class="cardInformativo"></div>
-                <div class="contenedorMapa">       
-                    <div id="map"></div>
+                <div class="contenedorMapa">
+                    <!-- From Uiverse.io by rzouga001 --> 
+                    <div class="card oculto"> 
+                        <button class="dismiss" type="button">x</button> 
+                        <div class="header"> 
+
+                            <div class="div_image_v">
+                                <div class="image">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 7L9.00004 18L3.99994 13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                                </div> 
+                            </div> 
+                            <div class="content">
+                                <span class="title">VIAJE PUBLICADO</span> 
+                                <p class="message">Gracias por publicar tu viaje en CarPool, puedes ver tus viajes en 'MI ZONA'</p> 
+                            </div> 
+                        </div>
+                        
+                    </div>       
+                    <div id="map" class='mapa'></div>
                 </div>     
              </div>
             <form class="form">
@@ -75,9 +92,12 @@ include 'utils/controlLogin.php';
                     <span class="bottom-key-2"></span>
                 </button>
             </form>
+            
 
         </main>
-        <footer class='pie'>AQUI EL PIE</footer>
+        <footer class='pie'>
+        <p class='derechos'>&copy; 2025 CarPool. Contenido propio, Todos los derechos reservados.</p>
+        </footer>
     </div>
     <script src="js/subirTrayecto.js"></script>
     
