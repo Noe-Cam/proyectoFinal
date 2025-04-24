@@ -37,9 +37,9 @@ session_start();
             <section class="section_form">
                 <form id="consultation-form" class="feed-form" action="inicioSesion.php">
                     <div class="titulo-buscador"><h2>BUSCAR VIAJE</h2></div>
-                    <input required="" placeholder="Origen" type="text">
-                    <input name="phone" required="" placeholder="Destino">
-                    <input name="email" required="" placeholder="Fecha" type="date">
+                    <input name="origen" required="" placeholder="Origen" type="text">
+                    <input name="destino" required="" placeholder="Destino">
+                    <input name="fecha" required="" placeholder="Fecha" type="date">
                     <button class="button_submit">BUSCAR</button>
                 </form>
             </section>

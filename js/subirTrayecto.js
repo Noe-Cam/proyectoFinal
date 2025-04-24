@@ -96,7 +96,7 @@ async function cambiarPantalla(coordOrigen,coorDestino){
         console.warn(data);
         fetch('publicarTrayecto.php',{
             method:'POST',
-            body:data,
+            body:data
         })
         .then(response=>response.json())
         .then(data=>{
@@ -128,7 +128,7 @@ async function dibujarRuta(coordOrigen, coorDestino,map) {
     request.open('POST', 'https://api.openrouteservice.org/v2/directions/driving-car/json', true);
     request.setRequestHeader('Accept', 'application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8');
     request.setRequestHeader('Content-Type', 'application/json');
-    request.setRequestHeader('Authorization', ' 5b3ce3597851110001cf62486fe95c12b918412989fd54fef610ac9e'); // Reemplaza con tu clave de API real
+    request.setRequestHeader('Authorization', ' 5b3ce3597851110001cf62486fe95c12b918412989fd54fef610ac9e'); 
 
     // Definimos la función que manejará la respuesta
     request.onreadystatechange = function () {
@@ -173,7 +173,7 @@ async function dibujarRuta(coordOrigen, coorDestino,map) {
 
  // Enviar la solicitud con el cuerpo
     request.send(body);
-}
+};
 
 // function publicarTrayecto(publicar,coordOrigen,coorDestino){
    

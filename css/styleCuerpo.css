@@ -422,18 +422,17 @@ width: 0;
   /* Estilos tarjeta de viaje publicado */
   /* From Uiverse.io by rzouga001 */ 
 .card {
-  position: relative; 
-  top: 50%;
-  left: 50%;
-  overflow: hidden;
-  /* position: relative; */
-  text-align: left;
-  border-radius: 0.5rem;
-  max-width: 590px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  margin-top: 5%;
+  margin-right: 10%;
+  width: 80%;
+  height: auto;
+  padding: 20px;
+  border: 2px solid #264653;
+  border-radius: 10px;
   background-color: #fff;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
-
 .div_image_v {
   background: #47c9a2;
   border-bottom: none;
@@ -462,17 +461,9 @@ width: 0;
   border-radius: 7px;
   transition: .3s ease;
 }
-
-.dismiss:hover {
-  background-color: #ee0d0d;
-  border: 2px solid #ee0d0d;
-  color: #fff;
-}
-
 .header {
   padding: 1.25rem 1rem 1rem 1rem;
 }
-
 .image {
   display: flex;
   margin-left: auto;
@@ -487,7 +478,6 @@ width: 0;
   animation: animate .6s linear alternate-reverse infinite;
   transition: .6s ease;
 }
-
 .image svg {
   color: #0afa2a;
   width: 2rem;
@@ -508,9 +498,9 @@ width: 0;
 
 .message {
   margin-top: 0.5rem;
-  color: #595b5f;
-  font-size: 1.5rem;
-  line-height: 1.25rem;
+  color: #595b5f; 
+  font-size: 1.15rem;
+  line-height: 1.5rem;
 }
 
 @keyframes animate {
