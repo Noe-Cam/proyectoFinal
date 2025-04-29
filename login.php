@@ -17,19 +17,15 @@
             <a href="login.php">INICIAR SESIÓN</a>
         </nav>
         <div class='img'>
-            <div class='fondoIcono'>
-                <img class='imgIconos'src="img/iconos.png" alt="">
-            </div>
-        </div>
-        <!-- <div class='iconos'>
-            <div class='fondoIcono'>
-                <img class='imgIconos'src="img/iconos.png" alt="">
-            </div>
-        </div> -->
-        <main class='contenido'>
-            <!-- Tarjeta error menor de edad -->
-             <!-- From Uiverse.io by kennyotsu --> 
-             <div class="notifications-container oculto">
+          <div class='fondoIcono'>
+              <img class='imgIconos'src="img/iconos.png" alt="">
+          </div>
+          <video autoplay muted loop playsinline class="video-background">
+                <source src="img/cabecera.mp4" type="video/mp4">
+                Tu navegador no soporta el video.
+          </video>
+          
+            <div class="notifications-container oculto">
               <div class="error-alert">
                 <div class="flex">
                   <div class="flex-shrink-0">
@@ -50,14 +46,62 @@
               </div>
             </div>
             <!-- From Uiverse.io by Praashoo7 --> 
-            <form class="form">
+            <!-- <form class="form">
                 <p class="heading">LOGIN</p>
                 <input placeholder="Correo electrónico" class="input" name='correo' type="email">
                 <input placeholder="Password" class="input" name='contra' type="password">
                 <a class="enlace" href="formularioRegistro.html">¿Aun no tienes cuenta?</br>Registrate aquí</a>
                 <button class="btn">Entrar</button>
+            </form> -->
+
+            <!-- From Uiverse.io by Praashoo7 --> 
+            <form class="form">
+                <!-- From Uiverse.io by foxyyyyyyyyyyyyy --> 
+                <div class="form-control">
+  <form action="">
+    <div class="campo">
+      <input required="" type="text">
+      <label class="correo">
+          <span style="transition-delay:250ms">C</span>
+          <span style="transition-delay:200ms">o</span>
+          <span style="transition-delay:150ms">r</span>
+          <span style="transition-delay:100ms">r</span>
+          <span style="transition-delay:50ms">e</span>
+          <span style="transition-delay:0ms">o</span>
+      </label>
+    </div>
+
+    <div class="campo">
+      <input required="" type="password">
+      <label class="contra">
+          <span style="transition-delay:250ms">C</span>
+          <span style="transition-delay:200ms">o</span>
+          <span style="transition-delay:150ms">n</span>
+          <span style="transition-delay:100ms">t</span>
+          <span style="transition-delay:50ms">r</span>
+          <span style="transition-delay:0ms">a</span>
+          <span style="transition-delay:0ms">s</span>
+          <span style="transition-delay:0ms">e</span>
+          <span style="transition-delay:0ms">ñ</span>
+          <span style="transition-delay:0ms">a</span>
+      </label>
+    </div>
+  </form>
+</div>
+
+                <button class="btn">Entrar</button>
             </form>
-        </main>
+        </div>
+        <!-- <div class='iconos'>
+            <div class='fondoIcono'>
+                <img class='imgIconos'src="img/iconos.png" alt="">
+            </div>
+        </div> -->
+        <!-- <main class='contenido'> -->
+            <!-- Tarjeta error menor de edad -->
+             <!-- From Uiverse.io by kennyotsu --> 
+             
+        <!-- </main> -->
         <footer class='pie'>
         <p class='derechos'>&copy; 2025 CarPool. Contenido propio, Todos los derechos reservados.</p>
         </footer>

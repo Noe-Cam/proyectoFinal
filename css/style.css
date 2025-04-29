@@ -1,44 +1,53 @@
 .logo{grid-area: logo;}
 .navegador{grid-area: nav;}
 .img{grid-area: img;}
-.iconos{grid-area: iconos;}
-.contenido{grid-area: main;}
 .pie{grid-area: footer;}
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  width: 100%;
+  /*width: 100%; */
+ 
 }
 .contenedor-grid{
     display: grid;
     grid-template-areas: 
         'logo logo logo nav nav nav nav nav '
         'img img img img img img img img '
-        'iconos iconos iconos iconos iconos iconos iconos iconos'
-        'main main main main main main main main'
         'footer footer footer footer footer footer footer footer';
-        background-color:#287271;
-        overflow: auto;
-        width: 100%;
-        height: 100%;
+    background-color:#2C3E50;
+    /* overflow: auto; */
+    width: 100%;
+    min-height: 100vh;
+    font-family:'Lucida Sans';
+    grid-template-rows: auto 1fr auto;
 }
-.img{
-  background-image: url('../img/aereaCabeceraFreepik.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 350px;
+.img {
+  position: relative;
+  /* height: 500px; */
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
+  overflow: hidden;
+  flex-grow: 1;
+}
+.video-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* min-width: 100%;
+  min-height: 100%; */
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
 }
 .navegador{
   list-style: none;
   display: flex;
   flex-direction: row;
-  background-color: #264653;
-  height: 75px;
+  background-color: #2C3E50;
+  height: 100%;
   color:white;
   justify-content: flex-end;
 }
@@ -56,15 +65,15 @@ html, body {
   width: 85%;
 }
 .fondoIcono{
-  margin-top: 2%;
-  background-color: rgba(138, 177, 125, 0.6);
+  background-color:rgba(104, 130, 155, 0.5);
   backdrop-filter: blur(5px);
   border-radius: 6%;
-  width: 30%;
-  height: 70%;
+  width: 40%;
+  height: 35%;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .navegador a{
@@ -82,79 +91,56 @@ html, body {
  color: inherit;
  color: #DAA06D; 
 }
-   /* From Uiverse.io by Praashoo7 */ 
-.form {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding-top: 3em;
-    padding-left: 2.8em;
-    padding-right: 2.8em;
-    padding-bottom: 2.1em;
-    border: 2px dashed #DAA06D;
-    border-radius: 15px;
-    background-color: #EADDCA;
-    box-shadow: 0 0 0 4px #EADDCA, 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
-    transition: .4s ease-in-out;
-  }
-  
-  ::placeholder {
-    color: #DAA06D;
-    text-align: center;
-  }
-  
-  .form .heading {
-    padding-left: 0.8em;
-    color: #DAA06D;
-    background-color: transparent;
-    letter-spacing: .5em;
-    text-align: center;
-    padding-top: 1em;
-    padding-bottom: 3em;
-    text-shadow: inset -1px -1px 1px #DAA06D;
-    font-weight:bold;
-    font-size: 1.5em;
-  }
-  
-  .form .input {
-    outline: none;
-    padding: 0.5em;
-    border: 1px solid #DAA06D;
-    color: #DAA06D;
-    width: 14em;
-    height: 3em;
-    border-radius: 10px;
-    background-color: #EADDCA;
-    text-align: center;
-    font-size: 1em;
-  }
-  
-  .form .btn {
-    align-self: center;
-    margin-top: 2em;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    color: white;
-    background-color: #E5AA70;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-    transition: .4s ease-in-out opacity,.1s ease-in-out active;
-    padding: 1em;
-    box-shadow: 0.5px 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.5);
-  }
+/* LOGIN.PHP*/ 
+/* From Uiverse.io by foxyyyyyyyyyyyyy */ 
+.form-control {
+  width: 250px;
+  margin-top: 20%;
+}
 
-  .form .btn:hover {
-    opacity: 0.8;
-  }
-  
-  .form .btn:active {
-    transform: translateX(0.1em) translateY(0.1em);
-    box-shadow: none;
-  }
+.campo {
+  position: relative;
+  margin-bottom: 60px; /* ⬅️ Espaciado entre campos */
+}
+
+.form-control input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px #fff solid;
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.form-control input:focus,
+.form-control input:valid {
+  outline: 0;
+  border-bottom-color: lightblue;
+}
+
+.form-control label {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  pointer-events: none;
+}
+
+.form-control label span {
+  display: inline-block;
+  font-size: 18px;
+  min-width: 5px;
+  color: #fff;
+  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control input:focus + label span,
+.form-control input:valid + label span {
+  color: lightblue;
+  transform: translateY(-30px);
+}
+
   /* Contenedor general */
 .contenido {
   display: flex;
@@ -235,46 +221,49 @@ form.container {
   /* Index.php */
   /* From Uiverse.io by andrew-demchenk0 */ 
 .section_form{
-  background-color: #E9C46A; 
-  background: linear-gradient(145deg, #E9C46A, #287271);
+  z-index: 1;
+  background-color: rgba(237, 227, 202, 0.5); 
+  backdrop-filter: blur(5px);
   border-radius: 30px;
   padding: 30px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border-radius: 20%;
-  height: 100%;
-  width: 30%;
+  border-radius: 5%;
+  height: 40%;
+  width: 50%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
 .feed-form {
-  margin-top: 36px;
   margin-bottom: 36px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 300px;
   align-items: center;
+  justify-content: center;
   height: 80%;
 }
 
 .feed-form input {
-  height: 54px;
-  width: 100%;
+  height:15%;
+  width:200px;
   background: white;
-  margin-bottom: 15px;
   font-weight: 300;
-  color: #4B4B4B;
+  color: #c27314;
   border: none;
   border-radius: 12px;
   padding: 14px;
   font-size: 1rem;
-  margin-bottom: 15px;
+  margin: 7px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   transition: box-shadow 0.3s ease;
 }
 .feed-form input::placeholder{
   font-size: 130% ;
-  font-weight: bold;
+  color: #c27314;
+  /* font-weight: bold; */
 
 }
 .button_submit:hover, .feed-form input:hover {
@@ -292,6 +281,7 @@ form.container {
   cursor: pointer;
   transition: background-color 0.3s ease;
   font-weight: bold;
+  margin: 7px;
 }
 .titulo-buscador{
   font-family: 'Poppins', sans-serif;
@@ -580,9 +570,9 @@ form.container {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 .pie{
-  height: 100px;
-  background-color: #264653 ;
-  margin-top: 3%;
+  height: 75px;
+  background-color: #2C3E50 ;
+  /* margin-top: 3%; */
   display: flex;
   align-items: center;
   flex-direction: row;

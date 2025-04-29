@@ -27,23 +27,23 @@ session_start();
             }
             ?>
         </nav>
-        <div class='img'>
-            <div class='fondoIcono'>
-                <img class='imgIconos'src="img/iconos.png" alt="">
-            </div>
-        </div>
-        <main class="contenido">
-            <!-- From Uiverse.io by andrew-demchenk0 --> 
+        <div class="img">
+            <video autoplay muted loop playsinline class="video-background">
+                <source src="img/cabecera.mp4" type="video/mp4">
+                Tu navegador no soporta el video.
+            </video>
+
+
             <section class="section_form">
-                <form id="consultation-form" class="feed-form" action="inicioSesion.php">
-                    <div class="titulo-buscador"><h2>BUSCAR VIAJE</h2></div>
-                    <input name="origen" required="" placeholder="Origen" type="text">
-                    <input name="destino" required="" placeholder="Destino">
-                    <input name="fecha" required="" placeholder="Fecha" type="date">
-                    <button class="button_submit">BUSCAR</button>
-                </form>
-            </section>
-        </main>
+                    <div class="titulo-buscador"><h2>Buscar viaje</h2></div>
+                    <form id="consultation-form" class="feed-form" action="inicioSesion.php">
+                        <input name="origen" required="" placeholder="Origen" type="text">
+                        <input name="destino" required="" placeholder="Destino">
+                        <input name="fecha" required="" placeholder="Fecha" type="date"><br>
+                        <button class="button_submit">BUSCAR</button>
+                    </form>
+            </section> 
+        </div>
         <footer class="pie">
             <p class='derechos'>&copy; 2025 CarPool. Contenido propio, Todos los derechos reservados.</p>
         </footer>
