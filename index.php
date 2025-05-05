@@ -32,17 +32,22 @@ session_start();
                 <source src="img/cabecera.mp4" type="video/mp4">
                 Tu navegador no soporta el video.
             </video>
-
-
-            <section class="section_form">
+            <section class="section_form ">
                     <div class="titulo-buscador"><h2>Buscar viaje</h2></div>
-                    <form id="consultation-form" class="feed-form" action="inicioSesion.php">
+                    <form method='POST' id="consultation-form" class="feed-form">
                         <input name="origen" required="" placeholder="Origen" type="text">
                         <input name="destino" required="" placeholder="Destino">
                         <input name="fecha" required="" placeholder="Fecha" type="date"><br>
                         <button class="button_submit">BUSCAR</button>
                     </form>
-            </section> 
+            </section>
+            <div class="trayectos oculto">
+                <h3c class="nom_trayecto"><h3>
+                <div class="mostrar_trayect">
+                    <div class="recurrentes"></div>
+                    <div class="puntuales"></div>
+                </div>
+            </div> 
         </div>
         <footer class="pie">
             <p class='derechos'>&copy; 2025 CarPool. Contenido propio, Todos los derechos reservados.</p>

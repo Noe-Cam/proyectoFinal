@@ -3,17 +3,44 @@ const cardInformacion=document.querySelector('.cardInformativo');
 const contenedorInfo=document.querySelector('.contenedorInfo');
 const viajePublicado=document.querySelector('.card');
 const contenedorMapa=document.querySelector('.mapa');
+const botonViajePuntual=document.querySelector('.puntual');
+const botonViajeRecurrente=document.querySelector('.recurrente');
+const inputFecha=document.querySelector('.fechaPuntual');
+const inputDias=document.querySelector('.grid-dias');
+const contenedorTipoViaje=document.querySelector('.mensaje_tipoviaje');
+const error=document.querySelector('.error');
+const contenedorError=document.querySelector('.contenedor_form_error');
 let origen;
 let destino;
 let fecha;
 let hora;
 let plazas;
 let descripcion;
+let diasSeleccionados;
+let precio;
 let trayecto;
+
+const cerrarError=document.querySelector('.error__close');
+cerrarError.addEventListener('click',function(){
+    error.classList.add('oculto');
+});
 const logout=document.querySelector('.fa');
 logout.addEventListener('click',function(e){
     e.preventDefault();
     window.location.href = 'utils/logout.php';
+});
+botonViajePuntual.addEventListener('click',function(){
+    console.warn(botonViajePuntual);
+    contenedorTipoViaje.classList.add('oculto');
+    contenedorError.classList.remove('oculto');
+    formulario.classList.remove('oculto');
+    inputFecha.classList.remove('oculto');
+});
+botonViajeRecurrente.addEventListener('click',function(){
+    contenedorTipoViaje.classList.add('oculto');
+    contenedorError.classList.remove('oculto');
+    formulario.classList.remove('oculto');
+    inputDias.classList.remove('oculto');
 });
 formulario.addEventListener('submit',async (e)=>{
     e.preventDefault();
@@ -24,50 +51,62 @@ formulario.addEventListener('submit',async (e)=>{
     hora=data.get('hora');
     plazas=data.get('plazas');
     descripcion=data.get('descripcion');
+    diasSeleccionados = data.getAll('dias[]');
+    precio=data.get('precio');
     console.warn(descripcion);
     const coordOrigen= await  coordenadas(origen);
     const coorDestino= await coordenadas(destino);
-    console.warn(coordOrigen);
-    cambiarPantalla(coordOrigen,coorDestino);
-    
-    
+    if(error.classList.contains('oculto')){
+        cambiarPantalla(coordOrigen,coorDestino);
+    };
 });
 // Nominatim de OpenStreetMap, para obtener las coordenadas
 async function coordenadas(direccion) {
     const url=`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(direccion)}`;
     const respuesta=await fetch(url);
     const datos = await respuesta.json();
-    return [parseFloat(datos[0].lon), parseFloat(datos[0].lat)];
+    if (!datos[0] || datos[0].lon == undefined || datos[0].lat == undefined){
+        error.classList.remove('oculto'); 
+    } else{
+        return [parseFloat(datos[0].lon), parseFloat(datos[0].lat)];
+    } 
 };
 async function cambiarPantalla(coordOrigen,coorDestino){
-    cardInformacion.innerHTML=`
+    contenedorError.classList.add('oculto');
+    let recurrente=false;
+    if(inputDias.classList.contains('oculto')){
+        cardInformacion.innerHTML=`
         <form class="form publicar">
                 <div class='titulo'>
                     <h3>RESUMEN DE TU VIAJE</h3>
                 </div>
                 <div class="etiqueta">
                     <label>Origen
-                    <input required placeholder="" type="text" class="input" name='origen' value=${origen} readonly>
+                    <input required placeholder="" type="text" class="input" name='origen' value="${origen}" readonly>
                     </label>
                     <label>Destino
-                    <input required placeholder="" type="text" class="input" name='destino' value=${destino} readonly>
+                    <input required placeholder="" type="text" class="input" name='destino' value="${destino}" readonly>
                     </label>
-                </div>  
-
+                </div>
                 <div class="etiqueta">
-                    <label>Fecha
-                        <input required placeholder="" type="date" class="input" name='fecha' value=${fecha} readonly>
-                    </label>
-                    <label>Hora
-                        <input required placeholder="" type="time" class="input" name='hora' value=${hora} readonly>
-                    </label>
                     <label>Numero de plazas
-                        <input required type="number" min="1" max="10" placeholder="" class="input" name='plazas' value=${plazas} readonly>
+                        <input required type="number" min="1" max="10" placeholder="" class="input" name='plazas' value="${plazas}" readonly>
+                    </label> 
+                    <label>Precio €
+                        <input required type="number" step="0.01" placeholder=" " class="input" name='precio'value="${precio}" readonly>
                     </label> 
                 </div>  
-
+                <div class="etiqueta">
+                    <label>Fecha
+                        <input required placeholder="" type="date" class="input" name='fecha' value="${fecha}" readonly>
+                    </label>
+                    <label>Hora
+                        <input required placeholder="" type="time" class="input" name='hora' value="${hora}" readonly>
+                    </label>
+                      
+                </div>  
                 <label class='textArea'>Descripción del trayecto
-                    <textarea  rows="3" placeholder="" class="input01" name='descripcion' readonly>${descripcion}</textarea>
+                    <textarea  rows="1" placeholder="" class="input01" name='descripcion' readonly>${descripcion}</textarea>
                 </label>    
                 <button class="fancy" href="#">
                     <span class="text">Publicar trayecto</span>
@@ -76,8 +115,51 @@ async function cambiarPantalla(coordOrigen,coorDestino){
                     <span class="text">Modificar trayecto</span>
                 </button></a>
             </form>
-
     `
+    }else{
+        recurrente=true;
+        cardInformacion.innerHTML=`
+        <form class="form publicar">
+                <div class='titulo'>
+                    <h3>RESUMEN DE TU VIAJE</h3>
+                </div>
+                <div class="etiqueta">
+                    <label>Origen
+                        <input required placeholder="" type="text" class="input" name='origen' value="${origen}" readonly>
+                    </label>
+                    <label>Destino
+                        <input required placeholder="" type="text" class="input" name='destino' value="${destino}" readonly>
+                    </label>
+                </div>
+                <div class="etiqueta">
+                    <label>Numero de plazas
+                        <input required type="number" min="1" max="10" placeholder="" class="input" name='plazas' value="${plazas}" readonly>
+                    </label> 
+                    <label>Precio € 
+                        <input required type="number" step="0.01" placeholder=" " class="input" name='precio'value="${precio}" readonly>
+                    </label> 
+                </div>  
+                <div class="etiqueta">
+                    <label>Fecha
+                        <input required placeholder="" type="text" class="input" name='dias' value="${diasSeleccionados}" readonly>
+                    </label>
+                    <label>Hora
+                        <input required placeholder="" type="time" class="input" name='hora' value="${hora}" readonly>
+                    </label>
+                      
+                </div>  
+                <label class='textArea'>Descripción del trayecto
+                    <textarea  rows="1" placeholder="" class="input01" name='descripcion' readonly>${descripcion}</textarea>
+                </label>    
+                <button class="fancy" href="#">
+                    <span class="text">Publicar trayecto</span>
+                </button>
+                <a href='subirTrayecto.php'<button class="fancy" href="#">
+                    <span class="text">Modificar trayecto</span>
+                </button></a>
+            </form>
+    `
+    }
     await cambiarClases();
     let map=await iniciarMapa();
     console.warn(`coordenadas destino: ${coorDestino}`);
@@ -91,9 +173,10 @@ async function cambiarPantalla(coordOrigen,coorDestino){
         console.warn(e);
         e.preventDefault();
         let data= new FormData(e.target);
+        data.append('recurrente',recurrente.toString());
         data.append('coordOrigen', JSON.stringify(coordOrigen));
         data.append('coordDestino', JSON.stringify(coorDestino));
-        console.warn(data);
+        console.log(Object.fromEntries(data.entries()));
         fetch('publicarTrayecto.php',{
             method:'POST',
             body:data
@@ -148,6 +231,14 @@ async function dibujarRuta(coordOrigen, coorDestino,map) {
                     coordinates: coords.map(c => [c[1], c[0]])  // lon, lat
                 }
             }).addTo(map);
+            //Añadimos marcages en el punto de origen y destino
+            L.marker([coordOrigen[1], coordOrigen[0]])
+                .addTo(map)
+                .bindPopup("🚀 Origen")
+                .openPopup();
+            L.marker([coorDestino[1], coorDestino[0]])
+                .addTo(map)
+                .bindPopup("🏁 Destino");
             map.fitBounds(trayecto.getBounds());
             const infoControl = L.control({ position: 'topright' });
             // Para añadir el div de distancia y tiempo 
@@ -174,11 +265,6 @@ async function dibujarRuta(coordOrigen, coorDestino,map) {
  // Enviar la solicitud con el cuerpo
     request.send(body);
 };
-
-// function publicarTrayecto(publicar,coordOrigen,coorDestino){
-   
-// }
-
 function respuestaServidor(datos,formulario){
     console.warn(datos.publicado);
     if(datos.publicado=='true'){
@@ -186,13 +272,8 @@ function respuestaServidor(datos,formulario){
         console.warn('trayecto publicado');
         viajePublicado.classList.remove('oculto');
         viajePublicado.classList.add('visible');
-        
-        
-
     } else{
         console.warn('trayecto no publicado');
     }
 };
-
-
 

@@ -1,19 +1,31 @@
 <?php
+header('Contentent-Type: application/json');
 $origen=$_POST['origen'];
 $destino=$_POST['destino'];
 $fecha=$_POST['fecha'];
+$recurrentes=[];
+$puntuales=[];
 
 include "utils/conexionBD.php";
-$sql="SELECT id_origen FROM origenes WHERE nombre='$origen'";
+
+$sql="SELECT t.id_trayecto,t.precio,t.dias,t.hora,t.plazas,u.nombre_usuario,u.apellido_usuario  FROM trayectos t INNER JOIN origenes o ON t.origen=o.id_origen INNER JOIN destinos d ON t.destino=d.id_destino INNER JOIN usuarios u ON u.id_usuario=t.usu_crea WHERE o.nombre='$origen' AND d.nombre='$destino' AND t.recurrente='1'";
 $result = $conn->query($sql);
+
 if ($result->num_rows > 0) {
-    $fila = $result->fetch_assoc();
-    $idOrigen=$fila["id_origen"];
+    while($fila = $result->fetch_assoc()){
+        $recurrentes[]=$fila;
+    } 
 };
 
-$sql="SELECT id_destino FROM destinos WHERE nombre='$destino'";
+$sql="SELECT t.id_trayecto,t.precio,t.hora,t.plazas,u.nombre_usuario,u.apellido_usuario FROM trayectos t INNER JOIN origenes o ON t.origen=o.id_origen INNER JOIN destinos d ON t.destino=d.id_destino INNER JOIN usuarios u ON u.id_usuario=t.usu_crea WHERE o.nombre='$origen' AND d.nombre='$destino' AND t.fecha='$fecha' AND t.recurrente='0'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
-    $fila = $result->fetch_assoc();
-    $idDestino=$fila["id_destino"];
+    while($fila = $result->fetch_assoc()){
+        $puntuales[]=$fila;
+    } 
 };
+include "utils/cerrarBD.php";
+echo json_encode([
+    "recurrentes" => $recurrentes,
+    "puntuales" => $puntuales
+]);

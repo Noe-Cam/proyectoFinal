@@ -17,9 +17,9 @@
             <a href="login.php">INICIAR SESIÓN</a>
         </nav>
         <div class='img'>
-          <div class='fondoIcono'>
+          <!-- <div class='fondoIcono'>
               <img class='imgIconos'src="img/iconos.png" alt="">
-          </div>
+          </div> -->
           <video autoplay muted loop playsinline class="video-background">
                 <source src="img/cabecera.mp4" type="video/mp4">
                 Tu navegador no soporta el video.
@@ -55,43 +55,51 @@
             </form> -->
 
             <!-- From Uiverse.io by Praashoo7 --> 
-            <form class="form">
-                <!-- From Uiverse.io by foxyyyyyyyyyyyyy --> 
-                <div class="form-control">
-  <form action="">
-    <div class="campo">
-      <input required="" type="text">
-      <label class="correo">
-          <span style="transition-delay:250ms">C</span>
-          <span style="transition-delay:200ms">o</span>
-          <span style="transition-delay:150ms">r</span>
-          <span style="transition-delay:100ms">r</span>
-          <span style="transition-delay:50ms">e</span>
-          <span style="transition-delay:0ms">o</span>
-      </label>
-    </div>
+            <div class="contenedor_form">
+              <form class="form" method='POST'>
+                  <!-- From Uiverse.io by foxyyyyyyyyyyyyy --> 
+                  <div class="form-control">
+              
+                <div class="campo">
+                  <input required="" type="email" name='correo'>
+                  <label class="correo">
+                      <span style="transition-delay:250ms">C</span>
+                      <span style="transition-delay:200ms">o</span>
+                      <span style="transition-delay:150ms">r</span>
+                      <span style="transition-delay:100ms">r</span>
+                      <span style="transition-delay:50ms">e</span>
+                      <span style="transition-delay:0ms">o</span>
+                  </label>
+                </div>
 
-    <div class="campo">
-      <input required="" type="password">
-      <label class="contra">
-          <span style="transition-delay:250ms">C</span>
-          <span style="transition-delay:200ms">o</span>
-          <span style="transition-delay:150ms">n</span>
-          <span style="transition-delay:100ms">t</span>
-          <span style="transition-delay:50ms">r</span>
-          <span style="transition-delay:0ms">a</span>
-          <span style="transition-delay:0ms">s</span>
-          <span style="transition-delay:0ms">e</span>
-          <span style="transition-delay:0ms">ñ</span>
-          <span style="transition-delay:0ms">a</span>
-      </label>
-    </div>
-  </form>
-</div>
-
-                <button class="btn">Entrar</button>
+                <div class="campo">
+                  <input required="" type="password" name='contra'>
+                  <label class="contra">
+                      <span style="transition-delay:250ms">C</span>
+                      <span style="transition-delay:200ms">o</span>
+                      <span style="transition-delay:150ms">n</span>
+                      <span style="transition-delay:100ms">t</span>
+                      <span style="transition-delay:50ms">r</span>
+                      <span style="transition-delay:0ms">a</span>
+                      <span style="transition-delay:0ms">s</span>
+                      <span style="transition-delay:0ms">e</span>
+                      <span style="transition-delay:0ms">ñ</span>
+                      <span style="transition-delay:0ms">a</span>
+                  </label>
+                </div>
+                <div class="campo1">
+                  <a href="formularioRegistro.html" class="enlace">¿Aun no tienes cuenta? Registrate aquí</a>
+                </div>
+                <div class="campo1">
+                  <button class="btn_inisesion"> Entrar </button>
+                </div>
+              </div>
             </form>
-        </div>
+          </div>
+      </div>
+        
+
+              
         <!-- <div class='iconos'>
             <div class='fondoIcono'>
                 <img class='imgIconos'src="img/iconos.png" alt="">

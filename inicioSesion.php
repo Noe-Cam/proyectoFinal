@@ -18,7 +18,8 @@ if ($result->num_rows == 0) {
     };
 };
 // Si la autenticación es correcta creamos al variable de sesion usuario
-//y mandamos la respuesta a js para operar dependiendo de la autenticacion  
+//y mandamos la respuesta a js para operar dependiendo de la autenticacion 
+include 'utils/cerrarBD.php'; 
 header('Content-Type: application/json');
 if ($autenticacionCorrecta == true){
     $_SESSION["usuario"]=$correo;
@@ -32,4 +33,3 @@ if ($autenticacionCorrecta == true){
     ]);
 };
 
-include 'utils/cerrarBD.php';

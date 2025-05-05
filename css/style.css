@@ -10,17 +10,17 @@ html, body {
  
 }
 .contenedor-grid{
-    display: grid;
-    grid-template-areas: 
-        'logo logo logo nav nav nav nav nav '
-        'img img img img img img img img '
-        'footer footer footer footer footer footer footer footer';
-    background-color:#2C3E50;
-    /* overflow: auto; */
-    width: 100%;
-    min-height: 100vh;
-    font-family:'Lucida Sans';
-    grid-template-rows: auto 1fr auto;
+  display: grid;
+  grid-template-areas: 
+      'logo logo logo nav nav nav nav nav '
+      'img img img img img img img img '
+      'footer footer footer footer footer footer footer footer';
+  background-color:#2C3E50;
+  /* overflow: auto; */
+  width: 100%;
+  min-height: 100vh;
+  font-family:'Lucida Sans';
+  grid-template-rows: auto 1fr auto;
 }
 .img {
   position: relative;
@@ -88,11 +88,17 @@ html, body {
 
 .form .enlace{
  /* text-decoration:none ; */
- color: inherit;
- color: #DAA06D; 
+ color: white; 
+ z-index: 1;
 }
 /* LOGIN.PHP*/ 
 /* From Uiverse.io by foxyyyyyyyyyyyyy */ 
+.contenedor_form{
+  background-color: rgba(216, 186, 121, 0.3);
+  padding: 3%;
+  border-radius: 5%;
+  z-index: 1;
+}
 .form-control {
   width: 250px;
   margin-top: 20%;
@@ -100,7 +106,11 @@ html, body {
 
 .campo {
   position: relative;
-  margin-bottom: 60px; /* ⬅️ Espaciado entre campos */
+  margin-bottom: 40px; /* ⬅️ Espaciado entre campos */
+}
+.campo1{
+  position: relative;
+  margin-bottom: 10%;
 }
 
 .form-control input {
@@ -140,7 +150,30 @@ html, body {
   color: lightblue;
   transform: translateY(-30px);
 }
-
+.btn_inisesion{
+  position: relative;
+  display: inline-block;
+  margin: 15px;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #2C3E50;
+  background: white;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border: 2px solid #2C3E50;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 0 #2C3E50;
+}
+.btn_inisesion:hover{
+  color: white;
+  box-shadow: inset 0 -100px 0 0 #2C3E50;
+}
+.btn_inisesion:active {
+  transform: scale(0.9);
+}
   /* Contenedor general */
 .contenido {
   display: flex;
@@ -287,7 +320,68 @@ form.container {
   font-family: 'Poppins', sans-serif;
   font-size: 1.5rem;
   color: #2c3e50;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+}
+.trayectos{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  z-index: 1;
+}
+.titulo-viaje{
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  color: #2c3e50;
+}
+.mostrar_trayect{
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.nom_trayecto{
+
+}
+tr{
+  margin-top:10%;
+}
+.recurrentes{
+  background-color: rgba(216, 186, 121, 0.8);
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  width: 45%;
+  border-radius: 30px;
+  margin-left: 4%;
+}
+.trayec_recu_punt{
+  background-color: rgba(237, 227, 202, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+  backdrop-filter: blur(5px);
+  width: 70%;
+  border-radius: 30px;
+  padding: 20px;
+  margin-bottom: 2%;
+  display: flex;
+  justify-content: space-around;
+  color:#2c3e50;
+}
+.trayec_recu_punt:hover{
+  border-radius: solid 2px #2c3e50;
+}
+
+.puntuales{
+  flex-direction: column;
+  background-color: rgba(216, 186, 121, 0.8);
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  border-radius: 30px;
+  margin-right: 4%;
 }
 /*FORMULARIO REGISTRO*/
 .oculto{
@@ -572,7 +666,6 @@ form.container {
 .pie{
   height: 75px;
   background-color: #2C3E50 ;
-  /* margin-top: 3%; */
   display: flex;
   align-items: center;
   flex-direction: row;
