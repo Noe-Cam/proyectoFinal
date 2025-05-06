@@ -9,6 +9,8 @@ session_start();
     <link rel="stylesheet" href="css/style.css">
     <!-- css para los iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <title>Buscar trayectos</title>
 </head>
 <body>
@@ -35,14 +37,22 @@ session_start();
             <section class="section_form ">
                     <div class="titulo-buscador"><h2>Buscar viaje</h2></div>
                     <form method='POST' id="consultation-form" class="feed-form">
-                        <input name="origen" required="" placeholder="Origen" type="text">
-                        <input name="destino" required="" placeholder="Destino">
+                        <div class="posi-columna">
+                            <input name="origen" required="" placeholder="Origen" type="text">
+                            <ul id="sugerencias-origen"></ul>
+                        </div>
+                        <div class="posi-columna">
+                            <input name="destino" required="" placeholder="Destino">
+                            <ul id="sugerencias-destino"></ul>
+                        </div>
                         <input name="fecha" required="" placeholder="Fecha" type="date"><br>
                         <button class="button_submit">BUSCAR</button>
                     </form>
             </section>
             <div class="trayectos oculto">
-                <h3c class="nom_trayecto"><h3>
+                <div class="contenedor_titulo">
+                    <h2 class="nom_trayecto"><h2>
+                </div>
                 <div class="mostrar_trayect">
                     <div class="recurrentes"></div>
                     <div class="puntuales"></div>
