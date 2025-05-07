@@ -50,11 +50,11 @@ transition: background-color 0.3s;
   position: absolute;
   top: 50%;
   left: 50%;
-  /* min-width: 100%;
-  min-height: 100%; */
   transform: translate(-50%, -50%);
   object-fit: cover;
   z-index: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
 .mensaje_tipoviaje{
   display: flex;
@@ -449,7 +449,14 @@ legend{
   width: 85%;
   padding: 10px 10px 20px 10px;
   outline: 0;
-  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 5px ;
+  border: 2px solid #2A9D8F ;
+  color: #264653;
+}
+.form label .input01 {
+  width: 85%;
+  padding: 10px 10px 20px 10px;
+  outline: 0;
   border-radius: 5px ;
   border: 2px solid #2A9D8F ;
   color: #264653;
@@ -574,6 +581,32 @@ width: 0px;
 .fancy:hover .bottom-key-2 {
 right: 0;
 width: 0;
+}
+#sugerencias-origen,
+#sugerencias-destino {
+  list-style: none;
+  position: absolute;
+  top: 60px; /* Ajusta según el tamaño del input */
+  left: 0;
+  width: 100%;
+  background-color: white;
+  /* border: 1px solid #ccc; */
+  border-radius: 10px;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 1; /* Que quede encima */
+  padding: 0;
+  margin: 0;
+}
+#sugerencias-origen li,
+#sugerencias-destino li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+#sugerencias-origen li:hover,
+#sugerencias-destino li:hover {
+  background-color: #eee;
 }
 .pie{
   height: 75px;
@@ -840,6 +873,95 @@ width: 0;
   line-height: 1.5rem;
   z-index: 1;
 }
+.contenedor_datos{
+  background-color: rgb(234, 216, 170); ;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  z-index: 1;
+  box-shadow: 0px 0px 20px rgba(0,0,0,0.8);
+}
+.contenedor_usuario_vehiculo{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  
+}
+.datosUsuario{
+  width: 50%;
+  /* background: rgba(232, 205, 135, 0.9);; */
+  /* border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.8); */
+  padding: 32px 24px 24px 24px;
+  margin-right: 32px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+.datos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #264653;
+  font-size: 1.08rem;
+}
+
+.botones-datos {
+  display: flex;
+  flex-direction:row;
+  gap: 12px;
+  width: 80%;
+}
+.datosVehiculo .botones-datos {
+  margin-top: auto;
+  width: 80%; /* igual que los de la izquierda */
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+.datosUsuario .botones-datos {
+  margin-top: auto;
+}
+.datosVehiculo{
+  width: 50%;
+  /* background: rgba(232, 205, 135, 0.9);; */
+  /* border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.8); */
+  padding: 32px 24px 24px 24px;
+  margin-right: 32px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+.botones-datos .fancy {
+  width: 80%;
+  font-size: 1rem;
+}
+
+.botones-datos .eliminar {
+  background: #EF665B;
+  border-color: #EF665B;
+  color: #fff;
+}
+
+.botones-datos .eliminar:hover {
+  background: #991B1B;
+  border-color: #991B1B;
+}
+.linea-vertical{
+  width: 2px;
+  background: rgba(44, 62, 80, 0.2);
+  border-radius: 2px;
+  margin-top: 1%;
+  align-self: stretch;
+  background: #2c3e50; 
+  z-index: 1;
+}
+
 
 @keyframes animate {
   from {

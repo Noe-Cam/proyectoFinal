@@ -365,7 +365,6 @@ form.container {
   justify-content: space-around;
   align-items: center;
   width:100%;
-  
 }
 .titulo-viaje{
   font-family: 'Poppins', sans-serif;
@@ -414,6 +413,7 @@ form.container {
   justify-content: space-around;
   color:#2c3e50;
   border: solid 1px transparent;
+  cursor: pointer;
 }
 .trayec_recu_punt:hover{
   border: solid 1px #2c3e50;
@@ -440,6 +440,7 @@ form.container {
   border-radius: 11px;
   text-align: right;
   transition: all 0.6s ease;
+  cursor:pointer;
 }
 
 .button:hover {

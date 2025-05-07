@@ -10,11 +10,10 @@
     <div class="contenedor-grid">
         <header class='logo'>LOGO</header>
         <nav class="navegador">
-            <a href="index.php">BUSCAR TRAYECTO</a>
-            <a href="subirTrayecto.php">SUBIR TRAYECTO</a>
-            <a>CHAT</a>
-            <a>MI ZONA</a>
-            <a href="login.php">INICIAR SESIÓN</a>
+            <a href="index.php">Buscar trayecto</a>
+            <a href="subirTrayecto.php">Subir trayecto</a>
+            <a href="miZona.php">Mi zona</a>
+            <a href="login.php">Iniciar sesión</a>
         </nav>
         <div class='img'>
           <!-- <div class='fondoIcono'>

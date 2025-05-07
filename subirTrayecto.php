@@ -10,7 +10,8 @@ include 'utils/controlLogin.php';
     <title>Subir trayecto</title>
     <link rel="stylesheet" href="css/styleCuerpo.css">
     <!-- css para los iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Estilos de leatlet(para el mapa) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
     <!-- script de leaflet (para el mapa) -->
@@ -20,10 +21,9 @@ include 'utils/controlLogin.php';
     <div class="contenedor-grid">
         <header class='logo'>LOGO</header>
         <nav class="navegador">
-            <a href="index.php">BUSCAR TRAYECTO</a>
-            <a href="subirTrayecto.php">SUBIR TRAYECTO</a>
-            <a>CHAT</a>
-            <a>MI ZONA</a>
+            <a href="index.php">Buscar trayecto</a>
+            <a href="subirTrayecto.php">Subir trayecto</a>
+            <a href="miZona.php">Mi zona</a>
             <a href='#'><i class='fa fa-sign-out' style='font-size:28px;color:white'></i></a>
         </nav>
         <main class='contenido'>
@@ -98,11 +98,13 @@ include 'utils/controlLogin.php';
                         <label>
                             <input required placeholder="" type="text" class="input" name='origen'>
                             <span>Origen</span>
+                            <ul id="sugerencias-origen"></ul>
                         </label>
-
+                        
                         <label>
                             <input required placeholder="" type="text" class="input" name='destino'>
                             <span>Destino</span>
+                            <ul id="sugerencias-destino"></ul>
                         </label>
                         <label>
                             <input required type="number" min="1" max="10" placeholder="" class="input" name='plazas'>

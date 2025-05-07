@@ -10,6 +10,14 @@ const inputDias=document.querySelector('.grid-dias');
 const contenedorTipoViaje=document.querySelector('.mensaje_tipoviaje');
 const error=document.querySelector('.error');
 const contenedorError=document.querySelector('.contenedor_form_error');
+const inputOrigen=document.querySelector('input[name=origen]');
+const inputDestino=document.querySelector('input[name=destino]');
+const sugOrigen=document.getElementById('sugerencias-origen');
+const sugDestino=document.getElementById('sugerencias-destino');
+inputOrigen.addEventListener('input', APIorigen);
+inputDestino.addEventListener('input', APIdestino);
+let datosRecurrentes=[];
+let datosPuntuales=[];
 let origen;
 let destino;
 let fecha;
@@ -42,6 +50,72 @@ botonViajeRecurrente.addEventListener('click',function(){
     formulario.classList.remove('oculto');
     inputDias.classList.remove('oculto');
 });
+async function APIorigen() {
+    //trim para eliminar espacios
+    const query=inputOrigen.value.trim();
+    //Si solo se han puesto dos letras en el input no se buscan sugerencias
+    if(query.length<3){
+        sugOrigen.innerHTML='';
+        return;
+    }
+    const url=`https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=5&countrycodes=es&q=${encodeURIComponent(query)}`;
+    try{
+        const respuesta=await fetch(url,{
+            headers:{
+                'Accept-Language': 'es'
+            }
+        });
+        const data= await respuesta.json();
+        sugerenciasOrigen(data);
+    }catch(e){
+        console.error('Error en la busqueda con nominatim')
+    };
+};
+function sugerenciasOrigen(data){
+    sugOrigen.innerHTML='';
+    data.forEach(direccion=>{
+        const item =document.createElement('li');
+        item.textContent=direccion.display_name;
+        item.addEventListener('click',()=>{
+            inputOrigen.value=direccion.display_name;
+            sugOrigen.innerHTML='';
+        });
+        sugOrigen.appendChild(item);
+    })
+};
+async function APIdestino() {
+    //trim para eliminar espacios
+    const query=inputDestino.value.trim();
+    //Si solo se han puesto dos letras en el input no se buscan sugerencias
+    if(query.length<3){
+        sugDestino.innerHTML='';
+        return;
+    }
+    const url=`https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=5&countrycodes=es&q=${encodeURIComponent(query)}`;
+    try{
+        const respuesta=await fetch(url,{
+            headers:{
+                'Accept-Language': 'es'
+            }
+        });
+        const data= await respuesta.json();
+        sugerenciasDestino(data);
+    }catch(e){
+        console.error('Error en la busqueda con nominatim')
+    };
+};
+function sugerenciasDestino(data){
+    sugDestino.innerHTML='';
+    data.forEach(direccion=>{
+        const item =document.createElement('li');
+        item.textContent=direccion.display_name;
+        item.addEventListener('click',()=>{
+            inputDestino.value=direccion.display_name;
+            sugDestino.innerHTML='';
+        });
+        sugDestino.appendChild(item);
+    });
+};
 formulario.addEventListener('submit',async (e)=>{
     e.preventDefault();
     let data=new FormData(e.target);
