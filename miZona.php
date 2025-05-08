@@ -47,9 +47,9 @@ include 'utils/controlLogin.php';
                             ?>
                         </div>
                         <div class="botones-datos">
-                            <button class="fancy">Cambiar datos</button>
-                            <button class="fancy">Cambiar contraseña</button>
-                            <button class="fancy eliminar">Eliminar cuenta</button>
+                            <button class="btn-datos">Cambiar datos</button>
+                            <button class="btn-datos">Cambiar contraseña</button>
+                            <button class="btn-datos eliminar">Eliminar cuenta</button>
                         </div>
                     </div>
                     <div class="linea-vertical"></div>
@@ -67,18 +67,22 @@ include 'utils/controlLogin.php';
                                 echo "<div><strong>Matricula:</strong> $maricula</div>";
                                 echo "<div><strong>Marca:</strong> $marca</div>";
                                 echo "<div><strong>Color:</strong> $color</div>";
-                                echo "<div class='botones-datos'>";
-                                    echo"<button class='fancy'>Cambiar datos</button>";
-                                echo "</div>";
+                                ?>
+                                </div>
+                                <div class='botones-datos'>
+                                    <button class='btn-datos'>Modificar datos</button>
+                                </div>
+                                <?php
                             }else{
-                                echo "<div><strong>Aún no has introducido los datos de tu vehículo</div>";
-                                echo "<div class='botones-datos'>";
-                                    echo"<button class='fancy'>Añadir datos</button>";
-                                echo "</div>";
-                            }; 
-
+                                echo "<div><strong>Aún no has introducido los datos de tu vehículo</strong></div>"
+                                ?>
+                                </div>
+                                <div class='botones-datos'>
+                                    <button class='btn-datos'>Añadir datos</button>
+                                </div>
+                            <?php
+                            }
                             ?>
-                        </div>
                     </div>
                 </div>
                 <div class="datosTrayectos">

@@ -56,12 +56,61 @@ transition: background-color 0.3s;
   min-width: 100%;
   min-height: 100%;
 }
+.columna{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.card-datos-vehiculo{
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+.popup {
+  margin: 10px;
+  box-shadow: 4px 4px 10px -10px rgba(0, 0, 0, 1);
+  /* width: 300px; */
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+  border-radius: 4px;
+  padding: 5px 0;
+  font-weight: 300;
+}
+.popup svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.popup-icon svg {
+  margin: 15px;
+  display: flex;
+  align-items: center;
+}
+.close-icon {
+  margin-left: auto;
+}
+.close-svg {
+  cursor: pointer;
+}
+.close-path {
+  fill: grey;
+}
+.info-popup {
+  background-color: #eff6ff;
+  border: solid 1px #1d4ed8;
+}
+.info-icon path {
+  fill: #1d4ed8;
+}
+.info-message {
+  color: #1d4ed8;
+}
 .mensaje_tipoviaje{
   display: flex;
   flex-direction: column;
   justify-content: center;
   /* gap: 10px; */
-  width: 50%;
+  /* width: 50%; */
   height: 60%;
   padding: 20px;
   border-radius: 10px;
@@ -100,6 +149,7 @@ transition: background-color 0.3s;
   color: var(--line_color);
   letter-spacing: 2px;
   transition: all 0.3s ease;
+  cursor:pointer;
 }
 .button__text {
   display: flex;
@@ -724,36 +774,30 @@ width: 0;
     flex-direction: column;
     gap: 1rem;
     margin-top: 0 auto;
-    
+    z-index: 1;
   }
-  
   .flex {
     display: flex;
   }
-  
   .flex-shrink-0 {
     flex-shrink: 0;
   }
-  
   .error-alert {
     border-radius: 0.375rem;
     padding: 1rem;
     background-color: rgb(254 242 242);
   }
-  
   .error-svg {
     color: #F87171;
     width: 1.25rem;
     height: 1.25rem;
   }
-  
   .error-prompt-heading {
     color: #991B1B;
     font-size: 1.5rem;
     line-height: 1.25rem;
     font-weight: bold;
   }
-  
   .error-prompt-container {
     display: flex;
     flex-direction: column;
@@ -762,24 +806,23 @@ width: 0;
 .error-prompt-wrap ul{
     list-style: none;
 }
-  
-  .error-prompt-wrap {
-    margin-top: 0.5rem;
-    color: #B91C1C;
-    font-size: 1.5rem;
-    line-height: 1.25rem;
-  }
-  
-  .error-prompt-list {
-    padding-left: 1.25rem;
-    margin-top: 0.25rem;
-    list-style-type: disc;
-  }
-  .detras{
-    z-index: -1;
-  }
-  /* Estilos tarjeta de viaje publicado */
-  /* From Uiverse.io by rzouga001 */ 
+.error-prompt-wrap {
+  margin-top: 0.5rem;
+  color: #B91C1C;
+  font-size: 1.5rem;
+  line-height: 1.25rem;
+}
+
+.error-prompt-list {
+  padding-left: 1.25rem;
+  margin-top: 0.25rem;
+  list-style-type: disc;
+}
+.detras{
+  z-index: -1;
+}
+/* Estilos tarjeta de viaje publicado */
+/* From Uiverse.io by rzouga001 */ 
 .card {
   z-index: 1;
   margin-top: 5%;
@@ -792,7 +835,6 @@ width: 0;
   background-color: #e2feee;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
               0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  
 }
 .div_image_v {
   background: #47c9a2;
@@ -804,7 +846,6 @@ width: 0;
   padding: 35px;
   z-index: 1;
 }
-
 .dismiss {
   position: absolute;
   right: 10px;
@@ -850,14 +891,13 @@ width: 0;
   height: 2rem;
   z-index: 1;
 }
-
 .content {
+  height: 500px;
   margin-top: 0.75rem;
   text-align: center;
   padding: 35%;
   z-index: 1;
 }
-
 .title {
   color: #066e29;
   font-size: 1.5rem;
@@ -865,7 +905,6 @@ width: 0;
   line-height: 1.5rem;
   z-index: 1;
 }
-
 .message {
   margin-top: 0.5rem;
   color: #595b5f; 
@@ -883,22 +922,16 @@ width: 0;
 }
 .contenedor_usuario_vehiculo{
   display: flex;
+  height: 40%;
   flex-direction: row;
   justify-content: space-around;
-  
+  margin-bottom: 4%;
 }
-.datosUsuario{
-  width: 50%;
-  /* background: rgba(232, 205, 135, 0.9);; */
-  /* border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.8); */
-  padding: 32px 24px 24px 24px;
-  margin-right: 32px;
-  z-index: 2;
+.datosUsuario, .datosVehiculo{
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
+  justify-content: space-between; /* Distribuye título/datos/botones verticalmente */
+  height: 100%; /* Necesario para que 'space-between' funcione bien */
 }
 .datos-lista {
   display: flex;
@@ -906,52 +939,47 @@ width: 0;
   gap: 12px;
   color: #264653;
   font-size: 1.08rem;
+  justify-content: flex-end;
 }
-
 .botones-datos {
   display: flex;
   flex-direction:row;
-  gap: 12px;
-  width: 80%;
-}
-.datosVehiculo .botones-datos {
-  margin-top: auto;
-  width: 80%; /* igual que los de la izquierda */
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-}
-.datosUsuario .botones-datos {
+  justify-content: space-between;
   margin-top: auto;
 }
-.datosVehiculo{
-  width: 50%;
-  /* background: rgba(232, 205, 135, 0.9);; */
-  /* border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.8); */
-  padding: 32px 24px 24px 24px;
-  margin-right: 32px;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
+.btn-datos{
+margin:2%;
+padding: 10px 10px;
+border-radius: 50px;
+cursor: pointer;
+border: 0;
+background-color: white;
+box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+letter-spacing: 1px;
+/* text-transform: uppercase;  */
+font-size: 15px;
+width: 200px;
+/* transition: all 0.5s ease; */
 }
-.botones-datos .fancy {
-  width: 80%;
-  font-size: 1rem;
+.eliminar:hover{
+  background-color: hsl(353, 83%, 61%)!important;
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(231, 77, 84) 0px 7px 29px 0px!important;
 }
-
-.botones-datos .eliminar {
-  background: #EF665B;
-  border-color: #EF665B;
-  color: #fff;
+.btn-datos:hover {
+/* letter-spacing: 3px; */
+background-color:  #264653;
+color: hsl(0, 0%, 100%);
+box-shadow: rgb(38 70 83) 0px 7px 29px 0px;
 }
-
-.botones-datos .eliminar:hover {
-  background: #991B1B;
-  border-color: #991B1B;
-}
+/* .btn-datos:active {
+letter-spacing: 3px;
+background-color: hsl(261deg 80% 48%);
+color: hsl(0, 0%, 100%);
+box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+transform: translateY(10px);
+transition: 100ms;
+} */
 .linea-vertical{
   width: 2px;
   background: rgba(44, 62, 80, 0.2);
@@ -961,8 +989,6 @@ width: 0;
   background: #2c3e50; 
   z-index: 1;
 }
-
-
 @keyframes animate {
   from {
     transform: scale(1);

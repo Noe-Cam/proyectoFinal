@@ -127,7 +127,9 @@ html, body {
 .form-control input:focus,
 .form-control input:valid {
   outline: 0;
-  border-bottom-color: lightblue;
+  /* border-bottom-color: lightblue; */
+  border-bottom-color: #2C3E50;
+  
 }
 
 .form-control label {
@@ -147,7 +149,8 @@ html, body {
 
 .form-control input:focus + label span,
 .form-control input:valid + label span {
-  color: lightblue;
+  /* color: lightblue; */
+  color:#2C3E50;
   transform: translateY(-30px);
 }
 .btn_inisesion{

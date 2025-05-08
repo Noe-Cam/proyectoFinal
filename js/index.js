@@ -89,12 +89,13 @@ function sugerenciasDestino(data){
 form.addEventListener('submit',(e)=>{
     e.preventDefault();
     console.warn(e.target);
-    let data=new FormData(e.target);
-    let origen=data.get('origen');
-    let destino=data.get('destino');
+    let data1=new FormData(e.target);
+    data1.append('accion', 'buscarTrayectos');
+    let origen=data1.get('origen');
+    let destino=data1.get('destino');
     fetch('buscarTrayecto.php',{
         method:'POST',
-        body:data
+        body:data1
     })
     .then(response=>response.json())
     .then(data=>{
@@ -128,7 +129,7 @@ function ordenarDatos(datosRecurrentes,datosPuntuales){
         </div>`;
         datosRecurrentes.forEach(trayecto => {
             recurrentes.innerHTML+=`
-                <div class="trayec_recu_punt">
+                <div class="trayec_recu_punt" id="${trayecto.id_trayecto}"">
                     <p><i class="fa fa-user-circle"style="font-size:24px"></i>  ${trayecto.nombre_usuario} ${trayecto.apellido_usuario}</p>
                     <p><i class="fa fa-money" style="font-size:24px"></i>  ${trayecto.precio} €</p>
                     <p><i class="fa fa-users" style="font-size:24px"></i>  ${trayecto.plazas} plazas</p>
@@ -136,6 +137,7 @@ function ordenarDatos(datosRecurrentes,datosPuntuales){
                 </div>
             `
         });
+        asignarEventosTrayectos();
         document.getElementById('ordenarRecurrentes').addEventListener('click',()=>{
             datosRecurrentes.sort((a,b)=>a.precio - b.precio);
             recurrentes.innerHTML=`
@@ -144,14 +146,15 @@ function ordenarDatos(datosRecurrentes,datosPuntuales){
                 </div>`;
             datosRecurrentes.forEach(trayecto => {
                 recurrentes.innerHTML+=`
-                    <div class="trayec_recu_punt">
-                    <p><i class="fa fa-user-circle"style="font-size:24px"></i>  ${trayecto.nombre_usuario} ${trayecto.apellido_usuario}</p>
-                    <p><i class="fa fa-money" style="font-size:24px"></i>  ${trayecto.precio} €</p>
-                    <p><i class="fa fa-users" style="font-size:24px"></i>  ${trayecto.plazas} plazas</p>
-                    <p><i class="fa fa-clock-o" style="font-size:24px"></i>  ${trayecto.hora} h</p>
+                    <div class="trayec_recu_punt"id="${trayecto.id_trayecto}" >
+                        <p><i class="fa fa-user-circle"style="font-size:24px"></i>  ${trayecto.nombre_usuario} ${trayecto.apellido_usuario}</p>
+                        <p><i class="fa fa-money" style="font-size:24px"></i>  ${trayecto.precio} €</p>
+                        <p><i class="fa fa-users" style="font-size:24px"></i>  ${trayecto.plazas} plazas</p>
+                        <p><i class="fa fa-clock-o" style="font-size:24px"></i>  ${trayecto.hora} h</p>
                 </div>
                 `
             });
+            asignarEventosTrayectos();
         });
     } else{
         recurrentes.innerHTML+=`
@@ -176,7 +179,7 @@ function ordenarDatos(datosRecurrentes,datosPuntuales){
             </div>`;
         datosPuntuales.forEach(trayecto => {
             puntuales.innerHTML+=`
-                <div class="trayec_recu_punt">
+                <div class="trayec_recu_punt" id="${trayecto.id_trayecto}">
                     <p><i class="fa fa-user-circle"style="font-size:24px"></i>  ${trayecto.nombre_usuario} ${trayecto.apellido_usuario}</p>
                     <p><i class="fa fa-money" style="font-size:24px"></i>  ${trayecto.precio} €</p>
                     <p><i class="fa fa-users" style="font-size:24px"></i>  ${trayecto.plazas} plazas</p>
@@ -184,6 +187,7 @@ function ordenarDatos(datosRecurrentes,datosPuntuales){
                 </div>
             `
         });
+        asignarEventosTrayectos();
         document.getElementById('ordenarPuntuales').addEventListener('click',()=>{
             datosRecurrentes.sort((a,b)=>a.precio - b.precio);
             puntuales.innerHTML=`
@@ -192,7 +196,7 @@ function ordenarDatos(datosRecurrentes,datosPuntuales){
                 </div>`;
             datosPuntuales.forEach(trayecto => {
                 puntuales.innerHTML+=`
-                    <div class="trayec_recu_punt">
+                    <div class="trayec_recu_punt" id="${trayecto.id_trayecto}">
                         <p><i class="fa fa-user-circle"style="font-size:24px"></i>  ${trayecto.nombre_usuario} ${trayecto.apellido_usuario}</p>
                         <p><i class="fa fa-money" style="font-size:24px"></i>  ${trayecto.precio} €</p>
                         <p><i class="fa fa-users" style="font-size:24px"></i>  ${trayecto.plazas} plazas</p>
@@ -200,6 +204,7 @@ function ordenarDatos(datosRecurrentes,datosPuntuales){
                     </div>
                 `
             }); 
+            asignarEventosTrayectos()
         });
     } else{
         puntuales.innerHTML+=`
@@ -209,5 +214,14 @@ function ordenarDatos(datosRecurrentes,datosPuntuales){
                 </div>
             `
     };
-    
 }; 
+function asignarEventosTrayectos(){
+    document.querySelectorAll('.trayec_recu_punt').forEach(elemento=>{
+        elemento.addEventListener('click',(e)=>{
+            detallesViaje(e);
+        });
+    });
+};
+function detallesViaje(e){
+    console.warn(e.currentTarget.id);
+};

@@ -3,11 +3,15 @@ if (!isset($_SESSION["usuario"])){
     echo"
         <html>
             <head>
-                <meta http-equiv='refresh' content='5;url=login.php'>
+                <meta http-equiv='refresh' content='3;url=login.php'>
                 <link rel='stylesheet' href='css/styleCuerpo.css'>
             </head>
             <body>
                 <div class='contenedor'>
+                 <video autoplay muted loop playsinline class='video-background'>
+                    <source src='img/fondoSubir.mp4' type='video/mp4'>
+                    Tu navegador no soporta el video.
+                </video>
                     <div class='notifications-container'>
                         <div class='error-alert'>
                             <div class='flex'>

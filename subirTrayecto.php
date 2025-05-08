@@ -47,36 +47,80 @@ include 'utils/controlLogin.php';
                             </div> 
                             <div class="content">
                                 <span class="title">VIAJE PUBLICADO</span> 
-                                <p class="message">Gracias por publicar tu viaje en CarPool, puedes ver tus viajes en 'MI ZONA'</p> 
+                                <p class="message">Gracias por publicar tu viaje en CarPool, puedes ver tus viajes activos en 'MI ZONA'</p> 
                             </div> 
                         </div> 
                     </div>       
                 </div>     
              </div>
-            <div class="mensaje_tipoviaje">
-                <div class='titulo'>
-                    <h3>PUBLICA TU VIAJE COMO CONDUCTOR</h3>  
-                    <h4>¿Qué tipo de viaje vas a realizar?</h4>
-                </div>
-                <div class='tipoViaje'>   
-                    <!-- From Uiverse.io by himanshu9682 --> 
-                    <div class="container">
-                        <a href="#" class="button type--C puntual">
-                            <div class="button__line"></div>
-                            <div class="button__line"></div>
-                            <span class="button__text">Viaje puntual</span>
-                            <div class="button__drow1"></div>
-                            <div class="button__drow2"></div>
-                        </a>
+             <?php
+             include 'utils/conexionBD.php';
+             $email=$_SESSION["usuario"];
+             $sql="SELECT uv.id_usuario FROM usuarios u INNER JOIN usuarios_vehiculos uv ON u.id_usuario=uv.id_usuario WHERE u.email='$email'";
+             $result = $conn->query($sql);
+             if($result->num_rows == 0){
+            ?>
+            <div class="columna">
+                <div class='card-datos-vehiculo'>
+                    <div class="popup info-popup">
+                        <div class="popup-icon info-icon">
+                        <svg
+                            aria-hidden="true"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="info-svg"
+                        >
+                            <path
+                            clip-rule="evenodd"
+                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                            fill-rule="evenodd"
+                            ></path>
+                        </svg>
+                        </div>
+                        <div class="info-message">Aún no has registrado los datos de tu vehiculo.<br>Hazlo <a href="miZona.php">aquí</a> o desde 'Mi zona'</div>
+                        <div class="popup-icon close-icon">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                                class="close-svg"
+                            >
+                                <path
+                                d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+                                class="close-path"
+                                ></path>
+                        </svg>
+                        </div>
                     </div>
-                    <div class="container">
-                        <a href="#" class="button type--C recurrente">
-                            <div class="button__line"></div>
-                            <div class="button__line"></div>
-                            <span class="button__text">Viaje recurrente</span>
-                            <div class="button__drow1"></div>
-                            <div class="button__drow2"></div>
-                        </a>
+                </div>
+            <?php
+             }
+             include 'utils/cerrarBD.php';
+             ?>
+                <div class="mensaje_tipoviaje">
+                    <div class='titulo'>
+                        <h3>PUBLICA TU VIAJE COMO CONDUCTOR</h3>  
+                        <h4>¿Qué tipo de viaje vas a realizar?</h4>
+                    </div>
+                    <div class='tipoViaje'>   
+                        <!-- From Uiverse.io by himanshu9682 --> 
+                        <div class="container">
+                            <div class="button type--C puntual">
+                                <div class="button__line"></div>
+                                <div class="button__line"></div>
+                                <span class="button__text">Viaje puntual</span>
+                                <div class="button__drow1"></div>
+                                <div class="button__drow2"></div>
+                        </div>
+                        </div>
+                        <div class="container">
+                            <div class="button type--C recurrente">
+                                <div class="button__line"></div>
+                                <div class="button__line"></div>
+                                <span class="button__text">Viaje recurrente</span>
+                                <div class="button__drow1"></div>
+                                <div class="button__drow2"></div>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>

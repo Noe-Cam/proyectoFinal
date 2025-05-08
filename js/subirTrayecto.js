@@ -8,7 +8,10 @@ const botonViajeRecurrente=document.querySelector('.recurrente');
 const inputFecha=document.querySelector('.fechaPuntual');
 const inputDias=document.querySelector('.grid-dias');
 const contenedorTipoViaje=document.querySelector('.mensaje_tipoviaje');
+const contenedorViajeInfo=document.querySelector('.columna');
 const error=document.querySelector('.error');
+const cerrarIfo=document.querySelector('.close-icon');
+const cardDatosVehiculo=document.querySelector('.card-datos-vehiculo');
 const contenedorError=document.querySelector('.contenedor_form_error');
 const inputOrigen=document.querySelector('input[name=origen]');
 const inputDestino=document.querySelector('input[name=destino]');
@@ -32,6 +35,9 @@ const cerrarError=document.querySelector('.error__close');
 cerrarError.addEventListener('click',function(){
     error.classList.add('oculto');
 });
+cerrarIfo.addEventListener('click',function(){
+    cardDatosVehiculo.classList.add('oculto');
+});
 const logout=document.querySelector('.fa');
 logout.addEventListener('click',function(e){
     e.preventDefault();
@@ -39,12 +45,14 @@ logout.addEventListener('click',function(e){
 });
 botonViajePuntual.addEventListener('click',function(){
     console.warn(botonViajePuntual);
+    contenedorViajeInfo.classList.add('oculto');
     contenedorTipoViaje.classList.add('oculto');
     contenedorError.classList.remove('oculto');
     formulario.classList.remove('oculto');
     inputFecha.classList.remove('oculto');
 });
 botonViajeRecurrente.addEventListener('click',function(){
+    contenedorViajeInfo.classList.add('oculto');
     contenedorTipoViaje.classList.add('oculto');
     contenedorError.classList.remove('oculto');
     formulario.classList.remove('oculto');
