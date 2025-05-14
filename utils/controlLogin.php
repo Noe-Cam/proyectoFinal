@@ -8,7 +8,7 @@ if (!isset($_SESSION["usuario"])){
             </head>
             <body>
                 <div class='contenedor'>
-                 <video autoplay muted loop playsinline class='video-background'>
+                <video autoplay muted loop playsinline class='video-background'>
                     <source src='img/fondoSubir.mp4' type='video/mp4'>
                     Tu navegador no soporta el video.
                 </video>

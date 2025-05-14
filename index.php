@@ -9,6 +9,10 @@ session_start();
     <link rel="stylesheet" href="css/style.css">
     <!-- css para los iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Estilos de leatlet(para el mapa) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <!-- script de leaflet (para el mapa) -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     
     <title>Buscar trayectos</title>
 </head>
@@ -55,6 +59,11 @@ session_start();
                     <div class="recurrentes"></div>
                     <div class="puntuales"></div>
                 </div>
+            </div>
+            <div class="modal-oscurecer-fondo oculto"></div>
+            <div class="modal oculto" >
+                <div class="datosModal"></div>
+                <div class="map" id="map"></div>
             </div> 
         </div>
         <footer class="pie">
@@ -62,5 +71,9 @@ session_start();
         </footer>
     </div>
     <script src='js/index.js'></script>
+        <!-- OpenRouteService para rutas -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- Decodificador -->
+<script src="https://unpkg.com/@mapbox/polyline@1.1.1/src/polyline.js"></script>
 </body>
 </html>

@@ -843,7 +843,7 @@ width: 0;
   text-align: center;
   margin: -20px -20px 0;
   border-radius: 5px 5px 0 0;
-  padding: 35px;
+  padding: 10px;
   z-index: 1;
 }
 .dismiss {
@@ -892,10 +892,10 @@ width: 0;
   z-index: 1;
 }
 .content {
-  height: 500px;
+  height: 100px;
   margin-top: 0.75rem;
   text-align: center;
-  padding: 35%;
+  /* padding: 35%; */
   z-index: 1;
 }
 .title {

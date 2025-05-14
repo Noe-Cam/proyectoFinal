@@ -9,6 +9,10 @@ const inputOrigen=document.querySelector('input[name=origen]');
 const inputDestino=document.querySelector('input[name=destino]');
 const sugOrigen=document.getElementById('sugerencias-origen');
 const sugDestino=document.getElementById('sugerencias-destino');
+const main=document.querySelector('.img');
+const datosModal=document.querySelector('.datosModal');
+const modal=document.querySelector('.modal');
+const fondoOscuro=document.querySelector('.modal-oscurecer-fondo');
 inputOrigen.addEventListener('input', APIorigen);
 inputDestino.addEventListener('input', APIdestino);
 let datosRecurrentes=[];
@@ -108,7 +112,7 @@ function respuestaServidor(datos,origen,destino){
     secForm.classList.add('oculto');
     trayectos.classList.remove('oculto');
     //tratamos datos de viajes recurrentes
-    nomTrayectos.innerHTML=`Trayecto ${origen} - ${destino} `;
+    nomTrayectos.innerHTML=`${origen}<br>${destino} `;
     datosRecurrentes=datos.recurrentes;
     datosPuntuales=datos.puntuales;
     ordenarDatos(datosRecurrentes,datosPuntuales);
@@ -129,7 +133,7 @@ function ordenarDatos(datosRecurrentes,datosPuntuales){
         </div>`;
         datosRecurrentes.forEach(trayecto => {
             recurrentes.innerHTML+=`
-                <div class="trayec_recu_punt" id="${trayecto.id_trayecto}"">
+                <div class="trayec_recu_punt" id="${trayecto.id_trayecto}">
                     <p><i class="fa fa-user-circle"style="font-size:24px"></i>  ${trayecto.nombre_usuario} ${trayecto.apellido_usuario}</p>
                     <p><i class="fa fa-money" style="font-size:24px"></i>  ${trayecto.precio} €</p>
                     <p><i class="fa fa-users" style="font-size:24px"></i>  ${trayecto.plazas} plazas</p>
@@ -137,7 +141,7 @@ function ordenarDatos(datosRecurrentes,datosPuntuales){
                 </div>
             `
         });
-        asignarEventosTrayectos();
+        asignarEventosTrayectos(recurrentes);
         document.getElementById('ordenarRecurrentes').addEventListener('click',()=>{
             datosRecurrentes.sort((a,b)=>a.precio - b.precio);
             recurrentes.innerHTML=`
@@ -154,7 +158,7 @@ function ordenarDatos(datosRecurrentes,datosPuntuales){
                 </div>
                 `
             });
-            asignarEventosTrayectos();
+            asignarEventosTrayectos(recurrentes);
         });
     } else{
         recurrentes.innerHTML+=`
@@ -180,16 +184,16 @@ function ordenarDatos(datosRecurrentes,datosPuntuales){
         datosPuntuales.forEach(trayecto => {
             puntuales.innerHTML+=`
                 <div class="trayec_recu_punt" id="${trayecto.id_trayecto}">
-                    <p><i class="fa fa-user-circle"style="font-size:24px"></i>  ${trayecto.nombre_usuario} ${trayecto.apellido_usuario}</p>
-                    <p><i class="fa fa-money" style="font-size:24px"></i>  ${trayecto.precio} €</p>
-                    <p><i class="fa fa-users" style="font-size:24px"></i>  ${trayecto.plazas} plazas</p>
-                    <p><i class="fa fa-clock-o" style="font-size:24px"></i>  ${trayecto.hora} h</p>
+                        <p><i class="fa fa-user-circle"style="font-size:24px"></i>  ${trayecto.nombre_usuario} ${trayecto.apellido_usuario}</p>
+                        <p><i class="fa fa-money" style="font-size:24px"></i>  ${trayecto.precio} €</p>
+                        <p><i class="fa fa-users" style="font-size:24px"></i>  ${trayecto.plazas} plazas</p>
+                        <p><i class="fa fa-clock-o" style="font-size:24px"></i>  ${trayecto.hora} h</p>
                 </div>
             `
         });
-        asignarEventosTrayectos();
+        asignarEventosTrayectos(puntuales);
         document.getElementById('ordenarPuntuales').addEventListener('click',()=>{
-            datosRecurrentes.sort((a,b)=>a.precio - b.precio);
+            datosPuntuales.sort((a,b)=>a.precio - b.precio);
             puntuales.innerHTML=`
                 <div class='contenedor_tit_btn'>
                     <h5 class=titulo-viaje>VIAJES PUNTUALES</h5> 
@@ -204,7 +208,7 @@ function ordenarDatos(datosRecurrentes,datosPuntuales){
                     </div>
                 `
             }); 
-            asignarEventosTrayectos()
+            asignarEventosTrayectos(puntuales);
         });
     } else{
         puntuales.innerHTML+=`
@@ -215,8 +219,8 @@ function ordenarDatos(datosRecurrentes,datosPuntuales){
             `
     };
 }; 
-function asignarEventosTrayectos(){
-    document.querySelectorAll('.trayec_recu_punt').forEach(elemento=>{
+function asignarEventosTrayectos(contenedor){
+    contenedor.querySelectorAll('.trayec_recu_punt').forEach(elemento=>{
         elemento.addEventListener('click',(e)=>{
             detallesViaje(e);
         });
@@ -224,4 +228,204 @@ function asignarEventosTrayectos(){
 };
 function detallesViaje(e){
     console.warn(e.currentTarget.id);
+    fetch('buscarTrayecto.php',{
+        method:'POST',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify({
+            accion: 'infoModal',
+            idTrayecto: e.currentTarget.id
+        })
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        if(data.error==='no logeado'){
+            main.innerHTML=`
+                <video autoplay muted loop playsinline class='video-background'>
+                    <source src='img/fondoSubir.mp4' type='video/mp4'>
+                    Tu navegador no soporta el video.
+                </video>
+                    <div class='notifications-container'>
+                        <div class='error-alert'>
+                            <div class='flex'>
+                                <div class='flex-shrink-0'>
+                        
+                                    <svg aria-hidden='true' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' class='error-svg'>
+                                    <path clip-rule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z' fill-rule='evenodd'></path>
+                                    </svg>
+                                </div>
+                            <div class='error-prompt-container'>
+                                <p class='error-prompt-heading'>Debe registrarse para continuar
+                                </p><div class='error-prompt-wrap'>
+                                <ul class='error-prompt-list' role='list'>
+                                    <li>Inicia sesión <a href='login.php'>Aquí</a></li>
+                                    <i class='fa-li fa fa-spinner fa-spin'>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>     
+            `
+        }else{
+            infoModal(data);
+        };
+    })
+    .catch(error => console.error('Error al recibir datos :', error));
+
+};
+async function infoModal(datos){
+    console.warn(datos);
+    console.warn(datos.datosModal.fecha);
+    let html=`
+    <table class=info-tabla>
+        <tr>
+            <td class='etiqueta'>Conductor</td>
+            <td class='valor'>${datos.datosModal.nombre_usuario} ${datos.datosModal.apellido_usuario}</td>
+        </tr>`;
+    if (datos.datosModal.fecha=='0000-00-00'){
+       html+=`
+        <tr>
+            <td class='etiqueta'>Dias</td>
+            <td class='valor'>${datos.datosModal.dias}</td>
+        </tr>`;
+    }else{
+        html+=`
+        <tr>
+            <td class='etiqueta'>Fecha</td>
+            <td class='valor'>${datos.datosModal.fecha}</td>
+        </tr>`;
+    };
+    html+=`
+    <tr>
+        <td class='etiqueta'>Hora</td>
+        <td class='valor'>${datos.datosModal.hora}</td>
+    </tr>
+    <tr>
+        <td class='etiqueta'>Plazas disponibles</td>
+        <td class='valor'>${datos.datosModal.plazas}</td>
+    </tr>
+    <tr>
+        <td class='etiqueta'>Precio</td>
+        <td class='valor'>${datos.datosModal.precio} €</td>
+    </tr>
+        `
+    if (datos.datosModal.vehiculo!=false){
+        html+=`
+        <tr>
+            <td class='etiqueta'>Vehículo</td>
+            <td class='valor'>${datos.datosModal.vehiculo}</td>
+        </tr>
+        </table>`;
+        
+    } else{
+        html+=` </table>`;
+    };
+    html+=`
+        <button class="button_submit contactar" onclick='emailConductor("${datos.datosModal.email}","${datos.datosModal.id_trayecto}")'>CONTACTAR</button>
+        <button class=" button_submit cerrar" onclick='cerrarModal()'>CERRAR</button>
+        `;
+    datosModal.innerHTML=html;
+    fondoOscuro.classList.remove('oculto');
+    modal.classList.remove('oculto');
+    let map=await iniciarMapa();
+    let coordOrigen=[datos.datosModal.lon_origen,datos.datosModal.lat_origen];
+    let coorDestino=[datos.datosModal.lon_destino,datos.datosModal.lat_destino];
+    await dibujarRuta(coordOrigen,coorDestino,map);
+    fondoOscuro.classList.remove('oculto');
+    modal.classList.remove('oculto');
+};
+function cerrarModal(){
+    fondoOscuro.classList.add('oculto');
+    modal.classList.add('oculto');
+}
+function emailConductor(emailConductor,id_trayecto){
+    console.warn('entrando en mandar email')
+    fetch("buscarTrayecto.php",{
+        method:'POST',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: emailConductor,
+            idTrayecto:id_trayecto,
+            accion: 'mandarEmailConductor'
+        })
+    })
+    .then(response=>response.text())
+    .then(data=>{
+        console.warn(data);
+    })
+    .catch(error=>{
+        console.warn('Error',error)
+    });
+};
+async function iniciarMapa() {
+     // Inicializo el mapa centrado en Madrid
+     const map = L.map('map').setView([40.4168, -3.7038], 6);
+     map.invalidateSize();
+     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+         attribution: '&copy; OpenStreetMap contributors'
+     }).addTo(map);
+     return map;
+};
+// Con Leaflet, creamos el mapa dinámico y con OpenRouteService, creo la ruta 
+async function dibujarRuta(coordOrigen, coorDestino,map) {
+    const request = new XMLHttpRequest();
+    // Configuramos la solicitud POST
+    request.open('POST', 'https://api.openrouteservice.org/v2/directions/driving-car/json', true);
+    request.setRequestHeader('Accept', 'application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8');
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.setRequestHeader('Authorization', '5b3ce3597851110001cf62486fe95c12b918412989fd54fef610ac9e'); 
+
+    // Definimos la función que manejará la respuesta
+    request.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            const respuesta = JSON.parse(this.responseText);
+            const summary = respuesta.routes[0].summary;
+            // Para sacar distancia y tiempo de trayecto
+            const distanciaKm = (summary.distance / 1000).toFixed(2);
+            const duracionMin = Math.ceil(summary.duration / 60);
+            console.log(respuesta); 
+            const coords = polyline.decode(respuesta.routes[0].geometry); //devuelve en [latitud,longitud]
+            //  Convierto las coordenadas en [longitud,latitud] para Leaflet
+            trayecto=L.geoJSON  ({
+                type: "Feature",
+                geometry: {
+                    type: "LineString",
+                    coordinates: coords.map(c => [c[1], c[0]])  // lon, lat
+                }
+            }).addTo(map);
+            //Añadimos marcages en el punto de origen y destino
+            L.marker([coordOrigen[1], coordOrigen[0]])
+                .addTo(map)
+                .bindPopup("🚀 Origen")
+                .openPopup();
+            L.marker([coorDestino[1], coorDestino[0]])
+                .addTo(map)
+                .bindPopup("🏁 Destino");
+            map.fitBounds(trayecto.getBounds());
+            const infoControl = L.control({ position: 'topright' });
+            // Para añadir el div de distancia y tiempo 
+            infoControl.onAdd = function () {
+                const div = L.DomUtil.create('div', 'info-control');
+                div.innerHTML = `
+                    <div><strong>Distancia:</strong> ${distanciaKm} km</div>
+                    <div><strong>Duración:</strong> ${duracionMin} min</div>
+                `;
+                return div;
+            };
+
+            infoControl.addTo(map);
+        } else if (this.readyState === 4  && this.status != 200) {
+            console.error('Error en la API:', this.status, this.statusText);
+        }
+    };
+
+    // Preparar el cuerpo de la solicitud
+    const body = JSON.stringify({
+        coordinates: [coordOrigen, coorDestino]  // coordenads en el orden correcto (lon, lat)
+    });
+
+ // Enviar la solicitud con el cuerpo
+    request.send(body);
 };

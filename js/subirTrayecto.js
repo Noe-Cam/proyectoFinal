@@ -245,7 +245,7 @@ async function cambiarPantalla(coordOrigen,coorDestino){
     await cambiarClases();
     let map=await iniciarMapa();
     console.warn(`coordenadas destino: ${coorDestino}`);
-    console.warn(`coordenadas destino: ${coordOrigen}`);
+    console.warn(`coordenadas origen: ${coordOrigen}`);
     await dibujarRuta(coordOrigen,coorDestino,map);
     // Guardamos el boton de publicar trayecto, en otra funcion añadiremos el escuchador y lo guardaremos en la bd
     let publicar=document.querySelector('.publicar');
@@ -286,7 +286,7 @@ async function iniciarMapa() {
      }).addTo(map);
      return map;
 }
-// Con Leaflet, creamos el mapa donámico y con OpenRouteService, creo la ruta (Posibilidad de añadir tiempo de duracion y km--------PENDIENTE)
+// Con Leaflet, creamos el mapa donámico y con OpenRouteService, creo la ruta 
 async function dibujarRuta(coordOrigen, coorDestino,map) {
     const request = new XMLHttpRequest();
     // Configuramos la solicitud POST
