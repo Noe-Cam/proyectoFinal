@@ -44,7 +44,7 @@
             </div>
             <!-- Tarjeta registro correcto -->
              <!-- From Uiverse.io by Yaya12085 --> 
-            <div class="card oculto"> 
+            <!-- <div class="card oculto"> 
               <div class="header"> 
                 <div class="image">
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 7L9.00004 18L3.99994 13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
@@ -58,7 +58,7 @@
                   <button class="track" type="button">Subir trayecto</button> 
                 </div> 
               </div> 
-            </div>
+            </div> -->
             <!-- Formulario -->
             <form class="container" id="formulario">
               <h1 class="titulo">Formulario de Registro</h1>
@@ -67,7 +67,7 @@
                 <div class="input-box formulario__grupo" id="grupo__nombre">
                   <label for="nombre" class="formulario__label">Nombre</label>
                   <div class="formulario__grupo-input">
-                    <input type="text" id="nombre" name="nombre" placeholder="Nombre Completo" class="formulario__input" />
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" class="formulario__input" />
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                   </div>
                   <p class="formulario__input-error">El nombre tiene que ser de 3 a 16 dígitos y solo puede conetener letras y guiones.</p>
@@ -126,15 +126,17 @@
                     </div>
                     <p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
                 </div>
-          
+              </div>
+              <div class="row">
                 <div class="formulario__mensaje" id="formulario__mensaje">
                     <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
                 </div>
               </div>
+              
           
                 <div class="formulario__grupo formulario__grupo-btn-enviar">
                   <button type="submit" class="formulario__btn">Enviar</button>
-                  <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
+                  <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!<br>Revisa tu correo para terminar el proceso</p>
                 </div>
                 </div>
             </form>

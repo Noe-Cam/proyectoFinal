@@ -392,7 +392,7 @@ transition: background-color 0.3s;
   z-index: 2;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   width: auto;
-  top: -20px; /* Puedes ajustar para que no tape nada */
+  /* top: -20px;  */
   left: 50%;
   transform: translateX(-50%);
   max-width: 90%;
@@ -659,7 +659,7 @@ width: 0;
   background-color: #eee;
 }
 .pie{
-  height: 75px;
+  height: 50px;
   background-color: #2C3E50 ;
   display: flex;
   align-items: center;
@@ -827,7 +827,7 @@ width: 0;
   z-index: 1;
   margin-top: 5%;
   margin-right: 10%;
-  width: 80%;
+  /* width: 80%; */
   height: auto;
   padding: 20px;
   border: 2px solid #264653;

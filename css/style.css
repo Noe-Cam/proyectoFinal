@@ -219,7 +219,9 @@ form.container {
   gap: 20px;
   justify-content: space-between;
 }
-
+.input-box{
+  width: 50%;
+}
 /* Etiquetas */
 .formulario__label {
   display: block;
@@ -373,7 +375,7 @@ form.container {
   width: 100%;
   align-items: center;
   z-index: 1;
-  padding: 10px;
+  /* padding: 10px; */
 }
 .contenedor_tit_btn{
   display: flex;
@@ -605,6 +607,9 @@ form.container {
 	font-size: 14px;
 	color: #119200;
 	display: none;
+  background-color: #cfe0c4;
+  padding: 5px;
+  border-radius: 2px;
 }
 .formulario__mensaje-exito-activo {
 	display: block;
@@ -687,6 +692,7 @@ form.container {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   background-color: #fff;
   height: 20rem;
+  z-index: 2;
 }
 .header {
   padding: 1.25rem 1rem 1rem 1rem;
@@ -830,7 +836,7 @@ form.container {
   z-index: 4;
 }
 .pie{
-  height: 75px;
+  height: 50px;
   background-color: #2C3E50 ;
   display: flex;
   align-items: center;

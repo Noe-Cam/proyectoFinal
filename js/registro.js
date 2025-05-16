@@ -10,7 +10,6 @@ const campos = {
   apellidos:false,
   password: false,
   correo: false,
-  telefono:false,
 };
 const formulario = document.getElementById("formulario");
 console.log(formulario);
@@ -22,30 +21,26 @@ const validarFormulario = (e) => {
   switch (e.target.name) {
     case "nombre":
       validarCampo(expresiones.nombre, e.target, "nombre");
-      break;
+    break;
     case "apellidos":
       validarCampo(expresiones.apellidos,e.target,"apellidos");
     break;
     case "password":
       validarCampo(expresiones.password, e.target, "password");
       validarPassword2();
-      break;
+    break;
     case "password2":
       validarPassword2();
-      break;
+    break;
     case "correo":
       validarCampo(expresiones.correo, e.target, "correo");
-      break;
-    case "telefono":
-      validarCampo(expresiones.telefono, e.target, "telefono");
-      break;
+    break;
   }
 };
 const validarCampo = (expresion, input, campo) => {
   if (expresion.test(input.value)) {
     document.getElementById(`grupo__${campo}`).classList.add("formulario__grupo-correcto");
     document.getElementById(`grupo__${campo}`).classList.remove("formulario__grupo-incorrecto");
-    //   Utilizamos query selector porque queremos recoger la info que tiene el párrafode la clase "formulario__input-error"
     document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove("formulario__input-error-activo");
     campos[campo]=true;
   } else {
@@ -94,32 +89,32 @@ function obtenerAño(data){
   }
 };
 formulario.addEventListener('submit',(e)=>{
-  if(campos.nombre && campos.apellidos && campos.password && campos.correo && campos.telefono){
+  if(campos.nombre && campos.apellidos && campos.password && campos.correo){
     e.preventDefault();
     // Recoge los datos del formulario
     let data= new FormData(e.target);
+    
     let edad=obtenerAño(data);
     if (edad!=-1){
-      data.set('edad',edad);
-      // Objeto AJAX
-      let xhr = new XMLHttpRequest();
-      xhr.open('POST','registro.php',true);
-      xhr.onload=function(){
-        if(xhr.status==200){
-          console.log('AJAAAX FUNCIONANDO');
-        }else{
-          console.log('AJAAAX NOOOOOO FUNCIONANDO')
-        };
-      };
-      xhr.send(data);
+      data.append('edad',edad);
+      // DEBUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUG
+      console.warn(Object.fromEntries(data.entries()));
+      fetch('registro.php',{
+        method:'POST',
+        body:data
+      })
+      .then(response=>response.json())
+      .then(data=>{
+        respuestaServidor(data);
+      })
+      .catch(error=>console.error('Error al recibir datos :', error));
       
       document.getElementById("formulario__mensaje-exito").classList.add("formulario__mensaje-exito-activo");
       formulario.reset();
-      let exito=document.querySelector('.card');
-      formulario.classList.add('oculto');
-      exito.classList.remove('oculto');
-      exito.classList.add('visible');
-      
+      // let exito=document.querySelector('.card');
+      // formulario.classList.add('oculto');
+      // exito.classList.remove('oculto');
+      // exito.classList.add('visible');
     };
   }else{
     // Por defecto submit borra los inputs, pero si no es correcto todo no queremos que los borre, con esta funcion se deshabilita esa funcionalidad
@@ -127,3 +122,10 @@ formulario.addEventListener('submit',(e)=>{
     e.preventDefault();
   }
 });
+function respuestaServidor(verificacion){
+  if(verificacion.registro=='true'){
+    console.warn('Esperando verificación movil')
+  }else{
+    console.warn('ERROR');
+  }
+}

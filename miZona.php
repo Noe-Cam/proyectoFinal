@@ -94,5 +94,6 @@ include 'utils/controlLogin.php';
             <p class='derechos'>&copy; 2025 CarPool. Contenido propio, Todos los derechos reservados.</p>
         </footer>
     </div>
+    <script src="js/miZona.js"></script>
 </body>
 </html>

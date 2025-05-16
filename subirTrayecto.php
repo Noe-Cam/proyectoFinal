@@ -194,7 +194,7 @@ include 'utils/controlLogin.php';
             </div>
         </main>
         <footer class='pie'>
-        <p class='derechos'>&copy; 2025 CarPool. Contenido propio, Todos los derechos reservados.</p>
+            <p class='derechos'>&copy; 2025 CarPool. Contenido propio, Todos los derechos reservados.</p>
         </footer>
     </div>
     <script src="js/subirTrayecto.js"></script>
