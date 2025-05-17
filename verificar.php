@@ -25,7 +25,7 @@ include 'utils/conexionBD.php';
             }
             ?>
         </nav>
-        <div class="img">
+        <main class="contenido">
             <video autoplay muted loop playsinline class="video-background">
                 <source src="img/cabecera.mp4" type="video/mp4">
                 Tu navegador no soporta el video.
@@ -71,7 +71,7 @@ include 'utils/conexionBD.php';
                 }
             }
             ?>
-        </div>
+        </main>
         <footer class="pie">
             <p class='derechos'>&copy; 2025 CarPool. Contenido propio, Todos los derechos reservados.</p>
         </footer>

@@ -14,6 +14,8 @@ const datosModal=document.querySelector('.datosModal');
 const modal=document.querySelector('.modal');
 const fondoOscuro=document.querySelector('.modal-oscurecer-fondo');
 const infoContactar=document.querySelector('.informContacto');
+const burger=document.querySelector('.burger');
+const menu=document.querySelector('.menu');
 inputOrigen.addEventListener('input', APIorigen);
 inputDestino.addEventListener('input', APIdestino);
 let datosRecurrentes=[];
@@ -25,6 +27,9 @@ if (logout!=null){
         window.location.href = 'utils/logout.php';
     });
 };
+burger.addEventListener('click',()=>{
+    menu.classList.toggle('visible');
+});
 async function APIorigen() {
     //trim para eliminar espacios
     const query=inputOrigen.value.trim();

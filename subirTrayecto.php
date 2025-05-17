@@ -21,10 +21,13 @@ include 'utils/controlLogin.php';
     <div class="contenedor-grid">
         <header class='logo'>LOGO</header>
         <nav class="navegador">
-            <a href="index.php">Buscar trayecto</a>
-            <a href="subirTrayecto.php">Subir trayecto</a>
-            <a href="miZona.php">Mi zona</a>
-            <a href='#'><i class='fa fa-sign-out' style='font-size:28px;color:white'></i></a>
+            <button class="burger"> &#9776;</button>
+            <div class="menu">
+                <a href="index.php">Buscar trayecto</a>
+                <a href="subirTrayecto.php">Subir trayecto</a>
+                <a href="miZona.php">Mi zona</a>
+                <a href='#'><i class='fa fa-sign-out' style='font-size:28px;color:white'></i></a>
+            </div>
         </nav>
         <main class='contenido'>
             <video autoplay muted loop playsinline class="video-background">

@@ -13,7 +13,7 @@ if (!isset($_SESSION["usuario"])){
                         <a href='index.php'>Buscar trayecto</a>
                         <a href='subirTrayecto.php'>Subir trayecto</a>
                         <a href='miZona.php'>Mi zona</a>
-                        <a href='#'><i class='fa fa-sign-out' style='font-size:28px;color:white'></i></a>
+                        <a href='login.php'>Iniciar sesión</i></a>
                     </nav>
                     <main class='contenido'>
                         <div class='contenedor'>

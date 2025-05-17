@@ -28,6 +28,19 @@ html, body {
   height: 100%;
   color:white;
   justify-content: flex-end;
+  height: 70px;
+}
+.burger {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+.menu{
+  display: flex;
+  align-items: center;
 }
 .navegador a{
 padding: 20px;
@@ -448,9 +461,8 @@ transition: background-color 0.3s;
   box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
 }
 .grid-dias {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 10px 20px;
+  display: flex;
+  flex-direction: column;
   border: none;
   padding: 10px 0;
 }
@@ -996,5 +1008,56 @@ transition: 100ms;
 
   to {
     transform: scale(1.09);
+  }
+}
+@media (max-width:600px){
+  .burger{
+    display: flex;
+  }
+  .menu{
+    position: absolute;
+    top: 60px; 
+    right: 0;
+    background: #333;
+    flex-direction: column;
+    width: 200px;
+    display: none; 
+    padding: 10px 0;
+    border-radius: 0 0 0 8px;
+    z-index: 2;
+  }
+  .columna{
+    width: 95%;
+  }
+  .form{
+    width: 95%;
+  }
+  .pie{
+    display: none;
+  }
+  .grid-dias{
+    flex-direction: column;
+  }
+  .cardInformativo{
+    width: 40%;
+    padding: 0;
+  }
+  .contenedorMapa{
+    width: 45%;
+    margin-left: 90px;
+  }
+  .fancy{
+    letter-spacing: 0;
+  }
+  .card{
+    height: 250px;
+  }
+  .contenedor_usuario_vehiculo{
+    flex-direction: column;
+    margin-bottom: 10%;
+    margin-left: 4%;
+  }
+  .visible{
+    display: flex;
   }
 }

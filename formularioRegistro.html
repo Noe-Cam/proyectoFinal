@@ -10,12 +10,15 @@
     <div class="contenedor-grid">
         <header class="logo">LOGO</header>
         <nav class="navegador">
-            <a href="index.php">Buscar trayecto</a>
-            <a>Subir trayecto</a>
-            <a>Mi zona</a>
-            <a href="login.php">Iniciar sesión</a>
+           <button class="burger"> &#9776;</button>
+           <div class="menu">
+              <a href="index.php">Buscar trayecto</a>
+              <a>Subir trayecto</a>
+              <a>Mi zona</a>
+              <a href="login.php">Iniciar sesión</a>
+            </div>
         </nav>
-        <div class='img'>
+        <main class='contenido'>
           <video autoplay muted loop playsinline class="video-background">
             <source src="img/cabecera.mp4" type="video/mp4">
               Tu navegador no soporta el video.
@@ -140,7 +143,7 @@
                 </div>
                 </div>
             </form>
-        </div>        
+          </main>        
         <footer class="pie">
           <p class='derechos'>&copy; 2025 CarPool. Contenido propio, Todos los derechos reservados.</p>
         </footer>

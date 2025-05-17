@@ -20,18 +20,21 @@ session_start();
     <div class="contenedor-grid">
         <header class="logo">LOGO</header>
         <nav class="navegador">
-            <a href="index.php">Buscar trayecto</a>
-            <a href="subirTrayecto.php">Subir trayecto</a>
-            <a href="miZona.php">Mi zona</a>
-            <?php
-            if (!isset($_SESSION["usuario"])){
-                echo '<a href="login.php">Iniciar sesión</a>';
-            } else {
-                echo "<a href=#><i class='fa fa-sign-out' style='font-size:28px;color:white'></i></a>";
-            }
-            ?>
+            <button class="burger"> &#9776;</button>
+            <div class='menu'>
+                <a  href="index.php">Buscar trayecto</a>
+                <a href="subirTrayecto.php">Subir trayecto</a>
+                <a href="miZona.php">Mi zona</a>
+                <?php
+                if (!isset($_SESSION["usuario"])){
+                    echo '<a href="login.php">Iniciar sesión</a>';
+                } else {
+                    echo "<a href=#><i class='fa fa-sign-out' style='font-size:28px;color:white'></i></a>";
+                }
+                ?>
+            </div>
         </nav>
-        <div class="img">
+        <main class="contenido">
             <video autoplay muted loop playsinline class="video-background">
                 <source src="img/cabecera.mp4" type="video/mp4">
                 Tu navegador no soporta el video.
@@ -76,7 +79,7 @@ session_start();
                 </div>
                 <div class="map" id="map"></div>
             </div> 
-        </div>
+        </main>
         <footer class="pie">
             <p class='derechos'>&copy; 2025 CarPool. Contenido propio, Todos los derechos reservados.</p>
         </footer>

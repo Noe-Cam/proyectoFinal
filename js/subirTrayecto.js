@@ -17,6 +17,8 @@ const inputOrigen=document.querySelector('input[name=origen]');
 const inputDestino=document.querySelector('input[name=destino]');
 const sugOrigen=document.getElementById('sugerencias-origen');
 const sugDestino=document.getElementById('sugerencias-destino');
+const burger=document.querySelector('.burger');
+const menu=document.querySelector('.menu');
 inputOrigen.addEventListener('input', APIorigen);
 inputDestino.addEventListener('input', APIdestino);
 let datosRecurrentes=[];
@@ -31,6 +33,9 @@ let diasSeleccionados;
 let precio;
 let trayecto;
 
+burger.addEventListener('click',()=>{
+    menu.classList.toggle('visible');
+});
 const cerrarError=document.querySelector('.error__close');
 cerrarError.addEventListener('click',function(){
     error.classList.add('oculto');

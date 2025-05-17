@@ -10,12 +10,15 @@
     <div class="contenedor-grid">
         <header class='logo'>LOGO</header>
         <nav class="navegador">
+          <button class="burger"> &#9776;</button>
+          <div class="menu">
             <a href="index.php">Buscar trayecto</a>
             <a href="subirTrayecto.php">Subir trayecto</a>
             <a href="miZona.php">Mi zona</a>
             <a href="login.php">Iniciar sesión</a>
+          </div>
         </nav>
-        <div class='img'>
+        <main class='contenido'>
           <!-- <div class='fondoIcono'>
               <img class='imgIconos'src="img/iconos.png" alt="">
           </div> -->
@@ -95,22 +98,9 @@
               </div>
             </form>
           </div>
-      </div>
-        
-
-              
-        <!-- <div class='iconos'>
-            <div class='fondoIcono'>
-                <img class='imgIconos'src="img/iconos.png" alt="">
-            </div>
-        </div> -->
-        <!-- <main class='contenido'> -->
-            <!-- Tarjeta error menor de edad -->
-             <!-- From Uiverse.io by kennyotsu --> 
-             
-        <!-- </main> -->
+        </main>
         <footer class='pie'>
-        <p class='derechos'>&copy; 2025 CarPool. Contenido propio, Todos los derechos reservados.</p>
+          <p class='derechos'>&copy; 2025 CarPool. Contenido propio, Todos los derechos reservados.</p>
         </footer>
     </div>
     <script src="js/login.js"></script>

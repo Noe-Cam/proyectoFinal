@@ -11,9 +11,14 @@ const campos = {
   password: false,
   correo: false,
 };
+const burger=document.querySelector('.burger');
+const menu=document.querySelector('.menu');
 const formulario = document.getElementById("formulario");
-console.log(formulario);
-// query selector All te devuelve un node list (que funciona como un array) con los eventos que se cumplan, en cambio query selector solo, devuevle la primera coincidencia.
+
+burger.addEventListener('click',()=>{
+    menu.classList.toggle('visible');
+});
+
 // Recojo todos los inputs que hay dentro del formulario
 const inputs = document.querySelectorAll("#formulario input");
 
