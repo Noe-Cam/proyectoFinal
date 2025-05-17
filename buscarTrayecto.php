@@ -96,7 +96,7 @@ switch($accion){
             $mail->Subject= 'Alguien se ha interesado por tu viaje';
             // Cuando el proyecto este desplegado se cambiara http://localhost/PROYECTO/proyectoFinal/eliminarPlaza.php por el dominio
             // En el url mando el id del trayecto para editarlo después
-            $mail->Body= "<p> ¡¡ENHORABUENA!!<br> $mailUserSolicita está interesado en tu trayecto publicado en CarPool.<br> Ponte en contacto con él cuanto antes.<br><br>
+            $mail->Body= "<p> ¡¡ENHORABUENA!!<br> $mailUserSolicita tiene interés en tu trayecto publicado en CarPool.<br> Ponte en contacto cuanto antes.<br><br>
             Si quieres eliminar una plaza en tu viaje publicado, haz click en el siguiente botón</p><br><br>
             <a href='http://localhost/PROYECTO/proyectoFinal/eliminarPlaza.php?numero=$idTrayeto' style='
                 display:inline-block;

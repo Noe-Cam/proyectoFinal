@@ -669,7 +669,6 @@ width: 0;
 .derechos{
   color:white;
   margin-left: 2%;
-  letter-spacing: 0.1em;
 }
 .oculto{
     display: none;
@@ -825,9 +824,10 @@ width: 0;
 /* From Uiverse.io by rzouga001 */ 
 .card {
   z-index: 1;
-  margin-top: 5%;
-  margin-right: 10%;
+  /* margin-top: 5%;
+  margin-right: 10%; */
   /* width: 80%; */
+  position: absolute;
   height: auto;
   padding: 20px;
   border: 2px solid #264653;

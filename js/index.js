@@ -13,6 +13,7 @@ const main=document.querySelector('.img');
 const datosModal=document.querySelector('.datosModal');
 const modal=document.querySelector('.modal');
 const fondoOscuro=document.querySelector('.modal-oscurecer-fondo');
+const infoContactar=document.querySelector('.informContacto');
 inputOrigen.addEventListener('input', APIorigen);
 inputDestino.addEventListener('input', APIdestino);
 let datosRecurrentes=[];
@@ -321,10 +322,10 @@ async function infoModal(datos){
         html+=` </table>`;
     };
     html+=`
-        <button class="button_submit contactar" onclick='emailConductor("${datos.datosModal.email}","${datos.datosModal.id_trayecto}")'>CONTACTAR</button>
+        <button class="button_submit contactar" onclick='emailConductor("${datos.datosModal.email}","${datos.datosModal.id_trayecto}");infoContacto()'>CONTACTAR</button>
         <button class=" button_submit cerrar" onclick='cerrarModal()'>CERRAR</button>
         `;
-    datosModal.innerHTML=html;
+    infoContactar.insertAdjacentHTML('afterend',html);
     fondoOscuro.classList.remove('oculto');
     modal.classList.remove('oculto');
     let map=await iniciarMapa();
@@ -334,6 +335,9 @@ async function infoModal(datos){
     fondoOscuro.classList.remove('oculto');
     modal.classList.remove('oculto');
 };
+function infoContacto(){
+    infoContactar.classList.remove('oculto');
+}
 function cerrarModal(){
     fondoOscuro.classList.add('oculto');
     modal.classList.add('oculto');
