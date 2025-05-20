@@ -104,7 +104,7 @@ formulario.addEventListener('submit',(e)=>{
       data.append('edad',edad);
       // DEBUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUG
       console.warn(Object.fromEntries(data.entries()));
-      fetch('registro.php',{
+      fetch('ayax/registro.php',{
         method:'POST',
         body:data
       })

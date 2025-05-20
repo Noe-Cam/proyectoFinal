@@ -20,6 +20,16 @@ html, body {
         font-family:'Lucida Sans';
         grid-template-rows: auto 1fr auto;
 }
+.logo{
+  display: flex;
+  align-items: center;
+  height: 75px;
+}
+.logoCarpool{
+  margin-left: 40px;
+  width: 160px;
+  height: 60px;
+}
 .navegador{
   list-style: none;
   display: flex;

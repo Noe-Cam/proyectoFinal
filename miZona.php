@@ -13,7 +13,9 @@ include 'utils/controlLogin.php';
 </head>
 <body>
     <div class="contenedor-grid">
-        <header class='logo'>LOGO</header>
+        <header class="logo">
+            <img class="logoCarpool" src="img/LOGO_CARPOOL.png" alt="">
+        </header>
         <nav class="navegador">
             <button class="burger"> &#9776;</button>
             <div class="menu">

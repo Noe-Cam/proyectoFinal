@@ -264,7 +264,7 @@ async function cambiarPantalla(coordOrigen,coorDestino){
         data.append('coordOrigen', JSON.stringify(coordOrigen));
         data.append('coordDestino', JSON.stringify(coorDestino));
         console.log(Object.fromEntries(data.entries()));
-        fetch('publicarTrayecto.php',{
+        fetch('ajax/publicarTrayecto.php',{
             method:'POST',
             body:data
         })

@@ -9,7 +9,7 @@ const inputOrigen=document.querySelector('input[name=origen]');
 const inputDestino=document.querySelector('input[name=destino]');
 const sugOrigen=document.getElementById('sugerencias-origen');
 const sugDestino=document.getElementById('sugerencias-destino');
-const main=document.querySelector('.img');
+const main=document.querySelector('.contenido');
 const datosModal=document.querySelector('.datosModal');
 const modal=document.querySelector('.modal');
 const fondoOscuro=document.querySelector('.modal-oscurecer-fondo');
@@ -103,7 +103,7 @@ form.addEventListener('submit',(e)=>{
     data1.append('accion', 'buscarTrayectos');
     let origen=data1.get('origen');
     let destino=data1.get('destino');
-    fetch('buscarTrayecto.php',{
+    fetch('ayax/buscarTrayecto.php',{
         method:'POST',
         body:data1
     })
@@ -234,7 +234,7 @@ function asignarEventosTrayectos(contenedor){
 };
 function detallesViaje(e){
     console.warn(e.currentTarget.id);
-    fetch('buscarTrayecto.php',{
+    fetch('ajax/buscarTrayecto.php',{
         method:'POST',
         headers:{
             'Content-Type': 'application/json'
@@ -349,7 +349,7 @@ function cerrarModal(){
 }
 function emailConductor(emailConductor,id_trayecto){
     console.warn('entrando en mandar email')
-    fetch("buscarTrayecto.php",{
+    fetch("ajax/buscarTrayecto.php",{
         method:'POST',
         headers:{
             'Content-Type': 'application/json'

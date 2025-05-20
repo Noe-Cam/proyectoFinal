@@ -9,7 +9,7 @@ burger.addEventListener('click',()=>{
 formulario.addEventListener('submit',(e)=>{
     e.preventDefault();
     let data= new FormData(e.target);
-    fetch('inicioSesion.php',{
+    fetch('ajax/inicioSesion.php',{
         method:'POST',
         body:data,
         credentials: 'include' //Para que se envien las variables de sesion

@@ -8,6 +8,16 @@ html, body {
   height: 100%;
   /*width: 100%; */
 }
+.logo{
+  display: flex;
+  align-items: center;
+  height: 75px;
+}
+.logoCarpool{
+  margin-left: 40px;
+  width: 160px;
+  height: 60px;
+}
 .contenedor-grid{
   display: grid;
   grid-template-areas: 
