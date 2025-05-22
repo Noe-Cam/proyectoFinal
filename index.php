@@ -25,11 +25,11 @@ session_start();
             <button class="burger"> &#9776;</button>
             <div class='menu'>
                 <a  href="index.php">Buscar trayecto</a>
-                <a href="subirTrayecto.php">Subir trayecto</a>
-                <a href="miZona.php">Mi zona</a>
+                <a href="pages/subirTrayecto.php">Subir trayecto</a>
+                <a href="pages/miZona.php">Mi zona</a>
                 <?php
                 if (!isset($_SESSION["usuario"])){
-                    echo '<a href="login.php">Iniciar sesión</a>';
+                    echo '<a href="pages/login.php">Iniciar sesión</a>';
                 } else {
                     echo "<a href=#><i class='fa fa-sign-out' style='font-size:28px;color:white'></i></a>";
                 }

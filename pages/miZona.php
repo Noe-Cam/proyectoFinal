@@ -1,13 +1,13 @@
 <?php
 session_start();
-include 'utils/controlLogin.php';
+include '../utils/controlLogin.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styleCuerpo.css">
+    <link rel="stylesheet" href="../css/styleCuerpo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Mi zona</title>
 </head>
@@ -19,7 +19,7 @@ include 'utils/controlLogin.php';
         <nav class="navegador">
             <button class="burger"> &#9776;</button>
             <div class="menu">
-                <a href="index.php">Buscar trayecto</a>
+                <a href="../index.php">Buscar trayecto</a>
                 <a href="subirTrayecto.php">Subir trayecto</a>
                 <a href="miZona.php">Mi zona</a>
                 <a href='#'><i class='fa fa-sign-out' style='font-size:28px;color:white'></i></a>
@@ -36,7 +36,7 @@ include 'utils/controlLogin.php';
                         <h2 class="titulo">Datos personales</h2>
                         <div class="datos-lista">
                             <?php
-                            include 'utils/conexionBD.php';
+                            include '../utils/conexionBD.php';
                             $email=$_SESSION["usuario"];
                             $sql="SELECT nombre_usuario, apellido_usuario, edad FROM usuarios WHERE email='$email'";
                             $result = $conn->query($sql);
@@ -87,6 +87,7 @@ include 'utils/controlLogin.php';
                                 </div>
                             <?php
                             }
+                            include '../utils/cerrarBD.php';
                             ?>
                     </div>
                 </div>
@@ -99,6 +100,6 @@ include 'utils/controlLogin.php';
             <p class='derechos'>&copy; 2025 CarPool. Contenido propio, Todos los derechos reservados.</p>
         </footer>
     </div>
-    <script src="js/miZona.js"></script>
+    <script src="../js/miZona.js"></script>
 </body>
 </html>

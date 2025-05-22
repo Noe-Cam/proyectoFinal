@@ -8,8 +8,9 @@ burger.addEventListener('click',()=>{
 
 formulario.addEventListener('submit',(e)=>{
     e.preventDefault();
+    console.warn(e.target)
     let data= new FormData(e.target);
-    fetch('ajax/inicioSesion.php',{
+    fetch('../ajax/inicioSesion.php',{
         method:'POST',
         body:data,
         credentials: 'include' //Para que se envien las variables de sesion
@@ -24,7 +25,7 @@ formulario.addEventListener('submit',(e)=>{
 function respuestaServidor(datos){
     console.warn(datos.autenticacion);
     if(datos.autenticacion=='true'){
-        window.location.href = 'index.php';
+        window.location.href = '../index.php';
     } else{
         const logIncorrecto=document.querySelector('.notifications-container');
         formulario.classList.add('oculto');

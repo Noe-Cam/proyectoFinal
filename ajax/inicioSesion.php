@@ -4,7 +4,7 @@ $correo=$_POST['correo'];
 $contra=$_POST['contra'];
 
 $autenticacionCorrecta = false;
-include 'utils/conexionBD.php';
+include '../utils/conexionBD.php';
 $sql="SELECT nombre_usuario,contrasena FROM usuarios WHERE email = '$correo'";
 
 $result = $conn->query($sql);
@@ -19,7 +19,7 @@ if ($result->num_rows == 0) {
 };
 // Si la autenticación es correcta creamos al variable de sesion usuario
 //y mandamos la respuesta a js para operar dependiendo de la autenticacion 
-include 'utils/cerrarBD.php'; 
+include '../utils/cerrarBD.php'; 
 header('Content-Type: application/json');
 if ($autenticacionCorrecta == true){
     $_SESSION["usuario"]=$correo;

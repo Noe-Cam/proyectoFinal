@@ -1,6 +1,13 @@
+<!-- Página que se encarga de insertar a nuevos usuarios en la bd, a esta página se llega mediante el link enviado al correo al crearse una cuenta de usuario.
+A esta página llega el token enviado en la url, se comprueba si ese token tiene alguna coincidencia con alguna fila de la tabal usuarios_tmp.
+    - Si hay coincidencias:  
+        1.se insertan los datos de la tabla usuarios_tmp en la tabla usuarios, formando ya parte del sistema.
+        2.se elimina el usuario de la tabla usuarios_tmp.
+    - Si no hay coincidencias: No se crea el usuario.
+-->
 <?php
 session_start();
-include 'utils/conexionBD.php';
+include '../utils/conexionBD.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,10 +21,10 @@ include 'utils/conexionBD.php';
 <body>
     <div class="contenedor-grid">
         <header class="logo">
-            <img class="logoCarpool" src="img/LOGO_CARPOOL.png" alt="">
+            <img class="logoCarpool" src="../img/LOGO_CARPOOL.png" alt="">
         </header>
         <nav class="navegador">
-            <a href="index.php">Buscar trayecto</a>
+            <a href="../index.php">Buscar trayecto</a>
             <a href="subirTrayecto.php">Subir trayecto</a>
             <a href="miZona.php">Mi zona</a>
             <?php
@@ -30,7 +37,7 @@ include 'utils/conexionBD.php';
         </nav>
         <main class="contenido">
             <video autoplay muted loop playsinline class="video-background">
-                <source src="img/cabecera.mp4" type="video/mp4">
+                <source src="../img/cabecera.mp4" type="video/mp4">
                 Tu navegador no soporta el video.
             </video>
             <?php
@@ -82,4 +89,4 @@ include 'utils/conexionBD.php';
 </body>
 </html>
 <?php
-include 'utils/cerrarBD.php';
+include '../utils/cerrarBD.php';

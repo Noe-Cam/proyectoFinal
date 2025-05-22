@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'utils/controlLogin.php';
+include '../utils/controlLogin.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +8,7 @@ include 'utils/controlLogin.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subir trayecto</title>
-    <link rel="stylesheet" href="css/styleCuerpo.css">
+    <link rel="stylesheet" href="../css/styleCuerpo.css">
     <!-- css para los iconos -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,12 +20,12 @@ include 'utils/controlLogin.php';
 <body>
     <div class="contenedor-grid">
         <header class="logo">
-            <img class="logoCarpool" src="img/LOGO_CARPOOL.png" alt="">
+            <img class="logoCarpool" src="../img/LOGO_CARPOOL.png" alt="">
         </header>
         <nav class="navegador">
             <button class="burger"> &#9776;</button>
             <div class="menu">
-                <a href="index.php">Buscar trayecto</a>
+                <a href="../index.php">Buscar trayecto</a>
                 <a href="subirTrayecto.php">Subir trayecto</a>
                 <a href="miZona.php">Mi zona</a>
                 <a href='#'><i class='fa fa-sign-out' style='font-size:28px;color:white'></i></a>
@@ -33,7 +33,7 @@ include 'utils/controlLogin.php';
         </nav>
         <main class='contenido'>
             <video autoplay muted loop playsinline class="video-background">
-                <source src="img/fondoSubir.mp4" type="video/mp4">
+                <source src="../img/fondoSubir.mp4" type="video/mp4">
                 Tu navegador no soporta el video.
             </video>
             <!-- div con card resumen trayecto y mapa -->
@@ -59,7 +59,7 @@ include 'utils/controlLogin.php';
                 </div>     
              </div>
              <?php
-             include 'utils/conexionBD.php';
+             include '../utils/conexionBD.php';
              $email=$_SESSION["usuario"];
              $sql="SELECT uv.id_usuario FROM usuarios u INNER JOIN usuarios_vehiculos uv ON u.id_usuario=uv.id_usuario WHERE u.email='$email'";
              $result = $conn->query($sql);
@@ -99,7 +99,7 @@ include 'utils/controlLogin.php';
                 </div>
             <?php
              }
-             include 'utils/cerrarBD.php';
+             include '../utils/cerrarBD.php';
              ?>
                 <div class="mensaje_tipoviaje">
                     <div class='titulo'>
@@ -202,7 +202,7 @@ include 'utils/controlLogin.php';
             <p class='derechos'>&copy; 2025 CarPool. Contenido propio, Todos los derechos reservados.</p>
         </footer>
     </div>
-    <script src="js/subirTrayecto.js"></script>
+    <script src="../js/subirTrayecto.js"></script>
     
     <!-- OpenRouteService para rutas -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

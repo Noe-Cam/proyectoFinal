@@ -3,24 +3,24 @@ if (!isset($_SESSION["usuario"])){
     echo"
         <html>
             <head>
-                <link rel='stylesheet' href='css/styleCuerpo.css'>
+                <link rel='stylesheet' href='../css/styleCuerpo.css'>
                 <meta http-equiv='refresh' content='5;url=login.php'>
             </head>
             <body>
                 <div class='contenedor-grid'>
                     <header class='logo'>
-                        <img class='logoCarpool' src='img/LOGO_CARPOOL.png' alt=''>
+                        <img class='logoCarpool' src='../img/LOGO_CARPOOL.png' alt=''>
                     </header>
                     <nav class='navegador'>
                         <a href='index.php'>Buscar trayecto</a>
-                        <a href='subirTrayecto.php'>Subir trayecto</a>
-                        <a href='miZona.php'>Mi zona</a>
-                        <a href='login.php'>Iniciar sesión</i></a>
+                        <a href='../pages/subirTrayecto.php'>Subir trayecto</a>
+                        <a href='../pages/miZona.php'>Mi zona</a>
+                        <a href='../pages/login.php'>Iniciar sesión</i></a>
                     </nav>
                     <main class='contenido'>
                         <div class='contenedor'>
                     <video autoplay muted loop playsinline class='video-background'>
-                        <source src='img/fondoSubir.mp4' type='video/mp4'>
+                        <source src='../img/fondoSubir.mp4' type='video/mp4'>
                         Tu navegador no soporta el video.
                     </video>
                         <div class='notifications-container'>

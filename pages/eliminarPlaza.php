@@ -6,7 +6,7 @@
     - Cualquier error en el proceso será notificado al usuario conductor mediate un card de aviso, si el proceso de eliminacion es correcto, se mostrará otro card informativo con la validez de la operación. -->
 <?php
 session_start();
-include "utils/conexionBD.php";
+include "../utils/conexionBD.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,11 +14,13 @@ include "utils/conexionBD.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eliminar plaza </title>
-    <link rel="stylesheet" href="css/styleCuerpo.css">
+    <link rel="stylesheet" href="../css/styleCuerpo.css">
 </head>
 <body>
      <div class="contenedor-grid">
-        <header class='logo'>LOGO</header>
+         <header class="logo">
+            <img class="logoCarpool" src="../img/LOGO_CARPOOL.png" alt="">
+        </header>
         <nav class="navegador">
             <a href="login.php">Buscar trayecto</a>
             <a href="login.php">Subir trayecto</a>
@@ -27,7 +29,7 @@ include "utils/conexionBD.php";
         </nav>
         <main class='contenido'>
             <video autoplay muted loop playsinline class="video-background">
-                <source src="img/fondoSubir.mp4" type="video/mp4">
+                <source src="../img/fondoSubir.mp4" type="video/mp4">
                 Tu navegador no soporta el video.
             </video>
             <?php
@@ -106,5 +108,5 @@ include "utils/conexionBD.php";
 </body>
 </html>
 <?php
-include "utils/cerrarBD.php";
+include "../utils/cerrarBD.php";
 ?>

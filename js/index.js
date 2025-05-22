@@ -103,7 +103,7 @@ form.addEventListener('submit',(e)=>{
     data1.append('accion', 'buscarTrayectos');
     let origen=data1.get('origen');
     let destino=data1.get('destino');
-    fetch('ayax/buscarTrayecto.php',{
+    fetch('ajax/buscarTrayecto.php',{
         method:'POST',
         body:data1
     })
@@ -265,7 +265,7 @@ function detallesViaje(e){
                                 <p class='error-prompt-heading'>Debe registrarse para continuar
                                 </p><div class='error-prompt-wrap'>
                                 <ul class='error-prompt-list' role='list'>
-                                    <li>Inicia sesión <a href='login.php'>Aquí</a></li>
+                                    <li>Inicia sesión <a href='pages/login.php'>Aquí</a></li>
                                     <i class='fa-li fa fa-spinner fa-spin'>
                                 </ul>
                             </div>

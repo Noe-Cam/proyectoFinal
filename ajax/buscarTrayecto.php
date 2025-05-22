@@ -1,12 +1,12 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
+require '../PHPMailer/src/Exception.php';
+require '../PHPMailer/src/PHPMailer.php';
+require '../PHPMailer/src/SMTP.php';
 header('Content-Type: application/json');
 session_start();
-include "utils/conexionBD.php";
+include "../utils/conexionBD.php";
 // Al tener varias llamadas por ajax a este archivo, se las asigna acciones para controlarlas aquí
 $datosRecibidos = file_get_contents("php://input");
 $data = json_decode($datosRecibidos, true);
@@ -98,7 +98,7 @@ switch($accion){
             // En el url mando el id del trayecto para editarlo después
             $mail->Body= "<p> ¡¡ENHORABUENA!!<br> $mailUserSolicita tiene interés en tu trayecto publicado en CarPool.<br> Ponte en contacto cuanto antes.<br><br>
             Si quieres eliminar una plaza en tu viaje publicado, haz click en el siguiente botón</p><br><br>
-            <a href='http://localhost/PROYECTO/proyectoFinal/eliminarPlaza.php?numero=$idTrayeto' style='
+            <a href='http://localhost/PROYECTO/proyectoFinal/pages/eliminarPlaza.php?numero=$idTrayeto' style='
                 display:inline-block;
                 padding:10px 20px;
                 background-color:#28a745;
@@ -123,4 +123,4 @@ switch($accion){
     break;
 };
 
-include "utils/cerrarBD.php";
+include "../utils/cerrarBD.php";

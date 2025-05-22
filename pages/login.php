@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autenticación</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div class="contenedor-grid">
         <header class="logo">
-            <img class="logoCarpool" src="img/LOGO_CARPOOL.png" alt="">
+            <img class="logoCarpool" src="../img/LOGO_CARPOOL.png" alt="">
         </header>
         <nav class="navegador">
           <button class="burger"> &#9776;</button>
           <div class="menu">
-            <a href="index.php">Buscar trayecto</a>
+            <a href="../index.php">Buscar trayecto</a>
             <a href="subirTrayecto.php">Subir trayecto</a>
             <a href="miZona.php">Mi zona</a>
             <a href="login.php">Iniciar sesión</a>
@@ -25,7 +25,7 @@
               <img class='imgIconos'src="img/iconos.png" alt="">
           </div> -->
           <video autoplay muted loop playsinline class="video-background">
-                <source src="img/cabecera.mp4" type="video/mp4">
+                <source src="../img/cabecera.mp4" type="video/mp4">
                 Tu navegador no soporta el video.
           </video>
           
@@ -105,6 +105,6 @@
           <p class='derechos'>&copy; 2025 CarPool. Contenido propio, Todos los derechos reservados.</p>
         </footer>
     </div>
-    <script src="js/login.js"></script>
+    <script src="../js/login.js"></script>
 </body>
 </html>
