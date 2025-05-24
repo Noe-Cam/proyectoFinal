@@ -156,5 +156,98 @@ switch($accion){
             ]);
         }
     break;
+    case 'modificar_datosTrayecto':
+        $id_trayecto=$_POST['id_trayecto'];
+        $origen=$_POST['origen'];
+        $destino=$_POST['destino'];
+        $dias=$_POST['dias'] ?? null;
+        $fecha=$_POST['fecha'] ?? null;
+        $precio=$_POST['precio'];
+        $plazas=$_POST['plazas'];
+        $hora=$_POST['hora'];
+        $recurrente=$_POST['recurrente'];
+        $cambioOrigen=false;
+        $cambioDestino=false;
+        $cambioTrayecto=false;
+
+        $sql="UPDATE origenes o JOIN  trayectos t ON t.origen=o.id_origen SET o.nombre= '$origen' WHERE t.id_trayecto='$id_trayecto'";
+        if($conn->query($sql)){
+            $cambioOrigen=true;
+        };
+        $sql="UPDATE destinos d JOIN trayectos t ON t.destino=d.id_destino SET d.nombre= '$destino' WHERE t.id_trayecto='$id_trayecto'";
+        if($conn->query($sql)){
+            $cambioDestino=true;
+        };
+        $sql="UPDATE trayectos SET fecha='$fecha', precio='$precio',dias='$dias',hora='$hora',plazas='$plazas' WHERE id_trayecto='$id_trayecto'";
+        if($conn->query($sql)){
+            $cambioTrayecto=true;
+        };
+        if($cambioOrigen && $cambioDestino && $cambioTrayecto){
+            echo json_encode([
+                "datosModifTrayecto" => true
+            ]);
+        }else{
+            echo json_encode([
+                "datosModifTrayecto" => false
+            ]);
+        }
+    break;
+    case 'cambiar_estado_trayecto':
+        $idTrayecto=$_POST['id_trayecto'];
+        $nuevoEstado=$_POST['nuevo_estado'];
+        $fechaOk=false;
+        $plazasOk=false;
+        $sql = "SELECT fecha, plazas FROM trayectos WHERE id_trayecto = '$idTrayecto'";
+        $result = $conn->query($sql);
+        if($result->num_rows>0){
+            $fila=$result->fetch_assoc();
+            $fecha = $fila['fecha'];
+            $plazas = $fila['plazas'];
+            if($nuevoEstado=='1'){
+                if (strtotime($fecha) < strtotime(date('Y-m-d'))){
+                    $fechaOk=false;
+                }else{
+                    $fechaOk=true;
+                };
+                if($plazas <= 0){
+                    $plazasOk=false;
+                }else{
+                    $plazasOk=true;
+                };
+                if($fechaOk==false || $plazasOk==false){
+                    echo json_encode([
+                        "datosModifEstado" => false,
+                        "mensaje" => 'fecha o plaza no ok'
+                    ]);
+                    exit;
+                };
+            };
+            $sql="UPDATE trayectos SET activo= '$nuevoEstado' WHERE id_trayecto= '$idTrayecto'";
+            if ($conn->query($sql)) {
+                echo json_encode([
+                        "datosModifEstado" => true, 
+                ]);
+            } else {
+                echo json_encode([
+                        "datosModifEstado" => false, 
+                ]);
+            }
+        }else{
+            echo json_encode([
+                "datosModifEstado" => false, 
+            ]);
+        };
+    break;
+    default:
+        echo json_encode([
+                    "cambioUsu" => false,
+                    "cambioContra"=> false,
+                    "desactivarCuenta"=> false,
+                    "datosVehiculo"=> false,
+                    "datosModifVehiculo"=> false,
+                    "datosModifTrayecto" => false,
+                    "datosModifEstado" => false
+            ]);
+    break;
 };
 include "../utils/cerrarBD.php";

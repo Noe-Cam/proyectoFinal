@@ -14,7 +14,7 @@ include '../utils/controlLogin.php';
 <body>
     <div class="contenedor-grid">
         <header class="logo">
-            <img class="logoCarpool" src="../img/LOGO_CARPOOL.png" alt="">
+            <a href="../index.php"><img class="logoCarpool" src="../img/LOGO_CARPOOL.png" alt=""></a>
         </header>
         <nav class="navegador">
             <button class="burger"> &#9776;</button>
@@ -126,7 +126,7 @@ include '../utils/controlLogin.php';
                                         <div class="info__title falseContra">No se ha podido completar la operación</div>
                                         <div class="info__title falseContraActual">Contraseña actual incorrecta</div>
                                         <div class="info__title contrasDif">Las contraseñas no coinciden</div>
-                                        <div class="info__title contraLength">Debe tener entre 4 y 12 digitos</div>
+                                        <div class="info__title contraLength">La contraseña debe tener entre 4 y 12 digitos</div>
                                     </div>
                                 </div>
                             </div>
@@ -266,15 +266,149 @@ include '../utils/controlLogin.php';
 
                             <?php
                             }
-                            include '../utils/cerrarBD.php';
                             ?>
                     </div>
                 </div>
-                <div class="datosTrayectos">
-                    <h2 class="titulo">Viajes publicados activos</h2>
-                </div>
+                    <?php
+                        $sql="SELECT id_usuario FROM usuarios WHERE email='$email'";
+                        $result=$conn->query($sql);
+                        if($result->num_rows>0){
+                            $fila = $result->fetch_assoc();
+                            $idUsu=$fila['id_usuario'];
+                            $sqlActivos="SELECT t.id_trayecto,t.fecha,t.precio,t.dias,t.hora,t.plazas,t.recurrente,t.activo,o.nombre AS origen ,d.nombre AS destino FROM trayectos t JOIN origenes o ON o.id_origen=t.origen JOIN destinos d ON d.id_destino=t.destino WHERE t.usu_crea='$idUsu' AND activo=1";
+                            $viajesActivos=$conn->query($sqlActivos);
+
+                            $sqlInactivos="SELECT t.id_trayecto,t.fecha,t.precio,t.dias,t.hora,t.plazas,t.recurrente,t.activo,o.nombre AS origen,d.nombre AS destino FROM trayectos t JOIN origenes o ON o.id_origen=t.origen JOIN destinos d ON d.id_destino=t.destino WHERE t.usu_crea='$idUsu' AND activo=0";
+                            $viajesInactivos=$conn->query($sqlInactivos);
+                        }
+                    ?>
+                    <div class="datosTrayectos">
+                        <h2 class="titulo">Tus viajes</h2>
+                        <div class="mostrar_trayect">
+                            <div class="activos">
+                                <h3>Viajes activos</h3>
+                                    <div class="viajes-scroll">
+                                        <?php if ($viajesActivos->num_rows > 0): ?>
+                                            <?php while ($fila = $viajesActivos->fetch_assoc()): ?>
+                                            <div class="viaje-card"
+                                                data-id="<?= $fila['id_trayecto'] ?>"
+                                                data-origen="<?=$fila['origen'] ?>"
+                                                data-destino="<?=$fila['destino'] ?>"
+                                                data-fecha="<?= $fila['fecha'] ?>"
+                                                data-hora="<?= $fila['hora'] ?>"
+                                                data-precio="<?= $fila['precio'] ?>"
+                                                data-plazas="<?=$fila['plazas'] ?>"
+                                                data-recurrente="<?= $fila['recurrente'] ?>"
+                                                data-dias="<?= $fila['dias'] ?>"
+                                                data-activo="<?= $fila['activo'] ?>">
+                                                <strong><?= $fila['origen'] ?> → <?= $fila['destino'] ?></strong><br>
+                                                Hora: <?= $fila['hora'] ?><br>
+                                                Precio: <?= $fila['precio'] ?> € <br>
+                                                Plazas: <?= $fila['plazas'] ?><br>
+                                                <?php if ($fila['recurrente'] == 1): ?>
+                                                    Días: <?= $fila['dias'] ?> <br>
+                                                <?php else: ?>
+                                                    Fecha: <?= $fila['fecha'] ?>
+                                                <?php endif; ?>
+                                            </div>
+                                            <?php endwhile; ?>
+                                        <?php else: ?>
+                                            <p>No hay viajes activos publicados.</p>
+                                        <?php endif; ?>
+                                    </div>
+                            </div>
+                            <div class="inactivos">
+                                <h3>Viajes inactivos</h3>
+                                <div class="viajes-scroll">
+                                        <?php if ($viajesInactivos->num_rows > 0): ?>
+                                            <?php while ($fila = $viajesInactivos->fetch_assoc()): ?>
+                                            <div class="viaje-card"
+                                                data-id="<?= $fila['id_trayecto'] ?>"
+                                                data-origen="<?=$fila['origen'] ?>"
+                                                data-destino="<?=$fila['destino'] ?>"
+                                                data-fecha="<?= $fila['fecha'] ?>"
+                                                data-hora="<?= $fila['hora'] ?>"
+                                                data-precio="<?= $fila['precio'] ?>"
+                                                data-plazas="<?= $fila['plazas'] ?>"
+                                                data-recurrente="<?= $fila['recurrente'] ?>"
+                                                data-dias="<?= $fila['dias'] ?>"
+                                                data-activo="<?= $fila['activo'] ?>">
+                                                <strong><?= $fila['origen'] ?> → <?= $fila['destino'] ?></strong><br>
+                                                Hora: <?= $fila['hora'] ?><br>
+                                                Precio: <?= $fila['precio'] ?> € <br>
+                                                Plazas: <?= $fila['plazas'] ?><br>
+                                                <?php if ($fila['recurrente'] == 1): ?>
+                                                    Días: <?= $fila['dias'] ?> <br>
+                                                <?php else: ?>
+                                                    Fecha: <?= $fila['fecha'] ?>
+                                                <?php endif; ?>
+                                            </div>
+                                            <?php endwhile; ?>
+                                        <?php else: ?>
+                                            <p>No hay viajes activos publicados.</p>
+                                        <?php endif; ?>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modalModifTrayecto oculto" >
+                        <div class="datosModal">
+                            <div class=cambioDatos>
+                                <h3>Modificar datos</h3>
+                                <form id="formModifTrayecto" method="POST">
+                                    <input type="hidden" name="id_trayecto" id="id_trayecto">
+                                    <input type="hidden" name="recurrente" id="recurrente">
+                                    <div>
+                                        <label for="">Origen </label>
+                                        <input type="text" name='origen' id='origen' required>
+                                    </div>
+                                    <div>
+                                        <label for="">Destino </label>
+                                        <input type="text" name='destino' id='destino' required>
+                                    </div>
+                                    <div class='grupoFecha'>
+                                        <label for="">Fecha </label>
+                                        <input type="date" name='fecha' id='fecha' required>
+                                    </div>
+                                    <div class='grupoDias'>
+                                        <label for="">Dias </label>
+                                        <input type="text" name='dias' id='dias' required>
+                                    </div>
+                                    <div>
+                                        <label for="">Hora </label>
+                                        <input type="text" name='hora' id='hora' required>
+                                    </div>
+                                    <div>
+                                        <label for="">Precio </label>
+                                        <input type="number" name='precio' id='precio' step="0.01" required>
+                                    </div>
+                                    <div>
+                                        <label for="">Plazas </label>
+                                        <input type="number" name='plazas' id='plazas' required>
+                                    </div>
+                                    <div class="botones-modal">
+                                        <button class="btn-datos guardarModifTrayecto">Guardar datos modificados</button>
+                                        <button type="button" class="btn-datos actDesacTrayecto"></button>
+                                        <button type="button" class="btn-datos cerrar">Cerrar</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class='infoModifTrayecto oculto'>
+                                <!-- From Uiverse.io by andrew-demchenk0 --> 
+                                <div class="info">
+                                    <div class="info__icon">
+                                    <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m12 1.5c-5.79844 0-10.5 4.70156-10.5 10.5 0 5.7984 4.70156 10.5 10.5 10.5 5.7984 0 10.5-4.7016 10.5-10.5 0-5.79844-4.7016-10.5-10.5-10.5zm.75 15.5625c0 .1031-.0844.1875-.1875.1875h-1.125c-.1031 0-.1875-.0844-.1875-.1875v-6.375c0-.1031.0844-.1875.1875-.1875h1.125c.1031 0 .1875.0844.1875.1875zm-.75-8.0625c-.2944-.00601-.5747-.12718-.7808-.3375-.206-.21032-.3215-.49305-.3215-.7875s.1155-.57718.3215-.7875c.2061-.21032.4864-.33149.7808-.3375.2944.00601.5747.12718.7808.3375.206.21032.3215.49305.3215.7875s-.1155.57718-.3215.7875c-.2061.21032-.4864.33149-.7808.3375z" fill="#393a37"></path></svg>
+                                    </div>
+                                    <div class="info__title modfTrayectotrue">Datos modificados correctamente</div>
+                                    <div class="info__title modfTrayectofalse">No se ha podido completar la operación</div>
+                                    <div class="info__title modfTrayectoEstadotrue">Estado del viaje cambiado correctamente</div>
+                                    <div class="info__title modfTrayectoEstadofalse">Las plazas deben ser mayores a 0 y la fecha mayor a día de hoy.<br>Guarda los datos modificados y posteriormente activa tu viaje de nuevo</div>
+                                </div>
+                            </div>
+                    </div>
             </div>
         </main>
+        <?php include '../utils/cerrarBD.php'; ?>
         <footer class='pie'>
             <p class='derechos'>&copy; 2025 CarPool. Contenido propio, Todos los derechos reservados.</p>
         </footer>

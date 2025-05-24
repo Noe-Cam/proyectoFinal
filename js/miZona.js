@@ -6,26 +6,34 @@ const cambiarContra=document.querySelector('.btn-contra');
 const eliminarCuenta=document.querySelector('.eliminar');
 const datosVehiculoNuevos=document.querySelector('.vehiculoNuevo');
 const datosmodfVehiculo=document.querySelector('.modfVehiculo');
+const infoViaje=document.querySelectorAll('.viaje-card');
 const oscurecerFondo=document.querySelector('.modal-oscurecer-fondo');
 const modalDatosUsu=document.querySelector('.modalDatosUsu');
 const modalDatosContra=document.querySelector('.modalDatosContra');
 const modalEliminarCuenta=document.querySelector('.modalEliminarCuenta');
 const modalVehiculoNuevo=document.querySelector('.modalVehiculoNuevo');
 const modalModfVehiculo=document.querySelector('.modalModfVehiculo');
+const modalModifTrayecto=document.querySelector('.modalModifTrayecto');
+const grupoDias=document.querySelector('.grupoDias');
+const grupoFecha=document.querySelector('.grupoFecha');
 const btnCerrar=document.querySelectorAll('.cerrar');
 const formUsu=document.getElementById('formUsuario');
 const formContra=document.getElementById('formContra');
 const formVehicNuevo=document.getElementById('formDatosVehic');
+const formModifTrayecto=document.getElementById('formModifTrayecto');
 const btnGuardarUsu=document.querySelector('.guardar');
 const btnguardarContra=document.querySelector('.guardarContra');
 const btnDesactCuenta=document.querySelector('.desactCuenta');
 const btnDatosVehiculoNuevo=document.querySelector('.guardarVehiculoNuevo');
 const btnModfVehic=document.querySelector('.guardarModfVehic');
+const btnModfTrayecto=document.querySelector('.guardarModifTrayecto');
+const btnActDesactTrayecto=document.querySelector('.actDesacTrayecto');
 const infoUsu=document.querySelector('.infoUsu');
 const infoContra=document.querySelector('.infoContra');
 const infoDesactCuenta=document.querySelector('.infoDesactCuenta');
 const infoVehiculoNuevo=document.querySelector('.infoVehiculoNuevo');
 const infoinfoModfVehic=document.querySelector('.infoModfVehic');
+const infoModifTrayecto=document.querySelector('.infoModifTrayecto');
 const mensajeExitoUsu=document.querySelector('.info__title.true');
 const mensajeErrorUsu=document.querySelector('.info__title.false');
 const mensajeCorreoFalse=document.querySelector('.info__title.emailFalse');
@@ -40,6 +48,10 @@ const mensjNuevoVehiculoTrue=document.querySelector('.nuevoVehictrue');
 const mensjNuevoVehiculoFalse=document.querySelector('.nuevoVehicfalse');
 const mensjModfVehictrue=document.querySelector('.modfVehictrue');
 const mensjModfVehicfalse=document.querySelector('.modfVehicfalse');
+const mensjmodfTrayectotrue=document.querySelector('.modfTrayectotrue');
+const mensjmodfTrayectofalse=document.querySelector('.modfTrayectofalse');
+const mensjmodfTrayectoEstadotrue=document.querySelector('.modfTrayectoEstadotrue');
+const mensjmodfTrayectoEstadofalse=document.querySelector('.modfTrayectoEstadofalse');
 
 btnCerrar.forEach(boton=>{
     boton.addEventListener('click',cerrarModales);
@@ -89,7 +101,18 @@ function cerrarModales(){
         infoinfoModfVehic.classList.add('oculto');
         mensjModfVehictrue.classList.add('oculto');
         mensjModfVehicfalse.classList.add('oculto');
-    }
+    }else if(modalModifTrayecto.classList.contains('visible')){
+        oscurecerFondo.classList.remove('visible');
+        oscurecerFondo.classList.add('oculto');
+        modalModifTrayecto.classList.remove('visible');
+        modalModifTrayecto.classList.add('oculto');
+        infoModifTrayecto.classList.add('oculto');
+        mensjmodfTrayectoEstadotrue.classList.add('oculto');
+        mensjmodfTrayectoEstadofalse.classList.add('oculto');
+        mensjmodfTrayectotrue.classList.add('oculto');
+        mensjmodfTrayectotrue.classList.add('oculto');
+    };
+    
 };
 
 logout.addEventListener('click',function(e){
@@ -109,6 +132,47 @@ if(datosVehiculoNuevos){
 if(datosmodfVehiculo){
     datosmodfVehiculo.addEventListener('click',modificarDatosVehiculos)
 }
+infoViaje.forEach(viaje=>{
+    viaje.addEventListener('click',()=>{
+        document.getElementById('id_trayecto').value = viaje.dataset.id;
+        document.getElementById('origen').value = viaje.dataset.origen;
+        document.getElementById('destino').value = viaje.dataset.destino;
+        document.getElementById('fecha').value = viaje.dataset.fecha ;
+        document.getElementById('hora').value = viaje.dataset.hora ;
+        document.getElementById('precio').value = viaje.dataset.precio ;
+        document.getElementById('plazas').value = viaje.dataset.plazas;
+        document.getElementById('recurrente').value = viaje.dataset.recurrente ;
+        document.getElementById('dias').value = viaje.dataset.dias;
+
+        const activo = viaje.dataset.activo;
+        btnActDesactTrayecto.dataset.id=viaje.dataset.id;
+        btnActDesactTrayecto.dataset.activo=activo;
+        btnActDesactTrayecto.textContent = activo == '1' ? 'Desactivar viaje' : 'Activar viaje';
+        mostrarDiasFecha();
+    });
+});
+function mostrarDiasFecha(){
+    const recurrente=document.getElementById('recurrente').value;
+    if(recurrente=='1'){
+        grupoFecha.classList.add('oculto');
+        grupoFecha.classList.remove('visible');
+        grupoDias.classList.add('visible');
+        grupoDias.classList.remove('oculto');
+        document.getElementById('dias').setAttribute('required', 'required');
+        document.getElementById('fecha').removeAttribute('required');
+    }else{
+        grupoDias.classList.add('oculto');
+        grupoDias.classList.remove('visible');
+        grupoFecha.classList.add('visible');
+        grupoFecha.classList.remove('oculto');
+        document.getElementById('dias').removeAttribute('required');
+        document.getElementById('fecha').setAttribute('required', 'required');
+    };
+    oscurecerFondo.classList.remove('oculto');
+    oscurecerFondo.classList.add('visible');
+    modalModifTrayecto.classList.remove('oculto');
+    modalModifTrayecto.classList.add('visible');
+};
 function editarDatosUsu(){
     oscurecerFondo.classList.remove('oculto');
     oscurecerFondo.classList.add('visible');
@@ -222,6 +286,46 @@ if(btnModfVehic){
         });
     });
 };
+btnModfTrayecto.addEventListener('click',function(e){
+    e.preventDefault();
+    const formData= new FormData (formModifTrayecto);
+    formData.append('accion','modificar_datosTrayecto');
+        fetch('../ajax/cambiosMiZona.php',{
+            method: 'POST',
+            body: formData
+        })
+        .then (response=> response.json())
+        .then(data =>{
+            respuestaServidorModifTrayecto(data);
+        })
+        .catch(error=>{
+            respuestaServidorModifTrayecto(error);
+        });
+});
+btnActDesactTrayecto.addEventListener('click',function(){
+    const idTrayecto = this.dataset.id;
+    console.warn(idTrayecto);
+    const estadoActual = this.dataset.activo;
+    console.warn(estadoActual);
+    // Invertimos el valor del estado del boton. Si antes era un boton de la zona viajes activos y se le ha pulsado pasa a valor 0, para cambiarlo a inactivo el viaje
+    const nuevoEstado = estadoActual === '1' ? '0' : '1';
+    const formData = new FormData();
+    formData.append('accion', 'cambiar_estado_trayecto');
+    formData.append('id_trayecto', idTrayecto);
+    formData.append('nuevo_estado', nuevoEstado);
+        fetch('../ajax/cambiosMiZona.php',{
+            method: 'POST',
+            body: formData
+        })
+        .then (response=> response.json())
+        .then(data =>{
+            respuestaServidorCambioEstadoTrayecto(data);
+        })
+        .catch(error=>{
+            respuestaServidorCambioEstadoTrayecto(error);
+        });
+    
+});
 function respuestaServidorUsu(datos){
     if(datos.cambioUsu==true){
         infoUsu.classList.remove('oculto');
@@ -249,6 +353,7 @@ function respuestaServidorUsu(datos){
 
     };
 };
+
 function respuestaServidorContra(datos){
     if (datos.cambioContra==true){
         infoContra.classList.remove('oculto');
@@ -352,4 +457,61 @@ function respuestaServidorModifVehic(datos){
         mensjModfVehictrue.classList.remove('visible');
     }
 };
+function respuestaServidorModifTrayecto(datos){
+    if(datos.datosModifTrayecto==true){
+        infoModifTrayecto.classList.remove('oculto');
+        mensjmodfTrayectotrue.classList.add('visible');
+        mensjmodfTrayectotrue.classList.remove('oculto');
+        mensjmodfTrayectofalse.classList.add('oculto');
+        mensjmodfTrayectofalse.classList.remove('visible');
+        mensjmodfTrayectoEstadotrue.classList.add('oculto');
+        mensjmodfTrayectoEstadotrue.classList.remove('visible');
+        mensjmodfTrayectoEstadofalse.classList.add('oculto');
+        mensjmodfTrayectoEstadofalse.classList.remove('visible');
+    } else {
+        infoModifTrayecto.classList.remove('oculto');
+        mensjmodfTrayectotrue.classList.add('oculto');
+        mensjmodfTrayectotrue.classList.remove('visible');
+        mensjmodfTrayectofalse.classList.add('visible');
+        mensjmodfTrayectofalse.classList.remove('oculto');
+        mensjmodfTrayectoEstadotrue.classList.add('oculto');
+        mensjmodfTrayectoEstadotrue.classList.remove('visible');
+        mensjmodfTrayectoEstadofalse.classList.add('oculto');
+        mensjmodfTrayectoEstadofalse.classList.remove('visible');
+    }
+        
+};
+function respuestaServidorCambioEstadoTrayecto(datos){
+    if(datos.datosModifEstado==true){
+        infoModifTrayecto.classList.remove('oculto');
+        mensjmodfTrayectoEstadotrue.classList.add('visible');
+        mensjmodfTrayectoEstadotrue.classList.remove('oculto');
+        mensjmodfTrayectoEstadofalse.classList.remove('visible');
+        mensjmodfTrayectoEstadofalse.classList.add('oculto');
+        mensjmodfTrayectotrue.classList.add('oculto');
+        mensjmodfTrayectotrue.classList.remove('visible');
+        mensjmodfTrayectofalse.classList.add('oculto');
+        mensjmodfTrayectofalse.classList.remove('visible');
+    } else if(datos.datosModifEstado==false && datos.mensaje=='fecha o plaza no ok'){
+        infoModifTrayecto.classList.remove('oculto');
+        mensjmodfTrayectoEstadofalse.classList.remove('oculto');
+        mensjmodfTrayectoEstadofalse.classList.add('visible');
+        mensjmodfTrayectoEstadotrue.classList.add('oculto');
+        mensjmodfTrayectoEstadotrue.classList.remove('visible');
+        mensjmodfTrayectotrue.classList.add('oculto');
+        mensjmodfTrayectotrue.classList.remove('visible');
+        mensjmodfTrayectofalse.classList.add('oculto');
+        mensjmodfTrayectofalse.classList.remove('visible');
+    }else{
+        infoModifTrayecto.classList.remove('oculto');
+        mensjmodfTrayectofalse.classList.add('visible');
+        mensjmodfTrayectofalse.classList.remove('oculto');
+        mensjmodfTrayectoEstadofalse.classList.remove('visible');
+        mensjmodfTrayectoEstadofalse.classList.add('oculto');
+        mensjmodfTrayectoEstadotrue.classList.add('oculto');
+        mensjmodfTrayectoEstadotrue.classList.remove('visible');
+        mensjmodfTrayectotrue.classList.add('oculto');
+        mensjmodfTrayectotrue.classList.remove('visible');
+    }
+}
 

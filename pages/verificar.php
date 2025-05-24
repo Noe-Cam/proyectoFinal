@@ -21,7 +21,7 @@ include '../utils/conexionBD.php';
 <body>
     <div class="contenedor-grid">
         <header class="logo">
-            <img class="logoCarpool" src="../img/LOGO_CARPOOL.png" alt="">
+            <a href="../index.php"><img class="logoCarpool" src="../img/LOGO_CARPOOL.png" alt=""></a>
         </header>
         <nav class="navegador">
             <a href="../index.php">Buscar trayecto</a>

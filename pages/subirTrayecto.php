@@ -20,7 +20,7 @@ include '../utils/controlLogin.php';
 <body>
     <div class="contenedor-grid">
         <header class="logo">
-            <img class="logoCarpool" src="../img/LOGO_CARPOOL.png" alt="">
+            <a href="../index.php"><img class="logoCarpool" src="../img/LOGO_CARPOOL.png" alt=""></a>
         </header>
         <nav class="navegador">
             <button class="burger"> &#9776;</button>
@@ -62,10 +62,11 @@ include '../utils/controlLogin.php';
              include '../utils/conexionBD.php';
              $email=$_SESSION["usuario"];
              $sql="SELECT uv.id_usuario FROM usuarios u INNER JOIN usuarios_vehiculos uv ON u.id_usuario=uv.id_usuario WHERE u.email='$email'";
-             $result = $conn->query($sql);
+             $result = $conn->query($sql);?>
+             <div class="columna">
+            <?php
              if($result->num_rows == 0){
             ?>
-            <div class="columna">
                 <div class='card-datos-vehiculo'>
                     <div class="popup info-popup">
                         <div class="popup-icon info-icon">

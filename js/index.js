@@ -282,6 +282,17 @@ function detallesViaje(e){
 async function infoModal(datos){
     console.warn(datos);
     console.warn(datos.datosModal.fecha);
+    // Para evitar la duplicidad en mostrar la tabla de datos de contacto cada vez que se da a cerrar y se vuevle a dar al trayecto, se borran los elementos hermanos del elemento infoContactar, asi nos aseguramos de que al insertar , simpre serán los unicos.
+    if(infoContactar){
+        let silbings=infoContactar.nextElementSibling;
+        if(silbings){
+            while(silbings && ((silbings.classList.contains('info-tabla'))|| (silbings.classList.contains('button_submit')))){
+                const borrar=silbings;
+                silbings=silbings.nextElementSibling;
+                borrar.remove();
+            };
+        };
+    };
     let html=`
     <table class=info-tabla>
         <tr>
@@ -337,8 +348,6 @@ async function infoModal(datos){
     let coordOrigen=[datos.datosModal.lon_origen,datos.datosModal.lat_origen];
     let coorDestino=[datos.datosModal.lon_destino,datos.datosModal.lat_destino];
     await dibujarRuta(coordOrigen,coorDestino,map);
-    fondoOscuro.classList.remove('oculto');
-    modal.classList.remove('oculto');
 };
 function infoContacto(){
     infoContactar.classList.remove('oculto');
@@ -346,6 +355,7 @@ function infoContacto(){
 function cerrarModal(){
     fondoOscuro.classList.add('oculto');
     modal.classList.add('oculto');
+    infoContactar.innerHTML = ''; 
 }
 function emailConductor(emailConductor,id_trayecto){
     console.warn('entrando en mandar email')
@@ -368,14 +378,19 @@ function emailConductor(emailConductor,id_trayecto){
         console.warn('Error',error)
     });
 };
+let map=null;
 async function iniciarMapa() {
-     // Inicializo el mapa centrado en Madrid
-     const map = L.map('map').setView([40.4168, -3.7038], 6);
-     map.invalidateSize();
-     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-         attribution: '&copy; OpenStreetMap contributors'
-     }).addTo(map);
-     return map;
+    if (map !== null) {
+        map.remove();
+        map = null;
+    }
+    // Inicializo el mapa centrado en Madrid
+    map = L.map('map').setView([40.4168, -3.7038], 6);
+    map.invalidateSize();
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+    return map;
 };
 // Con Leaflet, creamos el mapa dinámico y con OpenRouteService, creo la ruta 
 async function dibujarRuta(coordOrigen, coorDestino,map) {

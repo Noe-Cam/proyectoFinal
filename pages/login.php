@@ -10,7 +10,7 @@
 <body>
     <div class="contenedor-grid">
         <header class="logo">
-            <img class="logoCarpool" src="../img/LOGO_CARPOOL.png" alt="">
+          <a href="../index.php"><img class="logoCarpool" src="../img/LOGO_CARPOOL.png" alt=""></a>
         </header>
         <nav class="navegador">
           <button class="burger"> &#9776;</button>
@@ -47,15 +47,6 @@
                 </div>
               </div>
             </div>
-            <!-- From Uiverse.io by Praashoo7 --> 
-            <!-- <form class="form">
-                <p class="heading">LOGIN</p>
-                <input placeholder="Correo electrónico" class="input" name='correo' type="email">
-                <input placeholder="Password" class="input" name='contra' type="password">
-                <a class="enlace" href="formularioRegistro.html">¿Aun no tienes cuenta?</br>Registrate aquí</a>
-                <button class="btn">Entrar</button>
-            </form> -->
-
             <!-- From Uiverse.io by Praashoo7 --> 
             <div class="contenedor_form">
               <form class="form" method='POST'>
