@@ -40,9 +40,12 @@ const cerrarError=document.querySelector('.error__close');
 cerrarError.addEventListener('click',function(){
     error.classList.add('oculto');
 });
-cerrarIfo.addEventListener('click',function(){
+if(cerrarIfo){
+    cerrarIfo.addEventListener('click',function(){
     cardDatosVehiculo.classList.add('oculto');
-});
+    });
+};
+
 const logout=document.querySelector('.fa');
 logout.addEventListener('click',function(e){
     e.preventDefault();
@@ -50,14 +53,18 @@ logout.addEventListener('click',function(e){
 });
 botonViajePuntual.addEventListener('click',function(){
     console.warn(botonViajePuntual);
-    contenedorViajeInfo.classList.add('oculto');
+    if(contenedorViajeInfo){
+        contenedorViajeInfo.classList.add('oculto');
+    };
     contenedorTipoViaje.classList.add('oculto');
     contenedorError.classList.remove('oculto');
     formulario.classList.remove('oculto');
     inputFecha.classList.remove('oculto');
 });
 botonViajeRecurrente.addEventListener('click',function(){
-    contenedorViajeInfo.classList.add('oculto');
+    if(contenedorViajeInfo){
+        contenedorViajeInfo.classList.add('oculto');
+    };
     contenedorTipoViaje.classList.add('oculto');
     contenedorError.classList.remove('oculto');
     formulario.classList.remove('oculto');
@@ -264,7 +271,7 @@ async function cambiarPantalla(coordOrigen,coorDestino){
         data.append('coordOrigen', JSON.stringify(coordOrigen));
         data.append('coordDestino', JSON.stringify(coorDestino));
         console.log(Object.fromEntries(data.entries()));
-        fetch('ajax/publicarTrayecto.php',{
+        fetch('../ajax/publicarTrayecto.php',{
             method:'POST',
             body:data
         })

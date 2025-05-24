@@ -1,3 +1,4 @@
+<!-- Página de inicio de sesión de un usuario previamente registrado -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,14 +22,10 @@
           </div>
         </nav>
         <main class='contenido'>
-          <!-- <div class='fondoIcono'>
-              <img class='imgIconos'src="img/iconos.png" alt="">
-          </div> -->
           <video autoplay muted loop playsinline class="video-background">
                 <source src="../img/cabecera.mp4" type="video/mp4">
                 Tu navegador no soporta el video.
           </video>
-          
             <div class="notifications-container oculto">
               <div class="error-alert">
                 <div class="flex">
@@ -43,6 +40,7 @@
                     </p><div class="error-prompt-wrap">
                       <ul class="error-prompt-list" role="list">
                         <li>Correo o contraseña incorrectos</li>
+                        <button class="btn_inisesion intento"> Volver a intentarlo </button>
                       </ul>
                   </div>
                   </div>

@@ -1,4 +1,9 @@
 <?php
+// Pagina que se encarga de insertar los datos de los trayectos publicados inserciones en las tablas:
+//     - origenes
+//     - destinos
+//     - trayectos
+// Llamada desde subirTrayecto.js 
 session_start();
 $origen=$_POST['origen'];
 $destino=$_POST['destino'];
@@ -22,7 +27,7 @@ $lonDestino = $coordDestino[0];
 $origenes=false;
 $destinos=false;
 $trayectos=false;
-include "utils/conexionBD.php";
+include "../utils/conexionBD.php";
 
 $sql="INSERT INTO origenes (nombre,latitud,longitud) VALUES ('$origen','$latOrigen','$lonOrigen')";
 if ($conn->query($sql) === TRUE) {
@@ -61,6 +66,6 @@ if($origenes==true && $destinos==true && $trayectos==true){
         'publicado' => 'false'
     ]);
 };
-include "utils/cerrarBD.php";
+include "../utils/cerrarBD.php";
 
 

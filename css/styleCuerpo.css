@@ -508,7 +508,6 @@ legend{
 .flex label{
     width: 30%;
 }
-  
 .form label {
     position: relative;
 }
@@ -533,7 +532,6 @@ legend{
   border: 2px solid #2A9D8F ;
   color: #264653;
 }
-  
 .fancy:hover {
     background-color: #264653;
     color: white;
@@ -550,22 +548,18 @@ font-size: 0.9em;
 cursor: text;
 transition: 0.3s ease;
 }
-
 .form label .input:placeholder-shown + span {
 top: 15px;
 font-size: 0.9em;
 }
-
 .form label .input:focus + span,.form label .input:valid + span {
 top: 30px;
 font-size: 0.7em;
 font-weight: 600;
 }
-
 .form label .input:valid + span {
 color: green;
 }
-
 .input01 {
 width: 85%;
 padding: 10px 10px 20px 10px;
@@ -573,7 +567,6 @@ outline: 0;
 border: 2px solid #2A9D8F ;
 border-radius: 5px;
 }
-
 .form label .input01 + span {
 position: absolute;
 left: 10px;
@@ -583,22 +576,18 @@ font-size: 0.9em;
 cursor: text;
 transition: 0.3s ease;
 }
-
 .form label .input01:placeholder-shown + span {
 top: 40px;
 font-size: 0.9em;
 }
-
 .form label .input01:focus + span,.form label .input01:valid + span {
 top: 50px;
 font-size: 0.7em;
 font-weight: 600;
 }
-
 .form label .input01:valid + span {
 color: green;
 }
-
 .fancy {
 background-color: #E76F51;
 border: 2px solid #E76F51;
@@ -633,22 +622,18 @@ text-decoration: none;
 color: white;
 transform: translateX(30%);
 }
-
 .fancy:hover::before {
 width: 1.5rem;
 background: white;
 }
-
 .fancy:hover .text {
 color: white;
 padding-left: 1.5em;
 }
-
 .fancy:hover .top-key {
 left: -2px;
 width: 0px;
 }
-
 .fancy:hover .bottom-key-1,
 .fancy:hover .bottom-key-2 {
 right: 0;
@@ -675,7 +660,6 @@ width: 0;
   padding: 10px;
   cursor: pointer;
 }
-
 #sugerencias-origen li:hover,
 #sugerencias-destino li:hover {
   background-color: #eee;
@@ -796,34 +780,34 @@ width: 0;
     gap: 1rem;
     margin-top: 0 auto;
     z-index: 1;
-  }
-  .flex {
-    display: flex;
-  }
-  .flex-shrink-0 {
-    flex-shrink: 0;
-  }
-  .error-alert {
-    border-radius: 0.375rem;
-    padding: 1rem;
-    background-color: rgb(254 242 242);
-  }
-  .error-svg {
-    color: #F87171;
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-  .error-prompt-heading {
-    color: #991B1B;
-    font-size: 1.5rem;
-    line-height: 1.25rem;
-    font-weight: bold;
-  }
-  .error-prompt-container {
-    display: flex;
-    flex-direction: column;
-    margin-left: 1.25rem;
-  }
+}
+.flex {
+  display: flex;
+}
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+.error-alert {
+  border-radius: 0.375rem;
+  padding: 1rem;
+  background-color: rgb(254 242 242);
+}
+.error-svg {
+  color: #F87171;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.error-prompt-heading {
+  color: #991B1B;
+  font-size: 1.5rem;
+  line-height: 1.25rem;
+  font-weight: bold;
+}
+.error-prompt-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1.25rem;
+}
 .error-prompt-wrap ul{
     list-style: none;
 }
@@ -934,6 +918,7 @@ width: 0;
   line-height: 1.5rem;
   z-index: 1;
 }
+/* Estilos miZona.php */
 .contenedor_datos{
   background-color: rgb(234, 216, 170); ;
   width: 100%;
@@ -948,6 +933,120 @@ width: 0;
   flex-direction: row;
   justify-content: space-around;
   margin-bottom: 4%;
+}
+/* Oscurecer el fondo cuando aparece el modal */
+.modal-oscurecer-fondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 4;
+}
+.modalDatosUsu, 
+.modalDatosContra,
+.modalEliminarCuenta,
+.modalVehiculoNuevo,
+.modalModfVehiculo{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(82, 116, 151);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  max-width: 40vw;
+  max-height: 80vh;
+  overflow: auto;
+  justify-content: center;
+  flex-direction: row;
+  z-index: 5;
+  width: 60%;
+}
+.modalDatosUsu h3,
+.modalDatosContra h3,
+.modalVehiculoNuevo h3,
+.modalModfVehiculo h3 {
+  color: white;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.modalEliminarCuenta h3,
+.modalEliminarCuenta h6{
+  color: white;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+.modalDatosUsu form,
+.modalDatosContra form,
+.modalVehiculoNuevo form,
+.modalModfVehiculo form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.modalDatosUsu form div,
+.modalDatosContra form div,
+.modalVehiculoNuevo form div,
+.modalModfVehiculo form div,
+.modalEliminarCuenta .botones-modal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.modalDatosUsu label,
+.modalDatosContra label,
+.modalVehiculoNuevo label,
+.modalModfVehiculo label {
+  color: white;
+  flex: 1;
+  margin-right: 1rem;
+  font-weight: bold;
+}
+.modalDatosUsu input,
+.modalDatosContra input,
+.modalVehiculoNuevo input,
+.modalModfVehiculo input {
+  flex: 2;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.botones-modal{
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+.info {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  width: 320px;
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  background: #D7F1FD;
+  border-radius: 8px;
+  border: 1px solid #509AF8;
+  box-shadow: 0px 0px 5px -3px #111;
+}
+.info__icon {
+  width: 20px;
+  height: 20px;
+  transform: translateY(-2px);
+  margin-right: 8px;
+}
+.info__icon path {
+  fill: #f8c350;
+}
+.info__title {
+  font-weight: 500;
+  font-size: 14px;
+  color: #75690c;
 }
 .datosUsuario, .datosVehiculo{
   display: flex;

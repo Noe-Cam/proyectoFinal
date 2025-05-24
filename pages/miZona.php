@@ -14,7 +14,7 @@ include '../utils/controlLogin.php';
 <body>
     <div class="contenedor-grid">
         <header class="logo">
-            <img class="logoCarpool" src="img/LOGO_CARPOOL.png" alt="">
+            <img class="logoCarpool" src="../img/LOGO_CARPOOL.png" alt="">
         </header>
         <nav class="navegador">
             <button class="burger"> &#9776;</button>
@@ -26,10 +26,6 @@ include '../utils/controlLogin.php';
             </div>
         </nav>
         <main class='contenido'>
-            <!-- <video autoplay muted loop playsinline class="video-background">
-                    <source src="img/miZona.mp4" type="video/mp4">
-                Tu navegador no soporta el video.
-            </video> -->
             <div class="contenedor_datos">
                 <div class="contenedor_usuario_vehiculo">
                     <div class="datosUsuario">
@@ -53,38 +49,221 @@ include '../utils/controlLogin.php';
                         </div>
                         <div class="botones-datos">
                             <button class="btn-datos">Cambiar datos</button>
-                            <button class="btn-datos">Cambiar contraseña</button>
+                            <button class="btn-datos btn-contra">Cambiar contraseña</button>
                             <button class="btn-datos eliminar">Eliminar cuenta</button>
                         </div>
+                        <div class="modal-oscurecer-fondo oculto"></div>
+                        <div class="modalDatosUsu oculto" >
+                            <div class="datosModal">
+                                <div class=cambioDatos>
+                                    <h3>Modificar datos</h3>
+                                    <form id="formUsuario" method="POST">
+                                        <div>
+                                            <label for="">Nombre :</label>
+                                            <input type="text" name='nombre' required value="<?= $nombre ?>">
+                                        </div>
+                                        <div>
+                                            <label for="">Apellidos :</label>
+                                            <input type="text" name='apellidos' required value="<?= $apellido ?>">
+                                        </div>
+                                        <div>
+                                            <label for="">Email :</label>
+                                            <input type="email" name='email' required value="<?= $email ?>">
+                                        </div>
+                                        <div>
+                                            <label for="">Edad :</label>
+                                            <input type="number" name='edad' required value="<?= $edad ?>">
+                                        </div>
+                                        <div class="botones-modal">
+                                            <button class="btn-datos guardar">Modificar datos</button>
+                                            <button type="button" class="btn-datos cerrar">Cerrar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class='infoUsu oculto'>
+                                    <!-- From Uiverse.io by andrew-demchenk0 --> 
+                                    <div class="info">
+                                        <div class="info__icon">
+                                        <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m12 1.5c-5.79844 0-10.5 4.70156-10.5 10.5 0 5.7984 4.70156 10.5 10.5 10.5 5.7984 0 10.5-4.7016 10.5-10.5 0-5.79844-4.7016-10.5-10.5-10.5zm.75 15.5625c0 .1031-.0844.1875-.1875.1875h-1.125c-.1031 0-.1875-.0844-.1875-.1875v-6.375c0-.1031.0844-.1875.1875-.1875h1.125c.1031 0 .1875.0844.1875.1875zm-.75-8.0625c-.2944-.00601-.5747-.12718-.7808-.3375-.206-.21032-.3215-.49305-.3215-.7875s.1155-.57718.3215-.7875c.2061-.21032.4864-.33149.7808-.3375.2944.00601.5747.12718.7808.3375.206.21032.3215.49305.3215.7875s-.1155.57718-.3215.7875c-.2061.21032-.4864.33149-.7808.3375z" fill="#393a37"></path></svg>
+                                        </div>
+                                        <div class="info__title true">Datos modificados correctamente</div>
+                                        <div class="info__title false">No se ha podido completar la operación</div>
+                                        <div class="info__title emailFalse">Email en uso, prueba otro</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modalDatosContra oculto" >
+                            <div class="datosModal">
+                                <div class=cambioDatos>
+                                    <h3>Modificar datos</h3>
+                                    <form id="formContra" method="POST">
+                                        <div>
+                                            <label for="">Contraseña actual</label>
+                                            <input type="password" name='actual' required>
+                                        </div>
+                                        <div>
+                                            <label for="">Nueva contraseña</label>
+                                            <input type="password" name='nueva1' required>
+                                        </div>
+                                        <div>
+                                            <label for="">Confirma la nueva contraseña</label>
+                                            <input type="password" name='nueva2' required >
+                                        </div>
+                                        <div class="botones-modal">
+                                            <button class="btn-datos guardarContra">Modificar contraseña</button>
+                                            <button type="button" class="btn-datos cerrar">Cerrar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class='infoContra oculto'>
+                                    <!-- From Uiverse.io by andrew-demchenk0 --> 
+                                    <div class="info">
+                                        <div class="info__icon">
+                                        <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m12 1.5c-5.79844 0-10.5 4.70156-10.5 10.5 0 5.7984 4.70156 10.5 10.5 10.5 5.7984 0 10.5-4.7016 10.5-10.5 0-5.79844-4.7016-10.5-10.5-10.5zm.75 15.5625c0 .1031-.0844.1875-.1875.1875h-1.125c-.1031 0-.1875-.0844-.1875-.1875v-6.375c0-.1031.0844-.1875.1875-.1875h1.125c.1031 0 .1875.0844.1875.1875zm-.75-8.0625c-.2944-.00601-.5747-.12718-.7808-.3375-.206-.21032-.3215-.49305-.3215-.7875s.1155-.57718.3215-.7875c.2061-.21032.4864-.33149.7808-.3375.2944.00601.5747.12718.7808.3375.206.21032.3215.49305.3215.7875s-.1155.57718-.3215.7875c-.2061.21032-.4864.33149-.7808.3375z" fill="#393a37"></path></svg>
+                                        </div>
+                                        <div class="info__title trueContra">Contraseña actualizada correctamente</div>
+                                        <div class="info__title falseContra">No se ha podido completar la operación</div>
+                                        <div class="info__title falseContraActual">Contraseña actual incorrecta</div>
+                                        <div class="info__title contrasDif">Las contraseñas no coinciden</div>
+                                        <div class="info__title contraLength">Debe tener entre 4 y 12 digitos</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modalEliminarCuenta oculto" >
+                            <div class="datosModal">
+                                <div class=cambioDatos>
+                                    <h3>Desactivar cuenta</h3>
+                                    <h6>¿Seguro qué deseas desactivar tu cuenta?</h6>
+                                    <div class="botones-modal">
+                                        <button class="btn-datos desactCuenta">Desactivar cuenta</button>
+                                        <button type="button" class="btn-datos cerrar">Cerrar</button>
+                                    </div>
+                                </div>
+                                <div class='infoDesactCuenta oculto'>
+                                    <!-- From Uiverse.io by andrew-demchenk0 --> 
+                                    <div class="info">
+                                        <div class="info__icon">
+                                        <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m12 1.5c-5.79844 0-10.5 4.70156-10.5 10.5 0 5.7984 4.70156 10.5 10.5 10.5 5.7984 0 10.5-4.7016 10.5-10.5 0-5.79844-4.7016-10.5-10.5-10.5zm.75 15.5625c0 .1031-.0844.1875-.1875.1875h-1.125c-.1031 0-.1875-.0844-.1875-.1875v-6.375c0-.1031.0844-.1875.1875-.1875h1.125c.1031 0 .1875.0844.1875.1875zm-.75-8.0625c-.2944-.00601-.5747-.12718-.7808-.3375-.206-.21032-.3215-.49305-.3215-.7875s.1155-.57718.3215-.7875c.2061-.21032.4864-.33149.7808-.3375.2944.00601.5747.12718.7808.3375.206.21032.3215.49305.3215.7875s-.1155.57718-.3215.7875c-.2061.21032-.4864.33149-.7808.3375z" fill="#393a37"></path></svg>
+                                        </div>
+                                        <div class="info__title trueCuentaDesact">Cuenta desactivada correctamente</div>
+                                        <div class="info__title falseCuentaDesact">Error al desactivar la cuenta</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
                     </div>
                     <div class="linea-vertical"></div>
                     <div class="datosVehiculo">
                         <h2 class="titulo">Datos de vehículo</h2>
                         <div class="datos-lista">
                             <?php
-                            $sql="SELECT v.matricula, v.marca, v.color FROM usuarios u INNER JOIN usuarios_vehiculos uv ON u.id_usuario=uv.id_usuario INNER JOIN vehiculos v ON uv.id_vehiculo=v.id_vehiculo WHERE u.email='$email'";
+                            $sql="SELECT v.matricula, v.marca, v.color,v.plazas FROM usuarios u INNER JOIN usuarios_vehiculos uv ON u.id_usuario=uv.id_usuario INNER JOIN vehiculos v ON uv.id_vehiculo=v.id_vehiculo WHERE u.email='$email'";
                             $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
                                 $fila = $result->fetch_assoc();
-                                $maricula=$fila["matricula"];
+                                $matricula=$fila["matricula"];
                                 $marca=$fila["marca"];
                                 $color=$fila["color"];
-                                echo "<div><strong>Matricula:</strong> $maricula</div>";
+                                $plazas=$fila["plazas"];
+                                echo "<div><strong>Matricula:</strong> $matricula</div>";
                                 echo "<div><strong>Marca:</strong> $marca</div>";
                                 echo "<div><strong>Color:</strong> $color</div>";
+                                echo "<div><strong>Plazas totales:</strong> $plazas</div>";
                                 ?>
                                 </div>
                                 <div class='botones-datos'>
-                                    <button class='btn-datos'>Modificar datos</button>
+                                    <button class='btn-datos modfVehiculo'>Modificar datos del vehículo</button>
                                 </div>
-                                <?php
+                                <div class="modalModfVehiculo oculto" >
+                                <div class="datosModal">
+                                    <div class=cambioDatos>
+                                        <h3>Modificar datos</h3>
+                                        <form id="formModfVehiculo" method="POST">
+                                            <div>
+                                                <label for="">Matricula </label>
+                                                <input type="text" name='matricula' required value="<?= $matricula ?>">
+                                            </div>
+                                            <div>
+                                                <label for="">Marca </label>
+                                                <input type="text" name='marca' required value="<?= $marca ?>">
+                                            </div>
+                                            <div>
+                                                <label for="">Color </label>
+                                                <input type="text" name='color' required value="<?=  $color ?>">
+                                            </div>
+                                            <div>
+                                                <label for="">Plazas totales </label>
+                                                <input type="number" name='plazas' required value="<?= $plazas ?>">
+                                            </div>
+                                            <div class="botones-modal">
+                                                <button class="btn-datos guardarModfVehic">Modificar datos</button>
+                                                <button type="button" class="btn-datos cerrar">Cerrar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class='infoModfVehic oculto'>
+                                        <!-- From Uiverse.io by andrew-demchenk0 --> 
+                                        <div class="info">
+                                            <div class="info__icon">
+                                            <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m12 1.5c-5.79844 0-10.5 4.70156-10.5 10.5 0 5.7984 4.70156 10.5 10.5 10.5 5.7984 0 10.5-4.7016 10.5-10.5 0-5.79844-4.7016-10.5-10.5-10.5zm.75 15.5625c0 .1031-.0844.1875-.1875.1875h-1.125c-.1031 0-.1875-.0844-.1875-.1875v-6.375c0-.1031.0844-.1875.1875-.1875h1.125c.1031 0 .1875.0844.1875.1875zm-.75-8.0625c-.2944-.00601-.5747-.12718-.7808-.3375-.206-.21032-.3215-.49305-.3215-.7875s.1155-.57718.3215-.7875c.2061-.21032.4864-.33149.7808-.3375.2944.00601.5747.12718.7808.3375.206.21032.3215.49305.3215.7875s-.1155.57718-.3215.7875c-.2061.21032-.4864.33149-.7808.3375z" fill="#393a37"></path></svg>
+                                            </div>
+                                            <div class="info__title modfVehictrue">Datos modificados correctamente</div>
+                                            <div class="info__title modfVehicfalse">No se ha podido completar la operación</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
                             }else{
                                 echo "<div><strong>Aún no has introducido los datos de tu vehículo</strong></div>"
                                 ?>
                                 </div>
                                 <div class='botones-datos'>
-                                    <button class='btn-datos'>Añadir datos</button>
+                                    <button class='btn-datos vehiculoNuevo'>Añadir datos</button>
                                 </div>
+                                <div class="modalVehiculoNuevo oculto" >
+                                    <div class="datosModal">
+                                        <div class=cambioDatos>
+                                            <h3>Añadir datos del vehículo</h3>
+                                            <form id="formDatosVehic" method="POST">
+                                                <div>
+                                                    <label for="">Matricula </label>
+                                                    <input type="text" name='matricula' required>
+                                                </div>
+                                                <div>
+                                                    <label for="">Color </label>
+                                                    <input type="text" name='color' required>
+                                                </div>
+                                                <div>
+                                                    <label for="">Marca </label>
+                                                    <input type="text" name='marca' required>
+                                                </div>
+                                                <div>
+                                                    <label for="">Plazas totales </label>
+                                                    <input type="text" name='plazas' required>
+                                                </div>
+                                                <div class="botones-modal">
+                                                    <button class="btn-datos guardarVehiculoNuevo">Añadir datos</button>
+                                                    <button type="button" class="btn-datos cerrar">Cerrar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class='infoVehiculoNuevo oculto'>
+                                            <!-- From Uiverse.io by andrew-demchenk0 --> 
+                                            <div class="info">
+                                                <div class="info__icon">
+                                                <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m12 1.5c-5.79844 0-10.5 4.70156-10.5 10.5 0 5.7984 4.70156 10.5 10.5 10.5 5.7984 0 10.5-4.7016 10.5-10.5 0-5.79844-4.7016-10.5-10.5-10.5zm.75 15.5625c0 .1031-.0844.1875-.1875.1875h-1.125c-.1031 0-.1875-.0844-.1875-.1875v-6.375c0-.1031.0844-.1875.1875-.1875h1.125c.1031 0 .1875.0844.1875.1875zm-.75-8.0625c-.2944-.00601-.5747-.12718-.7808-.3375-.206-.21032-.3215-.49305-.3215-.7875s.1155-.57718.3215-.7875c.2061-.21032.4864-.33149.7808-.3375.2944.00601.5747.12718.7808.3375.206.21032.3215.49305.3215.7875s-.1155.57718-.3215.7875c-.2061.21032-.4864.33149-.7808.3375z" fill="#393a37"></path></svg>
+                                                </div>
+                                                <div class="info__title nuevoVehictrue">Datos añadidos correctamente</div>
+                                                <div class="info__title nuevoVehicfalse">No se ha podido completar la operación</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                             <?php
                             }
                             include '../utils/cerrarBD.php';

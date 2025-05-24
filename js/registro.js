@@ -96,14 +96,10 @@ function obtenerAño(data){
 formulario.addEventListener('submit',(e)=>{
   if(campos.nombre && campos.apellidos && campos.password && campos.correo){
     e.preventDefault();
-    // Recoge los datos del formulario
     let data= new FormData(e.target);
-    
     let edad=obtenerAño(data);
     if (edad!=-1){
       data.append('edad',edad);
-      // DEBUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUG
-      console.warn(Object.fromEntries(data.entries()));
       fetch('ayax/registro.php',{
         method:'POST',
         body:data
@@ -116,13 +112,8 @@ formulario.addEventListener('submit',(e)=>{
       
       document.getElementById("formulario__mensaje-exito").classList.add("formulario__mensaje-exito-activo");
       formulario.reset();
-      // let exito=document.querySelector('.card');
-      // formulario.classList.add('oculto');
-      // exito.classList.remove('oculto');
-      // exito.classList.add('visible');
     };
   }else{
-    // Por defecto submit borra los inputs, pero si no es correcto todo no queremos que los borre, con esta funcion se deshabilita esa funcionalidad
     document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
     e.preventDefault();
   }

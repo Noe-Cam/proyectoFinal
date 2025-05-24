@@ -778,35 +778,20 @@ form.container {
   border: 1px solid #509AF8;
   box-shadow: 0px 0px 5px -3px #111;
 }
-
 .info__icon {
   width: 20px;
   height: 20px;
   transform: translateY(-2px);
   margin-right: 8px;
 }
-
 .info__icon path {
   fill: #509AF8;
 }
-
 .info__title {
   font-weight: 500;
   font-size: 14px;
   color: #0C2A75;
 }
-
-/* .info__close {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  margin-left: auto;
-}
-
-.info__close path {
-  fill: #0C2A75;
-} */
-
 .modal{
   position: fixed;
   top: 50%;
@@ -817,7 +802,6 @@ form.container {
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
-  z-index: 4;
   max-width: 90vw;
   max-height: 80vh;
   overflow: auto;

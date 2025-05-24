@@ -1,10 +1,13 @@
-
 <?php
+// Página que se encarga de recibir los datos insertados en el formulario por el nuevo usuario y realizar 2 acciones:
+//     - Insertar los datos de los posibles nuevos usuarios en la tabla usuarios_tmp
+//     - Mandarles un email de confirmación de cuenta
+// Llamada desde registro.js 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
+require '../PHPMailer/src/Exception.php';
+require '../PHPMailer/src/PHPMailer.php';
+require '../PHPMailer/src/SMTP.php';
 header('Content-Type: application/json');
 session_start();
 
@@ -42,8 +45,7 @@ session_start();
 
             $mail->isHTML(true);
             $mail->Subject= 'Verifica tu cuenta';
-            // Cuando el proyecto este desplegado se cambiara http://localhost/PROYECTO/proyectoFinal/eliminarPlaza.php por el dominio
-            // En el url mando el id del trayecto para editarlo después
+            
             $mail->Body= "<p> ¡¡ BIENVENIDX !!<br>Ya casi formas parte de CarPool, haz click en el siguiente boton para empezar a compartir trayectos puntuales o recurrentes .<br><br>
             </p>
             <a href='http://localhost/PROYECTO/proyectoFinal/verificar.php?token=$token' style='

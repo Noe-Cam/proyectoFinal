@@ -1,11 +1,16 @@
 const formulario=document.querySelector('.form');
 const burger=document.querySelector('.burger');
 const menu=document.querySelector('.menu');
-
+const logIncorrecto=document.querySelector('.notifications-container');
+const btnIntento= document.querySelector('.intento');
+btnIntento.addEventListener('click',()=>{
+    logIncorrecto.classList.remove('visible');
+    logIncorrecto.classList.add('oculto');
+    formulario.classList.remove('oculto');
+});
 burger.addEventListener('click',()=>{
     menu.classList.toggle('visible');
 });
-
 formulario.addEventListener('submit',(e)=>{
     e.preventDefault();
     console.warn(e.target)
@@ -27,9 +32,9 @@ function respuestaServidor(datos){
     if(datos.autenticacion=='true'){
         window.location.href = '../index.php';
     } else{
-        const logIncorrecto=document.querySelector('.notifications-container');
         formulario.classList.add('oculto');
         logIncorrecto.classList.remove('oculto');
-        logIncorrecto.classList.add('visible');
+        formulario.reset();
     }
 };
+

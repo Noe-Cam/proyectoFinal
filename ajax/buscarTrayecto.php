@@ -1,4 +1,10 @@
 <?php
+// Esta página se encarga de gestionar informacion del backend a petición del archivo index.js, 
+// gestiona 3 acciones diferentes:
+//     - buscarTrayectos-> se encarga de buscar en la base de datos en la tabla trayectos,los trayectos recurrentes y puntuales que coinciden con el origen,destino y fecha que inserta el usuario en index.php.
+//     - infoModal-> se encarga de buscar en la base de datos la informacion que aparecerá cuando un usuario selecciona un viaje recurrente o puntual.
+//     - mandarEmailConductor-> se encarga de mandar un mail al conductor del trayecto seleccionado por el usuario cuando selecciona el botón de "contactar".  
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require '../PHPMailer/src/Exception.php';
@@ -23,7 +29,7 @@ switch($accion){
         $fecha=$_POST['fecha'];
         $recurrentes=[];
         $puntuales=[];
-        $sql="SELECT t.id_trayecto,t.precio,t.dias,t.hora,t.plazas,u.nombre_usuario,u.apellido_usuario  FROM trayectos t INNER JOIN origenes o ON t.origen=o.id_origen INNER JOIN destinos d ON t.destino=d.id_destino INNER JOIN usuarios u ON u.id_usuario=t.usu_crea WHERE o.nombre='$origen' AND d.nombre='$destino' AND t.recurrente='1' AND t.activo='1'";
+        $sql="SELECT t.id_trayecto,t.precio,t.dias,t.hora,t.plazas,u.nombre_usuario,u.apellido_usuario  FROM trayectos t INNER JOIN origenes o ON t.origen=o.id_origen INNER JOIN destinos d ON t.destino=d.id_destino INNER JOIN usuarios u ON u.id_usuario=t.usu_crea WHERE o.nombre='$origen' AND d.nombre='$destino'  AND t.fecha='$fecha' AND t.recurrente='1' AND t.activo='1'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
