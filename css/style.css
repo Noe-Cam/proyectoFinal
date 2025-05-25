@@ -15,8 +15,8 @@ html, body {
 }
 .logoCarpool{
   margin-left: 40px;
-  width: 160px;
-  height: 60px;
+  width: 230px;
+  height: 100px;
 }
 .contenedor-grid{
   display: grid;

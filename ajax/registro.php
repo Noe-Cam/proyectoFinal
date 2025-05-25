@@ -16,6 +16,7 @@ session_start();
     $edad=$_POST['edad'];
     $correo=$_POST['correo'];
     $password=$_POST['password'];
+    $contraMailer='nmfjizrffmmeojvw';
     
     $hashContrasena=password_hash($password,PASSWORD_DEFAULT);
     // Se insertan los datos a una tabla temporal en la base de datos, cuando el usuario confirme el correo por medio del boton, se eliminan los datos de esta tabla temporal (verificando el token aleatorio que vamos a vincular a cada usuario) yse insertan los datos del usuario en la tabla definiticva de usuarios
@@ -35,13 +36,13 @@ session_start();
             $mail->SMTPAuth =true;
             $mail->Username='carpool025@gmail.com';
             // Contraseña de aplicación
-            $mail->Password='nmfjizrffmmeojvw';
+            $mail->Password= $contraMailer;
             $mail->SMTPSecure='tls';
             $mail->Port=587;
 
             // config del correo de CarPool y del usuario al que se le envia el correo
             $mail->setFrom('carpool025@gmail.com','CarPool');
-            $mail->addAddress('noeecamara@gmail.com');
+            $mail->addAddress($correo);
 
             $mail->isHTML(true);
             $mail->Subject= 'Verifica tu cuenta';

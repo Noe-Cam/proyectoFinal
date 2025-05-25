@@ -9,10 +9,10 @@ if (!isset($_SESSION["usuario"])){
             <body>
                 <div class='contenedor-grid'>
                     <header class='logo'>
-                        <img class='logoCarpool' src='../img/LOGO_CARPOOL.png' alt=''>
+                        <a href='../index.php'><img class='logoCarpool' src='../img/logoChatGPT.png' alt=''></a>
                     </header>
                     <nav class='navegador'>
-                        <a href='index.php'>Buscar trayecto</a>
+                        <a href='../index.php'>Buscar trayecto</a>
                         <a href='../pages/subirTrayecto.php'>Subir trayecto</a>
                         <a href='../pages/miZona.php'>Mi zona</a>
                         <a href='../pages/login.php'>Iniciar sesión</i></a>

@@ -57,7 +57,7 @@ btnCerrar.forEach(boton=>{
     boton.addEventListener('click',cerrarModales);
 });
 function cerrarModales(){
-    if(modalDatosUsu.classList.contains('visible')){
+    if(modalDatosUsu && modalDatosUsu.classList.contains('visible')){
         modalDatosUsu.classList.add('oculto');
         modalDatosUsu.classList.remove('visible');
         oscurecerFondo.classList.remove('visible');
@@ -67,7 +67,7 @@ function cerrarModales(){
         mensajeExitoUsu.classList.add('oculto');
         mensajeErrorUsu.classList.add('oculto');
         mensajeCorreoFalse.classList.add('oculto');
-    }else if(modalDatosContra.classList.contains('visible')){
+    }else if(modalDatosContra && modalDatosContra.classList.contains('visible')){
         formContra.reset();
         modalDatosContra.classList.add('oculto');
         modalDatosContra.classList.remove('visible');
@@ -78,9 +78,9 @@ function cerrarModales(){
         mensjErrorContra.classList.add('oculto');
         mensjErrorContraActual.classList.add('oculto');
         mensjContrasDif.classList.add('oculto');
-    }else if(modalEliminarCuenta.classList.contains('visible') && mensjCuentaDesactivada.classList.contains('visible')){
+    }else if(modalEliminarCuenta && (modalEliminarCuenta.classList.contains('visible') && mensjCuentaDesactivada.classList.contains('visible'))){
         window.location.href = '../utils/logout.php';
-    }else if(modalEliminarCuenta.classList.contains('visible')){
+    }else if(modalEliminarCuenta && modalEliminarCuenta.classList.contains('visible')){
         oscurecerFondo.classList.remove('visible');
         oscurecerFondo.classList.add('oculto');
         modalEliminarCuenta.classList.add('oculto');
@@ -93,7 +93,7 @@ function cerrarModales(){
         infoVehiculoNuevo.classList.add('oculto');
         mensjNuevoVehiculoTrue.classList.add('oculto');
         mensjNuevoVehiculoFalse.classList.add('oculto');
-    }else if(modalModfVehiculo.classList.contains('visible')){
+    }else if(modalModfVehiculo && modalModfVehiculo.classList.contains('visible')){
         oscurecerFondo.classList.remove('visible');
         oscurecerFondo.classList.add('oculto');
         modalModfVehiculo.classList.remove('visible');
@@ -101,7 +101,7 @@ function cerrarModales(){
         infoinfoModfVehic.classList.add('oculto');
         mensjModfVehictrue.classList.add('oculto');
         mensjModfVehicfalse.classList.add('oculto');
-    }else if(modalModifTrayecto.classList.contains('visible')){
+    }else if(modalModifTrayecto && modalModifTrayecto.classList.contains('visible')){
         oscurecerFondo.classList.remove('visible');
         oscurecerFondo.classList.add('oculto');
         modalModifTrayecto.classList.remove('visible');

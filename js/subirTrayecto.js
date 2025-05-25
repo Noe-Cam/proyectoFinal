@@ -298,7 +298,7 @@ async function iniciarMapa() {
      }).addTo(map);
      return map;
 }
-// Con Leaflet, creamos el mapa donámico y con OpenRouteService, creo la ruta 
+// Con Leaflet, creamos el mapa dinámico y con OpenRouteService, creo la ruta 
 async function dibujarRuta(coordOrigen, coorDestino,map) {
     const request = new XMLHttpRequest();
     // Configuramos la solicitud POST

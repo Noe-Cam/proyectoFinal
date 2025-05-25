@@ -16,8 +16,8 @@ const fondoOscuro=document.querySelector('.modal-oscurecer-fondo');
 const infoContactar=document.querySelector('.informContacto');
 const burger=document.querySelector('.burger');
 const menu=document.querySelector('.menu');
-inputOrigen.addEventListener('input', APIorigen);
-inputDestino.addEventListener('input', APIdestino);
+inputOrigen.addEventListener('input', direccionOrigen);
+inputDestino.addEventListener('input', direccionDestino);
 let datosRecurrentes=[];
 let datosPuntuales=[];
 
@@ -30,7 +30,7 @@ if (logout!=null){
 burger.addEventListener('click',()=>{
     menu.classList.toggle('visible');
 });
-async function APIorigen() {
+async function direccionOrigen() {
     //trim para eliminar espacios
     const query=inputOrigen.value.trim();
     //Si solo se han puesto dos letras en el input no se buscan sugerencias
@@ -63,7 +63,7 @@ function sugerenciasOrigen(data){
         sugOrigen.appendChild(item);
     })
 };
-async function APIdestino() {
+async function direccionDestino() {
     //trim para eliminar espacios
     const query=inputDestino.value.trim();
     //Si solo se han puesto dos letras en el input no se buscan sugerencias

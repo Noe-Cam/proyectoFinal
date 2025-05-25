@@ -29,7 +29,7 @@ switch($accion){
         $fecha=$_POST['fecha'];
         $recurrentes=[];
         $puntuales=[];
-        $sql="SELECT t.id_trayecto,t.precio,t.dias,t.hora,t.plazas,u.nombre_usuario,u.apellido_usuario  FROM trayectos t INNER JOIN origenes o ON t.origen=o.id_origen INNER JOIN destinos d ON t.destino=d.id_destino INNER JOIN usuarios u ON u.id_usuario=t.usu_crea WHERE o.nombre='$origen' AND d.nombre='$destino'  AND t.fecha='$fecha' AND t.recurrente='1' AND t.activo='1'";
+        $sql="SELECT t.id_trayecto,t.precio,t.dias,t.hora,t.plazas,u.nombre_usuario,u.apellido_usuario  FROM trayectos t INNER JOIN origenes o ON t.origen=o.id_origen INNER JOIN destinos d ON t.destino=d.id_destino INNER JOIN usuarios u ON u.id_usuario=t.usu_crea WHERE o.nombre='$origen' AND d.nombre='$destino' AND t.recurrente='1' AND t.activo='1'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
