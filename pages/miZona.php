@@ -59,19 +59,19 @@ include '../utils/controlLogin.php';
                                     <h3>Modificar datos</h3>
                                     <form id="formUsuario" method="POST">
                                         <div>
-                                            <label for="">Nombre :</label>
+                                            <label for="">Nombre </label>
                                             <input type="text" name='nombre' required value="<?= $nombre ?>">
                                         </div>
                                         <div>
-                                            <label for="">Apellidos :</label>
+                                            <label for="">Apellidos </label>
                                             <input type="text" name='apellidos' required value="<?= $apellido ?>">
                                         </div>
                                         <div>
-                                            <label for="">Email :</label>
+                                            <label for="">Email </label>
                                             <input type="email" name='email' required value="<?= $email ?>">
                                         </div>
                                         <div>
-                                            <label for="">Edad :</label>
+                                            <label for="">Edad </label>
                                             <input type="number" name='edad' required value="<?= $edad ?>">
                                         </div>
                                         <div class="botones-modal">
