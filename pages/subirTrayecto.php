@@ -43,7 +43,7 @@ include '../utils/controlLogin.php';
                     <!-- From Uiverse.io by rzouga001 --> 
                     
                     <div id="map" class='mapa'></div>
-                    <div class="card oculto"> 
+                    <!-- <div class="card oculto"> 
                         <div class="header"> 
                             <div class="div_image_v">
                                 <div class="image">
@@ -55,7 +55,15 @@ include '../utils/controlLogin.php';
                                 <p class="message">Gracias por publicar tu viaje en CarPool, puedes ver tus viajes activos en 'MI ZONA'</p> 
                             </div> 
                         </div> 
-                    </div>       
+                    </div>
+                    <div> -->
+                        <div class='infoUsu oculto'>
+                            <div class="info__icon">
+                            </div>
+                            <div class="info__title viajeTrue"><p>¡ VIAJE PUBLICADO CON ÉXITO!<br><br>Gracias por publicar tu viaje en CarPool, puedes ver tus viajes activos en 'MI ZONA'<p></div>
+                            <div class="info__title viajeFalse">No se ha podido completar la operación.<br><br>Prueba de nuevo más tarde</div>
+                        </div>  
+                    <!-- </div>      -->
                 </div>     
              </div>
              <?php

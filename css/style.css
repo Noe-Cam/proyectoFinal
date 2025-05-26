@@ -595,12 +595,15 @@ form.container {
   background-color: #237033;
 }
 .formulario__mensaje-exito {
+  position:absolute;
 	font-size: 14px;
 	color: #119200;
 	display: none;
   background-color: #cfe0c4;
   padding: 5px;
   border-radius: 2px;
+  bottom:40px;
+  left:30%
 }
 .formulario__mensaje-exito-activo {
 	display: block;
@@ -728,6 +731,7 @@ form.container {
 }
 .history {
   display: inline-flex;
+  cursor:pointer;
   padding: 0.5rem 1rem;
   background-color: #1aa06d;
   color: #ffffff;
@@ -742,6 +746,7 @@ form.container {
 }
 .track {
   display: inline-flex;
+  cursor:pointer;
   margin-top: 0.75rem;
   padding: 0.5rem 1rem;
   color: #242525;
@@ -960,4 +965,9 @@ form.container {
   display: flex;
   }
 
+}
+@media print {
+  .video-background{
+    display: none;
+  }
 }

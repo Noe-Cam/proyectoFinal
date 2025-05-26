@@ -1,10 +1,10 @@
-<!-- Archivo que se encarga de quitar una plaza en caso de que el conducor indique dando al boton del email que se ha reservado una plaza.
- Se recibe el id del trayecto:
-    - Se comprueba que el viaje seleccionado tiene más de 0 plazas disponibles.
-    - En el caso de tener más de 0 plazas disponibles, se procede a eliminar una plaza en la información del trayecto
-    - Posteriormente a la eliminación se comprueba las plazas del mismo trayecto, si ahora son 0 plazas el viaje pasa a estar no activo (activo->0 en la bd) y no aparecerá en futuras búsquedas. De manera predeterminada el valor de 'activo' en la base de datos es 1 por defecto.
-    - Cualquier error en el proceso será notificado al usuario conductor mediate un card de aviso, si el proceso de eliminacion es correcto, se mostrará otro card informativo con la validez de la operación. -->
 <?php
+//  Archivo que se encarga de quitar una plaza en caso de que el conducor indique dando al boton del email que se ha reservado una plaza.
+//  Se recibe el id del trayecto:
+//     - Se comprueba que el viaje seleccionado tiene más de 0 plazas disponibles.
+//     - En el caso de tener más de 0 plazas disponibles, se procede a eliminar una plaza en la información del trayecto
+//     - Posteriormente a la eliminación se comprueba las plazas del mismo trayecto, si ahora son 0 plazas el viaje pasa a estar no activo (activo->0 en la bd) y no aparecerá en futuras búsquedas. De manera predeterminada el valor de 'activo' en la base de datos es 1 por defecto.
+//     - Cualquier error en el proceso será notificado al usuario conductor mediate un card de aviso, si el proceso de eliminacion es correcto, se mostrará otro card informativo con la validez de la operación. 
 session_start();
 include "../utils/conexionBD.php";
 ?>

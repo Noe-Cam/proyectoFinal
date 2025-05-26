@@ -1,11 +1,11 @@
-<!-- Página que se encarga de insertar a nuevos usuarios en la bd, a esta página se llega mediante el link enviado al correo al crearse una cuenta de usuario.
-A esta página llega el token enviado en la url, se comprueba si ese token tiene alguna coincidencia con alguna fila de la tabal usuarios_tmp.
-    - Si hay coincidencias:  
-        1.se insertan los datos de la tabla usuarios_tmp en la tabla usuarios, formando ya parte del sistema.
-        2.se elimina el usuario de la tabla usuarios_tmp.
-    - Si no hay coincidencias: No se crea el usuario.
--->
 <?php
+// Página que se encarga de insertar a nuevos usuarios en la bd, a esta página se llega mediante el link enviado al correo al crearse una cuenta de usuario.
+// A esta página llega el token enviado en la url, se comprueba si ese token tiene alguna coincidencia con alguna fila de la tabal usuarios_tmp.
+//     - Si hay coincidencias:  
+//         1.se insertan los datos de la tabla usuarios_tmp en la tabla usuarios, formando ya parte del sistema.
+//         2.se elimina el usuario de la tabla usuarios_tmp.
+//     - Si no hay coincidencias: No se crea el usuario.
+
 session_start();
 include '../utils/conexionBD.php';
 ?>
@@ -14,7 +14,7 @@ include '../utils/conexionBD.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Cuenta verificada</title>
 </head>
@@ -54,9 +54,18 @@ include '../utils/conexionBD.php';
                     $edad=$fila["edad"];
                     $correo=$fila["email"];
 
-                    $sql = "INSERT INTO usuarios(nombre_usuario,apellido_usuario,contrasena,edad,email) VALUES ('$nombre','$apellidos','$hashContrasena','$edad','$correo')";  
+                    $sql="SELECT * FROM usuarios WHERE email='$correo'";
+                    $result=$conn->query($sql);
+                    if($result->num_rows>0){
+                        $fila=$result->fetch_assoc();
+                        if($fila['activo']== 0){
+                            $sql = "UPDATE usuarios SET nombre_usuario='$nombre', apellido_usuario='$apellidos', contrasena='$hashContrasena', edad='$edad', activo=1 WHERE email='$correo'";
+                        }
+                    } else {
+                        $sql = "INSERT INTO usuarios(nombre_usuario,apellido_usuario,contrasena,edad,email) VALUES ('$nombre','$apellidos','$hashContrasena','$edad','$correo')";  
+                    }
                     if ($conn->query($sql) === TRUE) {
-                        $conn->query("DELETE FROM usuarios_tmp WHERE token='$token'")
+                            $conn->query("DELETE FROM usuarios_tmp WHERE token='$token'");
                         ?>
                         <div class="card"> 
                             <div class="header"> 
@@ -68,7 +77,7 @@ include '../utils/conexionBD.php';
                                     <p class="message">BIENVENID@<br>Ya formas parte de la comunidad Carpool</p> 
                                 </div> 
                                 <div class="actions">
-                                    <a href="index.php"><button class="history" type="button">Buscar trayecto</button></a>
+                                    <a href="../index.php"><button class="history" type="button">Buscar trayecto</button></a>
                                     <a href="subirTrayecto.php"><button class="track" type="button">Subir trayecto</button></a> 
                                 </div> 
                             </div> 

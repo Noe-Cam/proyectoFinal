@@ -95,13 +95,14 @@ function obtenerAño(data){
   }
 };
 formulario.addEventListener('submit',(e)=>{
+  document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
   if(campos.nombre && campos.apellidos && campos.password && campos.correo){
     e.preventDefault();
     let data= new FormData(e.target);
     let edad=obtenerAño(data);
     if (edad!=-1){
       data.append('edad',edad);
-      fetch('ayax/registro.php',{
+      fetch('../ajax/registro.php',{
         method:'POST',
         body:data
       })
@@ -111,8 +112,6 @@ formulario.addEventListener('submit',(e)=>{
       })
       .catch(error=>console.error('Error al recibir datos :', error));
       
-      document.getElementById("formulario__mensaje-exito").classList.add("formulario__mensaje-exito-activo");
-      formulario.reset();
     };
   }else{
     document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
@@ -121,7 +120,9 @@ formulario.addEventListener('submit',(e)=>{
 });
 function respuestaServidor(verificacion){
   if(verificacion.registro=='true'){
-    console.warn('Esperando verificación movil')
+    console.warn('Esperando verificación movil');
+    document.getElementById("formulario__mensaje-exito").classList.add("formulario__mensaje-exito-activo");
+    formulario.reset();
   }else{
     console.warn('ERROR');
   }

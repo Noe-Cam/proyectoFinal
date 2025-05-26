@@ -1,4 +1,5 @@
 const formulario=document.querySelector('.form');
+const contenedorFom=document.querySelector('.contenedor_form');
 const burger=document.querySelector('.burger');
 const menu=document.querySelector('.menu');
 const logIncorrecto=document.querySelector('.notifications-container');
@@ -6,7 +7,7 @@ const btnIntento= document.querySelector('.intento');
 btnIntento.addEventListener('click',()=>{
     logIncorrecto.classList.remove('visible');
     logIncorrecto.classList.add('oculto');
-    formulario.classList.remove('oculto');
+    contenedorFom.classList.remove('oculto');
 });
 burger.addEventListener('click',()=>{
     menu.classList.toggle('visible');
@@ -32,7 +33,7 @@ function respuestaServidor(datos){
     if(datos.autenticacion=='true'){
         window.location.href = '../index.php';
     } else{
-        formulario.classList.add('oculto');
+        contenedorFom.classList.add('oculto');
         logIncorrecto.classList.remove('oculto');
         formulario.reset();
     }

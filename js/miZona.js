@@ -112,14 +112,11 @@ function cerrarModales(){
         mensjmodfTrayectotrue.classList.add('oculto');
         mensjmodfTrayectotrue.classList.add('oculto');
     };
-    
 };
-
 logout.addEventListener('click',function(e){
     e.preventDefault();
     window.location.href = '../utils/logout.php';
 });
-
 burger.addEventListener('click',()=>{
     menu.classList.toggle('visible');
 });
@@ -131,7 +128,7 @@ if(datosVehiculoNuevos){
 };
 if(datosmodfVehiculo){
     datosmodfVehiculo.addEventListener('click',modificarDatosVehiculos)
-}
+};
 infoViaje.forEach(viaje=>{
     viaje.addEventListener('click',()=>{
         document.getElementById('id_trayecto').value = viaje.dataset.id;

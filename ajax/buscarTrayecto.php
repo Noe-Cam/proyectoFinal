@@ -24,6 +24,9 @@ if ($data) {
 };
 switch($accion){
     case 'buscarTrayectos':
+        $hoy = date('Y-m-d');
+        $conn->query("UPDATE trayectos SET activo=0 WHERE fecha < '$hoy' AND recurrente=0");
+        
         $origen=$_POST['origen'];
         $destino=$_POST['destino'];
         $fecha=$_POST['fecha'];

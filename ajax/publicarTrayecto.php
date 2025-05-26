@@ -29,16 +29,34 @@ $destinos=false;
 $trayectos=false;
 include "../utils/conexionBD.php";
 
-$sql="INSERT INTO origenes (nombre,latitud,longitud) VALUES ('$origen','$latOrigen','$lonOrigen')";
-if ($conn->query($sql) === TRUE) {
-    $idOrigen = $conn->insert_id;
-    $origenes=true;
+$sql="SELECT id_origen FROM origenes WHERE nombre='$origen'";
+$result=$conn->query($sql);
+if($result->num_rows>0){
+    $fila = $result->fetch_assoc();
+    $idOrigen = $fila['id_origen'];
+    $origenes = true;
+}else{
+    $sql="INSERT INTO origenes (nombre,latitud,longitud) VALUES ('$origen','$latOrigen','$lonOrigen')";
+    if ($conn->query($sql) === TRUE) {
+        $idOrigen = $conn->insert_id;
+        $origenes=true;
+    };
 };
-$sql="INSERT INTO destinos (nombre,latitud,longitud) VALUES ('$destino','$latDestino','$lonDestino')";
-if ($conn->query($sql) === TRUE) {
-    $idDestino = $conn->insert_id;
-    $destinos=true;
+
+$sql="SELECT id_destino FROM destinos WHERE nombre='$destino'";
+$result=$conn->query($sql);
+if($result->num_rows>0){
+    $fila = $result->fetch_assoc();
+    $idDestino = $fila['id_destino'];
+    $destinos = true;
+}else{
+    $sql="INSERT INTO destinos (nombre,latitud,longitud) VALUES ('$destino','$latDestino','$lonDestino')";
+    if ($conn->query($sql) === TRUE) {
+        $idDestino = $conn->insert_id;
+        $destinos=true;
+    };
 };
+
 $sql="SELECT id_usuario FROM usuarios WHERE email='$email'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {

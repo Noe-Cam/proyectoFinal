@@ -1,7 +1,10 @@
 const formulario=document.querySelector('.form');
 const cardInformacion=document.querySelector('.cardInformativo');
 const contenedorInfo=document.querySelector('.contenedorInfo');
-const viajePublicado=document.querySelector('.card');
+// const viajePublicado=document.querySelector('.card');
+const publicado=document.querySelector('.infoUsu');
+const publicadoOk=document.querySelector('.viajeTrue');
+const publicadoFalse=document.querySelector('.viajeFalse');
 const contenedorMapa=document.querySelector('.mapa');
 const botonViajePuntual=document.querySelector('.puntual');
 const botonViajeRecurrente=document.querySelector('.recurrente');
@@ -249,7 +252,7 @@ async function cambiarPantalla(coordOrigen,coorDestino){
                     <span class="text">Publicar trayecto</span>
                 </button>
                 <a href='subirTrayecto.php'<button class="fancy" href="#">
-                    <span class="text">Modificar trayecto</span>
+                    <span class="text">Volver atrás</span>
                 </button></a>
             </form>
     `
@@ -259,7 +262,7 @@ async function cambiarPantalla(coordOrigen,coorDestino){
     console.warn(`coordenadas destino: ${coorDestino}`);
     console.warn(`coordenadas origen: ${coordOrigen}`);
     await dibujarRuta(coordOrigen,coorDestino,map);
-    // Guardamos el boton de publicar trayecto, en otra funcion añadiremos el escuchador y lo guardaremos en la bd
+   
     let publicar=document.querySelector('.publicar');
     console.warn(publicar);
     console.warn(coorDestino);
@@ -279,7 +282,17 @@ async function cambiarPantalla(coordOrigen,coorDestino){
         .then(data=>{
             respuestaServidor(data,publicar);
         })
-        .catch(error => console.error('Error al recibir datos :', error));
+        .catch(error => {
+            console.error('Error al recibir datos :', error);
+            
+            contenedorMapa.classList.add('oculto');
+            publicado.classList.add('visible');
+            publicadoFalse.classList.add('visible');
+            publicadoFalse.classList.remove('oculto');
+            publicadoOk.classList.remove('visible');
+            publicadoOk.classList.add('oculto');
+        
+        });
         
     });
     // publicarTrayecto(publicar,coordOrigen,coorDestino);
@@ -363,11 +376,24 @@ function respuestaServidor(datos,formulario){
     console.warn(datos.publicado);
     if(datos.publicado=='true'){
         contenedorMapa.classList.add('oculto');
-        console.warn('trayecto publicado');
-        viajePublicado.classList.remove('oculto');
-        viajePublicado.classList.add('visible');
+        // console.warn('trayecto publicado');
+        // viajePublicado.classList.remove('oculto');
+        // viajePublicado.classList.add('visible');
+        publicado.classList.remove('oculto');
+        publicado.classList.add('visible');
+        publicadoFalse.classList.add('oculto');
+        publicadoFalse.classList.remove('visible');
+        publicadoOk.classList.remove('oculto');
+        publicadoOk.classList.add('visible');
+
     } else{
         console.warn('trayecto no publicado');
+        contenedorMapa.classList.add('oculto');
+        publicado.classList.add('visible');
+        publicadoFalse.classList.add('visible');
+        publicadoFalse.classList.remove('oculto');
+        publicadoOk.classList.remove('visible');
+        publicadoOk.classList.add('oculto');
     }
 };
 

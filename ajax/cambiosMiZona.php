@@ -82,6 +82,7 @@ switch($accion){
     case 'desactivarCuenta':
         $sql="UPDATE usuarios SET activo=0 WHERE email='$emailUsu'";
         if($conn->query($sql)){
+            $sql="UPDATE trayectos SET activo=0 WHERE usu_crea=(SELECT id_usuario FROM usuarios WHERE email='$emailUsu')";
             echo json_encode([
             "desactivarCuenta" => true
             ]);
@@ -204,10 +205,14 @@ switch($accion){
             $fecha = $fila['fecha'];
             $plazas = $fila['plazas'];
             if($nuevoEstado=='1'){
-                if (strtotime($fecha) < strtotime(date('Y-m-d'))){
-                    $fechaOk=false;
-                }else{
+                if($fecha == '0000-00-00'){
                     $fechaOk=true;
+                }else{
+                    if (strtotime($fecha) < strtotime(date('Y-m-d'))){
+                        $fechaOk=false;
+                    }else{
+                        $fechaOk=true;
+                    };
                 };
                 if($plazas <= 0){
                     $plazasOk=false;

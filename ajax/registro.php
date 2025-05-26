@@ -24,7 +24,7 @@ session_start();
     // Se crea un token seguro y aleatorio será el que se mande por GET al cliente para verificar su cuenta
     $token=bin2hex(random_bytes(16));
 
-    include "utils/conexionBD.php";
+    include "../utils/conexionBD.php";
     $sql = "INSERT INTO usuarios_tmp(nombre_usuario,apellido_usuario,contrasena,edad,email,token) VALUES ('$nombre','$apellidos','$hashContrasena','$edad','$correo','$token')";
     // Si la insercion a la base de datos es correcta se manda el correo al usuario
     if ($conn->query($sql) === TRUE) {
@@ -49,7 +49,7 @@ session_start();
             
             $mail->Body= "<p> ¡¡ BIENVENIDX !!<br>Ya casi formas parte de CarPool, haz click en el siguiente boton para empezar a compartir trayectos puntuales o recurrentes .<br><br>
             </p>
-            <a href='http://localhost/PROYECTO/proyectoFinal/verificar.php?token=$token' style='
+            <a href='http://localhost/PROYECTO/proyectoFinal/pages/verificar.php?token=$token' style='
             display:inline-block;
             padding:10px 20px;
             background-color:#28a745;
@@ -74,7 +74,7 @@ session_start();
 
     
 
-include "utils/cerrarBD.php";
+include "../utils/cerrarBD.php";
 ?>
 
 
