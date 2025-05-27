@@ -140,6 +140,7 @@ infoViaje.forEach(viaje=>{
         document.getElementById('plazas').value = viaje.dataset.plazas;
         document.getElementById('recurrente').value = viaje.dataset.recurrente ;
         document.getElementById('dias').value = viaje.dataset.dias;
+        document.getElementById('descripcion').value = viaje.dataset.descripcion;
 
         const activo = viaje.dataset.activo;
         btnActDesactTrayecto.dataset.id=viaje.dataset.id;

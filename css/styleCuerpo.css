@@ -961,7 +961,7 @@ width: 0;
   top: 0;
   left: 0;
   width: 100vw;
-  max-height: 100vh;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.6);
   z-index: 4;
 }
@@ -1211,14 +1211,68 @@ box-shadow: rgb(38 70 83) 0px 7px 29px 0px;
   .card{
     height: 250px;
   }
-  .contenedor_usuario_vehiculo{
+  /* .contenedor_usuario_vehiculo{
     flex-direction: column;
     margin-bottom: 10%;
     margin-left: 4%;
-  }
+  } */
   .visible{
     display: flex;
   }
+  /* estilos de mi zona */
+  /* .contenido{
+    overflow: visible;
+  } */
+  .linea-vertical {
+    display: none;
+  }
+  .contenedor_usuario_vehiculo {
+    gap: 2rem;
+  }
+   .datosUsuario, .datosVehiculo {
+    width: 100%;
+    margin-left: 20px;
+  }
+   .botones-datos {
+    flex-direction: column;
+    width: fit-content;
+    align-items: stretch;
+    margin-top: 16px;
+  }
+  .btn-datos {
+    width: 100%;
+    min-width: 0;
+    font-size: 1rem;
+    padding: 12px 0;
+  }
+  .info {
+    width: 100%;
+    font-size: 0.95rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .viajes-scroll {
+    max-height: 150px;
+    
+  }
+  .datos-lista {
+    font-size: 1rem;
+    gap: 8px;
+  }
+  .modalDatosUsu, 
+  .modalDatosContra,
+  .modalEliminarCuenta,
+  .modalVehiculoNuevo,
+  .modalModfVehiculo,
+  .modalModifTrayecto {
+    max-width: 98vw;
+    width: 98%;
+    padding: 1rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
 }
 @media print {
   .video-background{

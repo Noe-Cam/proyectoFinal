@@ -275,10 +275,10 @@ include '../utils/controlLogin.php';
                         if($result->num_rows>0){
                             $fila = $result->fetch_assoc();
                             $idUsu=$fila['id_usuario'];
-                            $sqlActivos="SELECT t.id_trayecto,t.fecha,t.precio,t.dias,t.hora,t.plazas,t.recurrente,t.activo,o.nombre AS origen ,d.nombre AS destino FROM trayectos t JOIN origenes o ON o.id_origen=t.origen JOIN destinos d ON d.id_destino=t.destino WHERE t.usu_crea='$idUsu' AND activo=1";
+                            $sqlActivos="SELECT t.id_trayecto,t.fecha,t.precio,t.dias,t.hora,t.plazas,t.recurrente,t.activo,t.descripcion,o.nombre AS origen ,d.nombre AS destino FROM trayectos t JOIN origenes o ON o.id_origen=t.origen JOIN destinos d ON d.id_destino=t.destino WHERE t.usu_crea='$idUsu' AND activo=1";
                             $viajesActivos=$conn->query($sqlActivos);
 
-                            $sqlInactivos="SELECT t.id_trayecto,t.fecha,t.precio,t.dias,t.hora,t.plazas,t.recurrente,t.activo,o.nombre AS origen,d.nombre AS destino FROM trayectos t JOIN origenes o ON o.id_origen=t.origen JOIN destinos d ON d.id_destino=t.destino WHERE t.usu_crea='$idUsu' AND activo=0";
+                            $sqlInactivos="SELECT t.id_trayecto,t.fecha,t.precio,t.dias,t.hora,t.plazas,t.recurrente,t.activo,t.descripcion,o.nombre AS origen,d.nombre AS destino FROM trayectos t JOIN origenes o ON o.id_origen=t.origen JOIN destinos d ON d.id_destino=t.destino WHERE t.usu_crea='$idUsu' AND activo=0";
                             $viajesInactivos=$conn->query($sqlInactivos);
                         }
                     ?>
@@ -300,6 +300,7 @@ include '../utils/controlLogin.php';
                                                 data-plazas="<?=$fila['plazas'] ?>"
                                                 data-recurrente="<?= $fila['recurrente'] ?>"
                                                 data-dias="<?= $fila['dias'] ?>"
+                                                data-descripcion="<?= $fila['descripcion'] ?>"
                                                 data-activo="<?= $fila['activo'] ?>">
                                                 <strong><?= $fila['origen'] ?> → <?= $fila['destino'] ?></strong><br>
                                                 Hora: <?= $fila['hora'] ?><br>
@@ -332,7 +333,8 @@ include '../utils/controlLogin.php';
                                                 data-plazas="<?= $fila['plazas'] ?>"
                                                 data-recurrente="<?= $fila['recurrente'] ?>"
                                                 data-dias="<?= $fila['dias'] ?>"
-                                                data-activo="<?= $fila['activo'] ?>">
+                                                data-activo="<?= $fila['activo'] ?>"
+                                                data-descripcion="<?= $fila['descripcion'] ?>">
                                                 <strong><?= $fila['origen'] ?> → <?= $fila['destino'] ?></strong><br>
                                                 Hora: <?= $fila['hora'] ?><br>
                                                 Precio: <?= $fila['precio'] ?> € <br>
@@ -385,6 +387,10 @@ include '../utils/controlLogin.php';
                                     <div>
                                         <label for="">Plazas </label>
                                         <input type="number" name='plazas' id='plazas' required>
+                                    </div>
+                                    <div>
+                                        <label for="">Descripción </label>
+                                        <input type="text" name='descripcion' id='descripcion' value="<?php echo $descripcion?>" required>
                                     </div>
                                     <div class="botones-modal">
                                         <button class="btn-datos guardarModifTrayecto">Guardar datos modificados</button>

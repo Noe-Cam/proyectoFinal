@@ -5,6 +5,7 @@ if (!isset($_SESSION["usuario"])){
             <head>
                 <link rel='stylesheet' href='../css/styleCuerpo.css'>
                 <meta http-equiv='refresh' content='5;url=login.php'>
+                <meta name='viewport' content='width=device-width, initial-scale=1.0'>
             </head>
             <body>
                 <div class='contenedor-grid'>
@@ -12,10 +13,13 @@ if (!isset($_SESSION["usuario"])){
                         <a href='../index.php'><img class='logoCarpool' src='../img/logoChatGPT.png' alt=''></a>
                     </header>
                     <nav class='navegador'>
-                        <a href='../index.php'>Buscar trayecto</a>
-                        <a href='../pages/subirTrayecto.php'>Subir trayecto</a>
-                        <a href='../pages/miZona.php'>Mi zona</a>
-                        <a href='../pages/login.php'>Iniciar sesión</i></a>
+                        <button class='burger'> &#9776;</button>
+                        <div class='menu'>
+                            <a href='../index.php'>Buscar trayecto</a>
+                            <a href='../pages/subirTrayecto.php'>Subir trayecto</a>
+                            <a href='../pages/miZona.php'>Mi zona</a>
+                            <a href='../pages/login.php'>Iniciar sesión</i></a>
+                        </div>
                     </nav>
                     <main class='contenido'>
                         <div class='contenedor'>

@@ -166,6 +166,7 @@ switch($accion){
         $precio=$_POST['precio'];
         $plazas=$_POST['plazas'];
         $hora=$_POST['hora'];
+        $descripcion=$_POST['descripcion'];
         $recurrente=$_POST['recurrente'];
         $cambioOrigen=false;
         $cambioDestino=false;
@@ -179,7 +180,7 @@ switch($accion){
         if($conn->query($sql)){
             $cambioDestino=true;
         };
-        $sql="UPDATE trayectos SET fecha='$fecha', precio='$precio',dias='$dias',hora='$hora',plazas='$plazas' WHERE id_trayecto='$id_trayecto'";
+        $sql="UPDATE trayectos SET fecha='$fecha', precio='$precio',dias='$dias',hora='$hora',plazas='$plazas',descripcion='$descripcion' WHERE id_trayecto='$id_trayecto'";
         if($conn->query($sql)){
             $cambioTrayecto=true;
         };

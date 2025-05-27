@@ -964,6 +964,10 @@ form.container {
  .visible{
   display: flex;
   }
+  /* Formulario registro */
+  .container{
+    width: 80%;
+  }
 
 }
 @media print {
