@@ -19,7 +19,7 @@ include "../utils/conexionBD.php";
 <body>
      <div class="contenedor-grid">
          <header class="logo">
-            <a href="../index.php"><img class="logoCarpool" src="../img/logoChatGPT.png" alt=""></a>
+            <a href="../index.php"><img class="logoCarpool" src="../img/logotipo.png" alt=""></a>
         </header>
         <nav class="navegador">
             <a href="login.php">Buscar trayecto</a>
