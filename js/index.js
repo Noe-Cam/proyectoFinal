@@ -324,8 +324,14 @@ async function infoModal(datos){
     <tr>
         <td class='etiqueta'>Precio</td>
         <td class='valor'>${datos.datosModal.precio} €</td>
-    </tr>
-        `
+    </tr> `;
+    if (datos.datosModal.descripcion && datos.datosModal.descripcion.trim() !== '') {
+    html += `
+    <tr>
+        <td class='etiqueta'>Descripción</td>
+        <td class='valor'>${datos.datosModal.descripcion}</td>
+    </tr>`;
+    };
     if (datos.datosModal.vehiculo!=false){
         html+=`
         <tr>
@@ -355,7 +361,7 @@ function infoContacto(){
 function cerrarModal(){
     fondoOscuro.classList.add('oculto');
     modal.classList.add('oculto');
-    infoContactar.innerHTML = ''; 
+    infoContactar.classList.add('oculto');
 }
 function emailConductor(emailConductor,id_trayecto){
     console.warn('entrando en mandar email')

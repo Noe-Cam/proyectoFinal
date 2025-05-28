@@ -31,7 +31,7 @@ include '../utils/conexionBD.php';
             if (!isset($_SESSION["usuario"])){
                 echo '<a href="login.php">Iniciar sesión</a>';
             } else {
-                echo "<a href=#><i class='fa fa-sign-out' style='font-size:28px;color:white'></i></a>";
+                echo "<i class='fa fa-sign-out' style='font-size:28px;color:white'></i>";
             }
             ?>
         </nav>

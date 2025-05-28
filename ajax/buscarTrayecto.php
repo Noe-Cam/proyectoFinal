@@ -62,7 +62,7 @@ switch($accion){
         } else {
             $datosModal=[];
             $idTrayeto=$data['idTrayecto'];
-            $sql="SELECT u.nombre_usuario,u.apellido_usuario,u.email,t.id_trayecto, t.fecha, t.dias, t.precio, t.hora, t.plazas, o.latitud AS lat_origen, o.longitud AS lon_origen, d.latitud AS lat_destino, d.longitud AS lon_destino FROM trayectos t INNER JOIN usuarios u ON t.usu_crea=u.id_usuario INNER JOIN origenes o ON t.origen=o.id_origen INNER JOIN destinos d ON t.destino=d.id_destino WHERE t.id_trayecto='$idTrayeto'";
+            $sql="SELECT u.nombre_usuario,u.apellido_usuario,u.email,t.id_trayecto, t.fecha, t.dias, t.precio, t.hora,t.descripcion, t.plazas, o.latitud AS lat_origen, o.longitud AS lon_origen, d.latitud AS lat_destino, d.longitud AS lon_destino FROM trayectos t INNER JOIN usuarios u ON t.usu_crea=u.id_usuario INNER JOIN origenes o ON t.origen=o.id_origen INNER JOIN destinos d ON t.destino=d.id_destino WHERE t.id_trayecto='$idTrayeto'";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 $fila = $result->fetch_assoc();

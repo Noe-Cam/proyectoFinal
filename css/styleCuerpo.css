@@ -40,6 +40,10 @@ html, body {
   justify-content: flex-end;
   height: 70px;
 }
+.navegador .fa{
+  margin:20px;
+  cursor:pointer;
+}
 .burger {
   display: none;
   font-size: 28px;

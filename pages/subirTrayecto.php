@@ -28,7 +28,7 @@ include '../utils/controlLogin.php';
                 <a href="../index.php">Buscar trayecto</a>
                 <a href="subirTrayecto.php">Subir trayecto</a>
                 <a href="miZona.php">Mi zona</a>
-                <a href='#'><i class='fa fa-sign-out' style='font-size:28px;color:white'></i></a>
+                <i class='fa fa-sign-out' style='font-size:28px;color:white'></i>
             </div>
         </nav>
         <main class='contenido'>
