@@ -1,7 +1,6 @@
 const formulario=document.querySelector('.form');
 const cardInformacion=document.querySelector('.cardInformativo');
 const contenedorInfo=document.querySelector('.contenedorInfo');
-// const viajePublicado=document.querySelector('.card');
 const publicado=document.querySelector('.infoUsu');
 const publicadoOk=document.querySelector('.viajeTrue');
 const publicadoFalse=document.querySelector('.viajeFalse');
@@ -74,7 +73,6 @@ botonViajeRecurrente.addEventListener('click',function(){
     inputDias.classList.remove('oculto');
 });
 async function APIorigen() {
-    //trim para eliminar espacios
     const query=inputOrigen.value.trim();
     //Si solo se han puesto dos letras en el input no se buscan sugerencias
     if(query.length<3){
@@ -107,9 +105,7 @@ function sugerenciasOrigen(data){
     })
 };
 async function APIdestino() {
-    //trim para eliminar espacios
     const query=inputDestino.value.trim();
-    //Si solo se han puesto dos letras en el input no se buscan sugerencias
     if(query.length<3){
         sugDestino.innerHTML='';
         return;
@@ -209,7 +205,7 @@ async function cambiarPantalla(coordOrigen,coorDestino){
                     <span class="text">Publicar trayecto</span>
                 </button>
                 <a href='subirTrayecto.php'<button class="fancy" href="#">
-                    <span class="text">Modificar trayecto</span>
+                    <span class="text">Volver atrás </span>
                 </button></a>
             </form>
     `
@@ -295,7 +291,6 @@ async function cambiarPantalla(coordOrigen,coorDestino){
         });
         
     });
-    // publicarTrayecto(publicar,coordOrigen,coorDestino);
 }
 async function cambiarClases() {
     formulario.classList.add('oculto');
@@ -364,9 +359,9 @@ async function dibujarRuta(coordOrigen, coorDestino,map) {
         }
     };
 
-    // Preparar el cuerpo de la solicitud
+    // contenido de la solicitud
     const body = JSON.stringify({
-        coordinates: [coordOrigen, coorDestino]  // Asegúrate de que las coordenadas están en el orden correcto (lon, lat)
+        coordinates: [coordOrigen, coorDestino]  
     });
 
  // Enviar la solicitud con el cuerpo
@@ -376,9 +371,6 @@ function respuestaServidor(datos,formulario){
     console.warn(datos.publicado);
     if(datos.publicado=='true'){
         contenedorMapa.classList.add('oculto');
-        // console.warn('trayecto publicado');
-        // viajePublicado.classList.remove('oculto');
-        // viajePublicado.classList.add('visible');
         publicado.classList.remove('oculto');
         publicado.classList.add('visible');
         publicadoFalse.classList.add('oculto');

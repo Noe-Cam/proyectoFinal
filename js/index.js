@@ -31,7 +31,6 @@ burger.addEventListener('click',()=>{
     menu.classList.toggle('visible');
 });
 async function direccionOrigen() {
-    //trim para eliminar espacios
     const query=inputOrigen.value.trim();
     //Si solo se han puesto dos letras en el input no se buscan sugerencias
     if(query.length<3){
@@ -64,7 +63,6 @@ function sugerenciasOrigen(data){
     })
 };
 async function direccionDestino() {
-    //trim para eliminar espacios
     const query=inputDestino.value.trim();
     //Si solo se han puesto dos letras en el input no se buscan sugerencias
     if(query.length<3){

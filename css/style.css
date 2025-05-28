@@ -82,7 +82,6 @@ html, body {
 }
 
 .form .enlace{
- /* text-decoration:none ; */
  color: white; 
  z-index: 1;
 }
@@ -102,7 +101,7 @@ html, body {
 
 .campo {
   position: relative;
-  margin-bottom: 40px; /* ⬅️ Espaciado entre campos */
+  margin-bottom: 40px; 
 }
 .campo1{
   position: relative;
@@ -123,7 +122,6 @@ html, body {
 .form-control input:focus,
 .form-control input:valid {
   outline: 0;
-  /* border-bottom-color: lightblue; */
   border-bottom-color: #2C3E50;
   
 }
@@ -145,7 +143,6 @@ html, body {
 
 .form-control input:focus + label span,
 .form-control input:valid + label span {
-  /* color: lightblue; */
   color:#2C3E50;
   transform: translateY(-30px);
 }
@@ -173,15 +170,6 @@ html, body {
 .btn_inisesion:active {
   transform: scale(0.9);
 }
-  /* Contenedor general */
-/* .contenido {
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  padding: 40px 20px;
-  min-height: 100vh; 
-  font-family: 'Segoe UI', sans-serif;
-} */
 
 /* Formulario */
 form.container {
@@ -221,30 +209,6 @@ form.container {
 .input-box{
   width: 50%;
 }
-/* Etiquetas
-.formulario__label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #444;
-}
-
-/* Campos de entrada */
-/*.formulario__input {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  background-color: #fdfdfd;
-  transition: border 0.3s ease;
-}
-
-.formulario__input:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
-}
   /* Index.php */
   /* From Uiverse.io by andrew-demchenk0 */ 
 .section_form{
@@ -272,15 +236,14 @@ form.container {
 #sugerencias-destino {
   list-style: none;
   position: absolute;
-  top: 60px; /* Ajusta según el tamaño del input */
+  top: 60px; 
   left: 0;
   width: 100%;
   background-color: white;
-  /* border: 1px solid #ccc; */
   border-radius: 10px;
   max-height: 150px;
   overflow-y: auto;
-  z-index: 1; /* Que quede encima */
+  z-index: 1; 
   padding: 0;
   margin: 0;
 }
@@ -320,8 +283,7 @@ form.container {
 .feed-form input::placeholder{
   font-size: 130% ;
   color: #c27314;
-  /* font-weight: bold; */
-
+ 
 }
 .button_submit:hover, .feed-form input:hover {
   transform: scale(1.009);
@@ -353,7 +315,6 @@ form.container {
   width: 100%;
   align-items: center;
   z-index: 1;
-  /* padding: 10px; */
 }
 .contenedor_tit_btn{
   display: flex;
@@ -369,7 +330,6 @@ form.container {
 .mostrar_trayect{
   display: flex;
   position:relative;
-  /* justify-content: center; */
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
@@ -477,9 +437,6 @@ form.container {
 }
 .button svg {
   width: 1.6em;
-  /* margin: -0.2em 0.8em 1em; */
-  /* position: relative;
-  display: flex; */
   transition: all 0.6s ease;
   flex-shrink: 0;
 }
@@ -607,7 +564,7 @@ form.container {
 .formulario__mensaje-exito-activo {
 	display: block;
 }
-/* ----- -----  Estilos para Validacion ----- ----- */
+/*   Estilos para Validacion */
 .formulario__grupo-correcto .formulario__validacion-estado {
 	color: #1ed12d;
 	opacity: 1;

@@ -54,7 +54,6 @@ include "../utils/conexionBD.php";
                                     $sql="UPDATE trayectos SET activo=0 WHERE id_trayecto='$idTrayecto'";
                                     $result = $conn->query($sql); 
                                     if ($result && $conn->affected_rows>0){
-                                    // echo 'result del update '.$result->num_rows;
                                         echo ' Trayecto desactivado (plazas = 0)';
                                     } else {
                                         echo ' No se pudo desactivar el trayecto.'.$plazas;

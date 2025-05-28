@@ -41,29 +41,14 @@ include '../utils/controlLogin.php';
                 <div class="cardInformativo"></div>
                 <div class="contenedorMapa">
                     <!-- From Uiverse.io by rzouga001 --> 
-                    
                     <div id="map" class='mapa'></div>
-                    <!-- <div class="card oculto"> 
-                        <div class="header"> 
-                            <div class="div_image_v">
-                                <div class="image">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 7L9.00004 18L3.99994 13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                                </div> 
-                            </div> 
-                            <div class="content">
-                                <span class="title">VIAJE PUBLICADO</span> 
-                                <p class="message">Gracias por publicar tu viaje en CarPool, puedes ver tus viajes activos en 'MI ZONA'</p> 
-                            </div> 
-                        </div> 
-                    </div>
-                    <div> -->
+                
                         <div class='infoUsu oculto'>
                             <div class="info__icon">
                             </div>
                             <div class="info__title viajeTrue"><p>¡ VIAJE PUBLICADO CON ÉXITO!<br><br>Gracias por publicar tu viaje en CarPool, puedes ver tus viajes activos en 'MI ZONA'<p></div>
                             <div class="info__title viajeFalse">No se ha podido completar la operación.<br><br>Prueba de nuevo más tarde</div>
                         </div>  
-                    <!-- </div>      -->
                 </div>     
              </div>
              <?php

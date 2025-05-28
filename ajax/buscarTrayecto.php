@@ -99,7 +99,7 @@ switch($accion){
 
             // config del correo de CarPool y del usuario al que se le envia el correo
             $mail->setFrom('carpool025@gmail.com','CarPool');
-            $mail->addAddress('noeecamara@gmail.com');
+            $mail->addAddress($userMail);
 
             $mail->isHTML(true);
             $mail->Subject= 'Alguien se ha interesado por tu viaje';
